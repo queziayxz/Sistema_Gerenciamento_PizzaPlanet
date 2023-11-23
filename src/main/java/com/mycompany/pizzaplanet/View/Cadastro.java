@@ -5,6 +5,7 @@
 package com.mycompany.pizzaplanet.View;
 
 import com.mycompany.pizzaplanet.Controller.ClienteController;
+import com.mycompany.pizzaplanet.Controller.EnderecoController;
 import com.mycompany.pizzaplanet.Model.CPF;
 import com.mycompany.pizzaplanet.Model.Cliente;
 import com.mycompany.pizzaplanet.Model.Endereco;
@@ -58,8 +59,8 @@ public class Cadastro extends javax.swing.JFrame {
         txt_cidade = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        txt_senha = new javax.swing.JTextField();
         btn_cadastrar = new javax.swing.JButton();
+        txt_senha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,7 +149,7 @@ public class Cadastro extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,14 +254,13 @@ public class Cadastro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(txt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_cep, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,13 +288,6 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Senha:");
 
-        txt_senha.setBorder(null);
-        txt_senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_senhaActionPerformed(evt);
-            }
-        });
-
         btn_cadastrar.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         btn_cadastrar.setText("Cadastrar");
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -302,6 +295,9 @@ public class Cadastro extends javax.swing.JFrame {
                 btn_cadastrarActionPerformed(evt);
             }
         });
+
+        txt_senha.setText("jPasswordField1");
+        txt_senha.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -316,7 +312,7 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -340,12 +336,12 @@ public class Cadastro extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_senha)))
                 .addGap(53, 53, 53)
                 .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
@@ -407,18 +403,18 @@ public class Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cidadeActionPerformed
 
-    private void txt_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_senhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_senhaActionPerformed
-
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         // TODO add your handling code here:
         try {
             Endereco endereco = new Endereco(txt_rua.getText(),txt_numero.getText(),txt_bairro.getText(),txt_cep.getText(),txt_cidade.getText(),txt_estado.getText());
             CPF cpf = new CPF(txt_cpf.getText());
-            Cliente clienteCadastro = new Cliente(txt_nome.getText(),txt_email.getText(),txt_senha.getText(),cpf,endereco);
-            ClienteController.CadastroCliente(clienteCadastro);
-            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");
+            if(EnderecoController.validarInput(endereco) == true && CPF.validarCPF(txt_cpf.getText()) == true) {
+                Cliente clienteCadastro = new Cliente(txt_nome.getText(),txt_email.getText(),txt_senha.getText(),cpf,endereco);
+                ClienteController.CadastroCliente(clienteCadastro);
+                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado!! Campos inválidos");
+            }
         } catch(IOException e) {
             JOptionPane.showMessageDialog(null, "Cliente não cadastrado!!");
         }
@@ -485,6 +481,6 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nome;
     private javax.swing.JTextField txt_numero;
     private javax.swing.JTextField txt_rua;
-    private javax.swing.JTextField txt_senha;
+    private javax.swing.JPasswordField txt_senha;
     // End of variables declaration//GEN-END:variables
 }

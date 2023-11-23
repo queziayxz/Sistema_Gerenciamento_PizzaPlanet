@@ -1,5 +1,7 @@
 package com.mycompany.pizzaplanet.Model;
 
+import com.mycompany.pizzaplanet.Controller.EnderecoController;
+
 public class Endereco {
     private String rua, numero, bairro, cep, cidade, estado;
 
@@ -35,36 +37,4 @@ public class Endereco {
     public String getEstado() {
         return estado;
     }
-    
-   public static boolean validarInput(String input) {
-       if("".equals(input)) return false;
-       
-       if(input.matches(".*\\P{L}.*")) return false;
-       
-       return true;
-   }
-   
-   public static boolean validarInputNumerico(String input) {
-       if("".equals(input)) return false;
-       
-       if(!input.matches("\\d+")) return false;
-       
-       return true;
-   }
-   
-   public static boolean validarCEP(String input) {
-       if("".equals(input)) return false;
-
-       String aux1, aux2; 
-       aux1 = input.substring(0, 5);
-       aux2 = input.substring(6);
-       
-       if(!aux1.matches("\\d+")) return false;
-       
-       if(!aux2.matches("\\d+")) return false;
-
-       if(!"-".equals(input.charAt(5))) return false;
-
-       return true;
-   }
 }
