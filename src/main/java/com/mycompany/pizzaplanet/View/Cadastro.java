@@ -296,7 +296,6 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
 
-        txt_senha.setText("jPasswordField1");
         txt_senha.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
