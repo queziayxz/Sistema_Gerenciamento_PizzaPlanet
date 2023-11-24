@@ -4,7 +4,14 @@
  */
 package com.mycompany.pizzaplanet.View;
 
+import com.mycompany.pizzaplanet.Controller.ClienteController;
+import com.mycompany.pizzaplanet.Model.BancoDeDados;
+import com.mycompany.pizzaplanet.Model.Cliente;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,8 +49,9 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txt_email = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        btn_entrar = new javax.swing.JButton();
+        txt_senha = new javax.swing.JPasswordField();
+        btn_login_cliente = new javax.swing.JButton();
+        btn_login_adm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,7 +117,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Senha:");
 
-        jPasswordField1.setBorder(null);
+        txt_senha.setBorder(null);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -121,7 +129,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(txt_email)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE))
+                    .addComponent(txt_senha, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE))
                 .addGap(19, 19, 19))
         );
         jPanel3Layout.setVerticalGroup(
@@ -134,17 +142,22 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        btn_entrar.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        btn_entrar.setText("Entrar");
-        btn_entrar.addActionListener(new java.awt.event.ActionListener() {
+        btn_login_cliente.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_login_cliente.setForeground(new java.awt.Color(255, 255, 255));
+        btn_login_cliente.setText("Entrar com Cliente");
+        btn_login_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_entrarActionPerformed(evt);
+                btn_login_clienteActionPerformed(evt);
             }
         });
+
+        btn_login_adm.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_login_adm.setForeground(new java.awt.Color(255, 255, 255));
+        btn_login_adm.setText("Entrar como Administrador");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -152,14 +165,17 @@ public class Login extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(176, Short.MAX_VALUE)
+                .addContainerGap(209, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(180, 180, 180))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btn_entrar)
-                        .addGap(174, 174, 174))))
+                        .addComponent(btn_login_cliente)
+                        .addGap(121, 121, 121))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btn_login_adm)
+                        .addGap(90, 90, 90))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,9 +184,11 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(107, 107, 107)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                .addComponent(btn_entrar)
-                .addGap(86, 86, 86))
+                .addGap(74, 74, 74)
+                .addComponent(btn_login_cliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_login_adm)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,7 +200,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(0, 439, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 447, Short.MAX_VALUE)
+                    .addGap(0, 331, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
@@ -199,9 +217,21 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_emailActionPerformed
 
-    private void btn_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_entrarActionPerformed
+    private void btn_login_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login_clienteActionPerformed
+        try {
+            // TODO add your handling code here:
+            BancoDeDados.leBD(BancoDeDados.getBancoCliente());
+            if(ClienteController.loginCliente(txt_email.getText(), txt_senha.getText(), Cliente.getListaCliente())) {
+                JOptionPane.showMessageDialog(null, "Login realizado com sucesso!!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Login não realizado!!");
+            }
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btn_login_clienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,7 +269,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_entrar;
+    private javax.swing.JButton btn_login_adm;
+    private javax.swing.JButton btn_login_cliente;
     private javax.swing.JLabel img_login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -247,9 +278,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField txt_email;
+    private javax.swing.JPasswordField txt_senha;
     // End of variables declaration//GEN-END:variables
 }

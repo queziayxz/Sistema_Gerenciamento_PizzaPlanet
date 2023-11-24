@@ -12,22 +12,12 @@ import javax.swing.JOptionPane;
 
 public class ClienteController {
     
-    public static boolean login(String email, String senha, List<Cliente> listaUser) {
+    public static boolean loginCliente(String email, String senha, List<Cliente> listaUser) {
         for (Cliente user : listaUser) {
-            if (email.equals(user.getEmail())) {
-                if (senha.equals(user.getSenha())) {
-                    System.out.println("Sucesso!");
-                    return true;
-                }
-                
-                System.out.println("Senha incorreta!");
-                return false;
+            if (email.equals(user.getEmail()) == true && senha.equals(user.getSenha()) == true) {
+                return true;
             }
-            
-            System.out.println("Email incorreto!");
-            return false;
         }
-        
         return false;
     }
     
