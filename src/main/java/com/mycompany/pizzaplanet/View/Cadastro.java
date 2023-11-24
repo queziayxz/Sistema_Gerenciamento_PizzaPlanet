@@ -9,6 +9,7 @@ import com.mycompany.pizzaplanet.Controller.EnderecoController;
 import com.mycompany.pizzaplanet.Model.CPF;
 import com.mycompany.pizzaplanet.Model.Cliente;
 import com.mycompany.pizzaplanet.Model.Endereco;
+import java.awt.Cursor;
 import java.io.IOError;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -61,6 +62,7 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         btn_cadastrar = new javax.swing.JButton();
         txt_senha = new javax.swing.JPasswordField();
+        txt_cadastrado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -290,6 +292,14 @@ public class Cadastro extends javax.swing.JFrame {
 
         btn_cadastrar.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         btn_cadastrar.setText("Cadastrar");
+        btn_cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_cadastrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_cadastrarMouseExited(evt);
+            }
+        });
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cadastrarActionPerformed(evt);
@@ -297,6 +307,24 @@ public class Cadastro extends javax.swing.JFrame {
         });
 
         txt_senha.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        txt_cadastrado.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txt_cadastrado.setForeground(new java.awt.Color(255, 255, 255));
+        txt_cadastrado.setText("Já possuo cadastro!");
+        txt_cadastrado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_cadastradoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txt_cadastradoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txt_cadastradoMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txt_cadastradoMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -324,6 +352,10 @@ public class Cadastro extends javax.swing.JFrame {
                         .addGap(420, 420, 420)
                         .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(410, 410, 410)
+                .addComponent(txt_cadastrado)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +375,9 @@ public class Cadastro extends javax.swing.JFrame {
                         .addComponent(txt_senha)))
                 .addGap(53, 53, 53)
                 .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_cadastrado)
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -419,6 +453,38 @@ public class Cadastro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
+    private void txt_cadastradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cadastradoMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        Login frameLogin = new Login();
+        frameLogin.setVisible(true);
+    }//GEN-LAST:event_txt_cadastradoMouseClicked
+
+    private void txt_cadastradoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cadastradoMouseReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txt_cadastradoMouseReleased
+
+    private void txt_cadastradoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cadastradoMouseEntered
+        // TODO add your handling code here:
+        txt_cadastrado.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_txt_cadastradoMouseEntered
+
+    private void txt_cadastradoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cadastradoMouseExited
+        // TO add your handling code here:
+        txt_cadastrado.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_txt_cadastradoMouseExited
+
+    private void btn_cadastrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cadastrarMouseEntered
+        // TODO add your handling code here:
+        btn_cadastrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_cadastrarMouseEntered
+
+    private void btn_cadastrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cadastrarMouseExited
+        // TODO add your handling code here:
+        btn_cadastrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_cadastrarMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -472,6 +538,7 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField txt_bairro;
+    private javax.swing.JLabel txt_cadastrado;
     private javax.swing.JTextField txt_cep;
     private javax.swing.JTextField txt_cidade;
     private javax.swing.JTextField txt_cpf;

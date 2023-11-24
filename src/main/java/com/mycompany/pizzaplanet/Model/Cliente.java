@@ -8,7 +8,7 @@ public class Cliente extends Usuario {
     private Endereco endereco;
 
     public Cliente(String nome, String email, String senha, CPF cpf, Endereco endereco) {
-        super(nome, email, senha, cpf, endereco);
+        super(nome, email, senha, cpf);
         this.endereco = endereco;
         Cliente.listaCliente = new ArrayList<>();
     }

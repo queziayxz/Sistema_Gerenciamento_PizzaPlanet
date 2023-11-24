@@ -2,6 +2,7 @@ package com.mycompany.pizzaplanet;
 
 //import das models
 import com.mycompany.pizzaplanet.Controller.ClienteController;
+import com.mycompany.pizzaplanet.Model.Administrador;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.CPF;
 import com.mycompany.pizzaplanet.Model.Cliente;
@@ -22,24 +23,23 @@ public class PizzaPlanet {
     public static void main(String[] args) {
         //amém!!!
         try {
-//            BancoDeDados banco = new BancoDeDados();
-//            BancoDeDados.leBD(BancoDeDados.getBancoCliente());
-//            Cadastro telaCadastro = new Cadastro();
-//            telaCadastro.setVisible(true);
+            BancoDeDados banco = new BancoDeDados();
+            Cadastro telaCadastro = new Cadastro();
+            telaCadastro.setVisible(true);
 
-                Login frameLogin = new Login();
-                ImageIcon icon = new ImageIcon("src\\main\\java\\com\\mycompany\\pizzaplanet\\Imagens\\Pizza.jpg");
-                JLabel img_login = new JLabel();
-                img_login.setText("img_login");
-                img_login.setIcon(icon);
-                frameLogin.add(img_login);
-                frameLogin.pack();
-                frameLogin.setVisible(true);
-                icon.setImage(icon.getImage().getScaledInstance(img_login.getWidth(), img_login.getHeight(), 1));
-                img_login.repaint();
+//                Login frameLogin = new Login();
+//                ImageIcon icon = new ImageIcon("src\\main\\java\\com\\mycompany\\pizzaplanet\\Imagens\\Pizza.jpg");
+//                JLabel img_login = new JLabel();
+//                img_login.setText("img_login");
+//                img_login.setIcon(icon);
+//                frameLogin.add(img_login);
+//                frameLogin.pack();
+//                frameLogin.setVisible(true);
+//                icon.setImage(icon.getImage().getScaledInstance(img_login.getWidth(), img_login.getHeight(), 1));
+//                img_login.repaint();
 //                img_login.setVisible(true);
             
-        } catch (NullPointerException ex) {
+        } catch (Exception e) {
             System.out.println("Cliente nao cadastrado");
         }
     }

@@ -5,13 +5,16 @@ public class Usuario {
     private CPF cpf;
     
 
-    public Usuario(String nome, String email, String senha, CPF cpf, Endereco endereco) {
+    public Usuario(String nome, String email, String senha, CPF cpf) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.cpf = cpf;
     }
 
+    public Usuario() {
+    }
+    
     public String getNome() {
         return nome;
     }

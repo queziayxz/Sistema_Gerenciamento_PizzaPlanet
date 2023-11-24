@@ -46,6 +46,24 @@ public class BancoDeDados {
         
     }
     
+    public static void leBDAdm(File bancoDeDados) throws IOException
+    {
+        Gson gson = new Gson();
+        FileWriter writer = new FileWriter(bancoDeDados,true);
+        BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
+        if(arquivoJson.ready()) {
+            try {
+                Type type = new TypeToken<List<Administrador>>(){}.getType();
+                Administrador.setListaAdm(gson.fromJson(arquivoJson, type));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao transformar os valores em objeto");
+            }
+        }
+        arquivoJson.close();
+        writer.close();
+        
+    }
+    
     public String getPastaBanco() {
         return pastaBanco;
     }
