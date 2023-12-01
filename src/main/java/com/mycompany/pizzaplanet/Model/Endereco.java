@@ -2,12 +2,14 @@ package com.mycompany.pizzaplanet.Model;
 
 import com.mycompany.pizzaplanet.Controller.EnderecoController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
+import com.mycompany.pizzaplanet.Excecoes.EnderecoInvalido;
 
 public class Endereco {
     private String rua, numero, bairro, cep, cidade, estado;
 
-    public Endereco(String rua, String numero, String bairro, String cep, String cidade, String estado) throws CampoVazio{
+    public Endereco(String rua, String numero, String bairro, String cep, String cidade, String estado) throws CampoVazio, EnderecoInvalido{
         this.validaEnderecoVazio(rua,numero,bairro,cep,cidade,estado);
+        this.validaNumeroEndereco(numero);
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
@@ -53,5 +55,9 @@ public class Endereco {
             throw new CampoVazio();
         if(bairro == null || "".equals(bairro))
             throw new CampoVazio();
+    }
+    private void validaNumeroEndereco(String numero) throws EnderecoInvalido {
+        if(!numero.matches("[0-9].*"))
+            throw new EnderecoInvalido();
     }
 }
