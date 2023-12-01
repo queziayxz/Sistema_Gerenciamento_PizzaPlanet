@@ -12,13 +12,18 @@ import javax.swing.JOptionPane;
 
 public class ClienteController {
     
-    public static boolean loginCliente(String email, String senha, List<Cliente> listaUser) {
-        for (Cliente user : listaUser) {
-            if (email.equals(user.getEmail()) == true && senha.equals(user.getSenha()) == true) {
-                return true;
+    public static boolean loginCliente(String email, String senha) throws IOException {
+        try {
+            BancoDeDados.leBD(BancoDeDados.getBancoCliente());
+            for (Cliente user : Cliente.getListaCliente()) {
+                if (email.equals(user.getEmail()) && senha.equals(user.getSenha())) {
+                    return true;
+                }
             }
+            throw new IOException();
+        } catch(IOException e) {
+            throw new IOException();
         }
-        return false;
     }
     
     public static void CadastroCliente(Cliente usuario) throws IOException {
@@ -35,7 +40,7 @@ public class ClienteController {
             writer.flush();
             writer.close();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Cliente não cadastrado!!");
+            throw new IOException();
         } 
     }
 }

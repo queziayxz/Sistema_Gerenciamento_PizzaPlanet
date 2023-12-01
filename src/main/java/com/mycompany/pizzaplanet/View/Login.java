@@ -4,6 +4,7 @@
  */
 package com.mycompany.pizzaplanet.View;
 
+import com.mycompany.pizzaplanet.Controller.AdministradorController;
 import com.mycompany.pizzaplanet.Controller.ClienteController;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Cliente;
@@ -66,7 +67,7 @@ public class Login extends javax.swing.JFrame {
         paineiImagemLayout.setHorizontalGroup(
             paineiImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paineiImagemLayout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
+                .addContainerGap(73, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76))
             .addGroup(paineiImagemLayout.createSequentialGroup()
@@ -143,6 +144,11 @@ public class Login extends javax.swing.JFrame {
 
         btn_login_adm.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         btn_login_adm.setText("Entrar como Administrador");
+        btn_login_adm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_login_admActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,7 +156,7 @@ public class Login extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
+                .addContainerGap(105, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -182,10 +188,10 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(paineiImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 439, Short.MAX_VALUE))
+                .addGap(0, 450, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 331, Short.MAX_VALUE)
+                    .addGap(0, 435, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
@@ -205,18 +211,26 @@ public class Login extends javax.swing.JFrame {
     private void btn_login_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login_clienteActionPerformed
         try {
             // TODO add your handling code here:
-            BancoDeDados.leBD(BancoDeDados.getBancoCliente());
-            if(ClienteController.loginCliente(txt_email.getText(), txt_senha.getText(), Cliente.getListaCliente())) {
+            if(ClienteController.loginCliente(txt_email.getText(), txt_senha.getText())) {
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso!!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Login não realizado!!");
-            }
-            
+            }            
         } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Campos inválidos!");
         }
         
     }//GEN-LAST:event_btn_login_clienteActionPerformed
+
+    private void btn_login_admActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login_admActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            if(AdministradorController.loginAdm(txt_email.getText().trim(), txt_senha.getText().trim())) {
+                JOptionPane.showMessageDialog(null, "Login realizado com sucesso!!");
+            }            
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Campos inválidos!");
+        }
+    }//GEN-LAST:event_btn_login_admActionPerformed
 
     /**
      * @param args the command line arguments

@@ -8,6 +8,7 @@ import java.util.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.mycompany.pizzaplanet.Excecoes.ErrorBancoDeDados;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -52,15 +53,19 @@ public class BancoDeDados {
         FileWriter writer = new FileWriter(bancoDeDados,true);
         BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
         if(arquivoJson.ready()) {
+//        System.out.println("entrou");
             try {
                 Type type = new TypeToken<List<Administrador>>(){}.getType();
-                Administrador.setListaAdm(gson.fromJson(arquivoJson, type));
+                
+                 System.out.println(gson.fromJson(arquivoJson, type).getClass());
+//                Administrador.setListaAdm();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro ao transformar os valores em objeto");
+                throw new IOException();
+            } finally {
+                arquivoJson.close();
+                writer.close();
             }
         }
-        arquivoJson.close();
-        writer.close();
         
     }
     

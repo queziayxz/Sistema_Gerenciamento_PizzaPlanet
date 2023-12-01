@@ -437,8 +437,11 @@ public class Cadastro extends javax.swing.JFrame {
             Endereco endereco = new Endereco(txt_rua.getText().trim(),txt_numero.getText().trim(),txt_bairro.getText().trim(),txt_cep.getText().trim(),txt_cidade.getText().trim(),txt_estado.getText().trim());
             CPF cpf = new CPF(txt_cpf.getText());
             Cliente clienteCadastro = new Cliente(txt_nome.getText().trim(),txt_email.getText().trim(),txt_senha.getText().trim(),cpf,endereco);
-//            ClienteController.CadastroCliente(clienteCadastro);
+            ClienteController.CadastroCliente(clienteCadastro);
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");
+            Login telaLogin = new Login();
+            this.dispose();
+            telaLogin.setVisible(true);
             
         } catch(CPFInvalido e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -446,20 +449,9 @@ public class Cadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch(EnderecoInvalido e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch(IOException e) {
+            JOptionPane.showMessageDialog(null, "Cliente não cadastrado!!");
         }
-//        try {
-//            Endereco endereco = new Endereco(txt_rua.getText(),txt_numero.getText(),txt_bairro.getText(),txt_cep.getText(),txt_cidade.getText(),txt_estado.getText());
-//            CPF cpf = new CPF(txt_cpf.getText());
-//            if(EnderecoController.validarInput(endereco) == true && CPF.validarCPF(txt_cpf.getText()) == true) {
-//                Cliente clienteCadastro = new Cliente(txt_nome.getText(),txt_email.getText(),txt_senha.getText(),cpf,endereco);
-//                ClienteController.CadastroCliente(clienteCadastro);
-//                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Cliente não cadastrado!! Campos inválidos");
-//            }
-//        } catch(IOException e) {
-//            JOptionPane.showMessageDialog(null, "Cliente não cadastrado!!");
-//        }
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_cadastradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cadastradoMouseClicked

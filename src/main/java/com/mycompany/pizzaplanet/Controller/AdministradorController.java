@@ -12,23 +12,19 @@ import java.util.*;
 import javax.swing.*;
 
 public class AdministradorController {
-    public static boolean login(String email, String senha, List<Administrador> listaUser) {
-        for (Administrador user : listaUser) {
-            if (email.equals(user.getEmail())) {
-                if (senha.equals(user.getSenha())) {
-                    System.out.println("Sucesso!");
-                    return true;
-                }
-                
-                System.out.println("Senha incorreta!");
-                return false;
-            }
-            
-            System.out.println("Email incorreto!");
-            return false;
+    public static boolean loginAdm(String email, String senha) throws IOException {
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDAdm(BancoDeDados.getBancoAdministrador());
+//            for (Administrador user : Administrador.getListaAdm()) {
+//                if (email.equals(user.getEmail()) && senha.equals(user.getSenha())) {
+//                    return true;
+//                }
+//            }
+            throw new IOException();
+        } catch(IOException e) {
+            throw new IOException();
         }
-        
-        return false;
     }
     
     public static void cadastroAdm(Administrador adm)
