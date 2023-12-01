@@ -26,19 +26,6 @@ public class PizzaPlanet {
             BancoDeDados banco = new BancoDeDados();
             Cadastro telaCadastro = new Cadastro();
             telaCadastro.setVisible(true);
-
-//                Login frameLogin = new Login();
-//                ImageIcon icon = new ImageIcon("src\\main\\java\\com\\mycompany\\pizzaplanet\\Imagens\\Pizza.jpg");
-//                JLabel img_login = new JLabel();
-//                img_login.setText("img_login");
-//                img_login.setIcon(icon);
-//                frameLogin.add(img_login);
-//                frameLogin.pack();
-//                frameLogin.setVisible(true);
-//                icon.setImage(icon.getImage().getScaledInstance(img_login.getWidth(), img_login.getHeight(), 1));
-//                img_login.repaint();
-//                img_login.setVisible(true);
-            
         } catch (Exception e) {
             System.out.println("Cliente nao cadastrado");
         }

@@ -6,42 +6,43 @@ import com.mycompany.pizzaplanet.Model.BancoDeDados;
 
 //import das dependências
 import com.google.gson.Gson;
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import javax.swing.*;
 
 public class AdministradorController {
-    public static boolean loginAdm(String email, String senha) throws IOException {
-        try {
+    public static boolean loginAdm(String email, String senha) throws IOException, CampoVazio {
+            
+            UsuarioController.validaCamposLogin(email, senha);
             BancoDeDados banco = new BancoDeDados();
             BancoDeDados.leBDAdm(BancoDeDados.getBancoAdministrador());
-//            for (Administrador user : Administrador.getListaAdm()) {
-//                if (email.equals(user.getEmail()) && senha.equals(user.getSenha())) {
-//                    return true;
-//                }
-//            }
-            throw new IOException();
-        } catch(IOException e) {
-            throw new IOException();
-        }
+            for (Administrador user : Administrador.getListaAdm()) {
+                if (email.equals(user.getEmail()) && senha.equals(user.getSenha())) {
+                    return true;
+                }
+            }
+            return false;
     }
     
-    public static void cadastroAdm(Administrador adm)
-    {
-        Gson gson = new Gson();
-        BancoDeDados banco = new BancoDeDados();
-        
-        try {
-            BancoDeDados.leBDAdm(BancoDeDados.getBancoAdministrador());
-            Administrador.getListaAdm().add(adm);
-            String jsonAdm = gson.toJson(Administrador.getListaAdm());
-            FileWriter write = new FileWriter(BancoDeDados.getBancoAdministrador());
-            write.write(jsonAdm);
-            write.flush();
-            write.close();
-        } catch(IOException e) {
-            JOptionPane.showMessageDialog(null, "Administrador não cadastrado!!");
-        }
-    }
+    
+    
+//    public static void cadastroAdm(Administrador adm)
+//    {
+//        Gson gson = new Gson();
+//        BancoDeDados banco = new BancoDeDados();
+//        
+//        try {
+//            BancoDeDados.leBDAdm(BancoDeDados.getBancoAdministrador());
+//            Administrador.getListaAdm().add(adm);
+//            String jsonAdm = gson.toJson(Administrador.getListaAdm());
+//            FileWriter write = new FileWriter(BancoDeDados.getBancoAdministrador());
+//            write.write(jsonAdm);
+//            write.flush();
+//            write.close();
+//        } catch(IOException e) {
+//            JOptionPane.showMessageDialog(null, "Administrador não cadastrado!!");
+//        }
+//    }
 }

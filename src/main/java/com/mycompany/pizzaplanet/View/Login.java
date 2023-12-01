@@ -1,11 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.pizzaplanet.View;
 
 import com.mycompany.pizzaplanet.Controller.AdministradorController;
 import com.mycompany.pizzaplanet.Controller.ClienteController;
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Cliente;
 import java.io.IOException;
@@ -14,10 +11,6 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author quezi
- */
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -52,8 +45,6 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        paineiImagem.setBackground(new java.awt.Color(51, 51, 255));
-
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jTextArea1.setRows(5);
@@ -79,13 +70,11 @@ public class Login extends javax.swing.JFrame {
             paineiImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paineiImagemLayout.createSequentialGroup()
                 .addGap(82, 82, 82)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addComponent(jLabel2)
+                .addGap(61, 61, 61)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(103, Short.MAX_VALUE))
         );
-
-        jPanel2.setBackground(new java.awt.Color(204, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel1.setText("Login");
@@ -213,9 +202,13 @@ public class Login extends javax.swing.JFrame {
             // TODO add your handling code here:
             if(ClienteController.loginCliente(txt_email.getText(), txt_senha.getText())) {
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso!!");
-            }            
+            } else {
+                JOptionPane.showMessageDialog(null, "Login não realizado!!");
+            }        
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Campos inválidos!");
+        } catch (CampoVazio e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
         
     }//GEN-LAST:event_btn_login_clienteActionPerformed
@@ -226,9 +219,13 @@ public class Login extends javax.swing.JFrame {
             // TODO add your handling code here:
             if(AdministradorController.loginAdm(txt_email.getText().trim(), txt_senha.getText().trim())) {
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso!!");
-            }            
+            } else {
+                JOptionPane.showMessageDialog(null, "Login não realizado!!");
+            }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Campos inválidos!");
+        } catch (CampoVazio e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btn_login_admActionPerformed
 

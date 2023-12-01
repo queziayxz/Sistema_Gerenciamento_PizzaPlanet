@@ -61,14 +61,10 @@ public class Cadastro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(78, 5, 34));
-
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Cadastro");
-
-        jPanel2.setBackground(new java.awt.Color(78, 5, 34));
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,8 +152,6 @@ public class Cadastro extends javax.swing.JFrame {
                 .addComponent(txt_rua, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
-
-        jPanel3.setBackground(new java.awt.Color(78, 5, 34));
 
         jLabel6.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,8 +261,6 @@ public class Cadastro extends javax.swing.JFrame {
                 .addComponent(txt_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
-
-        jPanel6.setBackground(new java.awt.Color(78, 5, 34));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);

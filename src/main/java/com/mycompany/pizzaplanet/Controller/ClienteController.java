@@ -2,6 +2,7 @@ package com.mycompany.pizzaplanet.Controller;
 
 //import das models
 import com.google.gson.Gson;
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Cliente;
 import java.io.FileWriter;
@@ -12,18 +13,15 @@ import javax.swing.JOptionPane;
 
 public class ClienteController {
     
-    public static boolean loginCliente(String email, String senha) throws IOException {
-        try {
-            BancoDeDados.leBD(BancoDeDados.getBancoCliente());
-            for (Cliente user : Cliente.getListaCliente()) {
-                if (email.equals(user.getEmail()) && senha.equals(user.getSenha())) {
-                    return true;
-                }
+    public static boolean loginCliente(String email, String senha) throws IOException, CampoVazio {
+        UsuarioController.validaCamposLogin(email, senha);
+        BancoDeDados.leBD(BancoDeDados.getBancoCliente());
+        for (Cliente user : Cliente.getListaCliente()) {
+            if (email.equals(user.getEmail()) && senha.equals(user.getSenha())) {
+                return true;
             }
-            throw new IOException();
-        } catch(IOException e) {
-            throw new IOException();
         }
+        return false;
     }
     
     public static void CadastroCliente(Cliente usuario) throws IOException {

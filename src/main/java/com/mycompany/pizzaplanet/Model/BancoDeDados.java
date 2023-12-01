@@ -56,9 +56,7 @@ public class BancoDeDados {
 //        System.out.println("entrou");
             try {
                 Type type = new TypeToken<List<Administrador>>(){}.getType();
-                
-                 System.out.println(gson.fromJson(arquivoJson, type).getClass());
-//                Administrador.setListaAdm();
+                Administrador.setListaAdm(gson.fromJson(arquivoJson, type));
             } catch (Exception e) {
                 throw new IOException();
             } finally {
@@ -66,7 +64,6 @@ public class BancoDeDados {
                 writer.close();
             }
         }
-        
     }
     
     public String getPastaBanco() {
