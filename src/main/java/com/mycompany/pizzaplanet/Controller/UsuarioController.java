@@ -1,5 +1,6 @@
 package com.mycompany.pizzaplanet.Controller;
 
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.Usuario;
 import java.util.*;
 
@@ -47,4 +48,5 @@ public class UsuarioController {
         
         return true;
     }
+    
 }

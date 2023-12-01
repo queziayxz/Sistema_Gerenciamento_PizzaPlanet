@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.pizzaplanet.View;
 
 import com.mycompany.pizzaplanet.Controller.ClienteController;
 import com.mycompany.pizzaplanet.Controller.EnderecoController;
+import com.mycompany.pizzaplanet.Excecoes.CPFInvalido;
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.CPF;
 import com.mycompany.pizzaplanet.Model.Cliente;
 import com.mycompany.pizzaplanet.Model.Endereco;
@@ -14,10 +12,6 @@ import java.io.IOError;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author quezi
- */
 public class Cadastro extends javax.swing.JFrame {
 
     /**
@@ -439,18 +433,30 @@ public class Cadastro extends javax.swing.JFrame {
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         // TODO add your handling code here:
         try {
-            Endereco endereco = new Endereco(txt_rua.getText(),txt_numero.getText(),txt_bairro.getText(),txt_cep.getText(),txt_cidade.getText(),txt_estado.getText());
+            Endereco endereco = new Endereco(txt_rua.getText().trim(),txt_numero.getText().trim(),txt_bairro.getText().trim(),txt_cep.getText().trim(),txt_cidade.getText().trim(),txt_estado.getText().trim());
             CPF cpf = new CPF(txt_cpf.getText());
-            if(EnderecoController.validarInput(endereco) == true && CPF.validarCPF(txt_cpf.getText()) == true) {
-                Cliente clienteCadastro = new Cliente(txt_nome.getText(),txt_email.getText(),txt_senha.getText(),cpf,endereco);
-                ClienteController.CadastroCliente(clienteCadastro);
-                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Cliente não cadastrado!! Campos inválidos");
-            }
-        } catch(IOException e) {
-            JOptionPane.showMessageDialog(null, "Cliente não cadastrado!!");
+            Cliente clienteCadastro = new Cliente(txt_nome.getText().trim(),txt_email.getText().trim(),txt_senha.getText().trim(),cpf,endereco);
+//            ClienteController.CadastroCliente(clienteCadastro);
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");
+            
+        } catch(CPFInvalido e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch(CampoVazio e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
+//        try {
+//            Endereco endereco = new Endereco(txt_rua.getText(),txt_numero.getText(),txt_bairro.getText(),txt_cep.getText(),txt_cidade.getText(),txt_estado.getText());
+//            CPF cpf = new CPF(txt_cpf.getText());
+//            if(EnderecoController.validarInput(endereco) == true && CPF.validarCPF(txt_cpf.getText()) == true) {
+//                Cliente clienteCadastro = new Cliente(txt_nome.getText(),txt_email.getText(),txt_senha.getText(),cpf,endereco);
+//                ClienteController.CadastroCliente(clienteCadastro);
+//                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Cliente não cadastrado!! Campos inválidos");
+//            }
+//        } catch(IOException e) {
+//            JOptionPane.showMessageDialog(null, "Cliente não cadastrado!!");
+//        }
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_cadastradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cadastradoMouseClicked

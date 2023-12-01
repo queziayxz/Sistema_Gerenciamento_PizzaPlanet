@@ -1,15 +1,19 @@
 package com.mycompany.pizzaplanet.Model;
 
+import com.mycompany.pizzaplanet.Excecoes.CPFInvalido;
+
 public class CPF {
     private String cpf;
 
-    public CPF(String cpf) {
+    public CPF(String cpf) throws CPFInvalido
+    {
+        CPF.validarCPF(cpf);
         this.cpf = cpf;
     }
     
-    public static boolean validarCPF(String cpf) {
+    public static void validarCPF(String cpf) throws CPFInvalido {
         cpf = cpf.replaceAll("[^\\d]+", "");
-        if (cpf.equals("")) return false;
+//        if (cpf.equals("")) return false;
 
         // Elimina CPFs inválidos conhecidos
         if (cpf.length() != 11 ||
@@ -23,7 +27,7 @@ public class CPF {
             cpf.equals("77777777777") ||
             cpf.equals("88888888888") ||
             cpf.equals("99999999999")) {
-            return false;
+            
         }
 
         // Valida 1o digito
@@ -36,7 +40,7 @@ public class CPF {
             rev = 0;
         }
         if (rev != Integer.parseInt(String.valueOf(cpf.charAt(9)))) {
-            return false;
+            throw new CPFInvalido();
         }
 
         // Valida 2o digito
@@ -49,9 +53,7 @@ public class CPF {
             rev = 0;
         }
         if (rev != Integer.parseInt(String.valueOf(cpf.charAt(10)))) {
-            return false;
+            throw new CPFInvalido();
         }
-
-        return true;
     }
 }
