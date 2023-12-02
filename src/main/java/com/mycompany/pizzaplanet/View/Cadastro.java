@@ -63,11 +63,11 @@ public class Cadastro extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cadastro");
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nome:");
 
         txt_nome.setBorder(null);
@@ -78,15 +78,15 @@ public class Cadastro extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("E-mail:");
 
         jLabel4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("CPF:");
 
         jLabel11.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Rua:");
 
         txt_cpf.setBorder(null);
@@ -154,23 +154,23 @@ public class Cadastro extends javax.swing.JFrame {
         );
 
         jLabel6.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Bairro:");
 
         jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Número:");
 
         jLabel8.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("CEP:");
 
         jLabel9.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Cidade:");
 
         jLabel10.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Estado:");
 
         txt_bairro.setBorder(null);
@@ -274,7 +274,7 @@ public class Cadastro extends javax.swing.JFrame {
         );
 
         jLabel12.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Senha:");
 
         btn_cadastrar.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -296,7 +296,7 @@ public class Cadastro extends javax.swing.JFrame {
         txt_senha.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         txt_cadastrado.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        txt_cadastrado.setForeground(new java.awt.Color(255, 255, 255));
+        txt_cadastrado.setForeground(new java.awt.Color(0, 0, 0));
         txt_cadastrado.setText("Já possuo cadastro!");
         txt_cadastrado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

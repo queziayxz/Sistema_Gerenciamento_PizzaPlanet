@@ -30,9 +30,9 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         paineiImagem = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -45,42 +45,44 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\quezi\\OneDrive\\Documentos\\UFJF\\Orientação a Objetos\\Trabalho Final\\PizzaPlanet\\src\\main\\java\\com\\mycompany\\pizzaplanet\\Imagens\\Pizza - Copia.png")); // NOI18N
         jLabel2.setText("jLabel2");
+
+        jTextPane1.setBorder(null);
+        jTextPane1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jTextPane1.setText("Aqui virá um texto falando um pouco\nsobre a pizzaria\nbem legal isso");
+        jTextPane1.setEnabled(false);
+        jScrollPane2.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout paineiImagemLayout = new javax.swing.GroupLayout(paineiImagem);
         paineiImagem.setLayout(paineiImagemLayout);
         paineiImagemLayout.setHorizontalGroup(
             paineiImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paineiImagemLayout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76))
             .addGroup(paineiImagemLayout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paineiImagemLayout.createSequentialGroup()
+                .addContainerGap(87, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
         );
         paineiImagemLayout.setVerticalGroup(
             paineiImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paineiImagemLayout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addComponent(jLabel2)
-                .addGap(61, 61, 61)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Login");
 
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("E-mail:");
 
         txt_email.setBorder(null);
@@ -91,7 +93,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Senha:");
 
         txt_senha.setBorder(null);
@@ -273,8 +275,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JPanel paineiImagem;
     private javax.swing.JTextField txt_email;
     private javax.swing.JPasswordField txt_senha;
