@@ -61,5 +61,3 @@ public class Tamanho {
         return listaTamanhos;
     }
 }
-
-}
