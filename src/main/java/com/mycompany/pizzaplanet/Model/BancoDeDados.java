@@ -21,12 +21,18 @@ public class BancoDeDados {
     private String pastaBanco = "Banco_De_Dados";
     private static File bancoCliente;
     private static File bancoAdministrador;
+    private static File bancoIngrediente;
+    private static File bancoTamanho;
+    private static File bancoProduto;
 //    private static List<Cliente> listaDeCliente;
 //    private static List<Administrador> listaDeAdministrador;
     
     public BancoDeDados() {
         BancoDeDados.bancoCliente = new File(this.pastaBanco+"\\BancoDeDadosCliente.json");
         BancoDeDados.bancoAdministrador = new File(this.pastaBanco+"\\BancoDeDadosAdministrador.json");
+        BancoDeDados.bancoAdministrador = new File(this.pastaBanco+"\\BancoDeDadosIngrediente.json");
+        BancoDeDados.bancoAdministrador = new File(this.pastaBanco+"\\BancoDeDadosTamanho.json");
+        BancoDeDados.bancoAdministrador = new File(this.pastaBanco+"\\BancoDeDadosProduto.json");
     }
     
     public static void leBD(File bancoDeDados) throws IOException
