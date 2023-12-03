@@ -7,32 +7,38 @@ import java.util.List;
 
 public class Produtos {
 
-    class Produto {
-        String nome;
-        float valor;
-        int quantidade;
+    private String nome;
+    private float valor;
+    private int quantidade;
+    private List<Produtos> produtos;
 
-        Produto(String nome, float valor, int quantidade) {
-            this.nome = nome;
-            this.valor = valor;
-            this.quantidade = quantidade;
-        }
+    public Produtos(String nome, float valor, int quantidade) {
+        this.nome = nome;
+        this.valor = valor;
+        this.quantidade = quantidade;
+        this.produtos = new ArrayList<>();
     }
 
-    private List<Produto> produtos;
-
-    public Produtos() {
-        produtos = new ArrayList<>();
+    public String getNome() {
+        return nome;
     }
 
-    public void adicionarProduto(String nome, float valor, int quantidade) {
-        produtos.add(new Produto(nome, valor, quantidade));
+    public float getValor() {
+        return valor;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void adicionarProduto(Produtos produto) {
+        produtos.add(produto);
     }
 
     public void comprarProduto(int index) {
         try {
-            Produto produto = produtos.get(index);
-            int quantidade = produto.quantidade;
+            Produtos produto = produtos.get(index);
+            int quantidade = produto.getQuantidade();
             if (quantidade == 0) {
                 System.out.println("Erro: Produto esgotado. Não foi possível realizar a compra.");
             } else {
@@ -59,8 +65,8 @@ public class Produtos {
 
     public void mostrarProdutos() {
         for (int i = 0; i < produtos.size(); i++) {
-            Produto produto = produtos.get(i);
-            System.out.println(produto.nome + " valor: " + produto.valor + " Quantidade: " + produto.quantidade);
+            Produtos produto = produtos.get(i);
+            System.out.println(produto.getNome() + " valor: " + produto.getValor() + " Quantidade: " + produto.getQuantidade());
         }
     }
 }

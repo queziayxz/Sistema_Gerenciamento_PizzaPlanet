@@ -13,35 +13,36 @@ import java.util.List;
  */
 
     public class Ingredientes {
+
+
     private List<String> ingredientes;
-    private List<Float> valores;
+    private List<Integer> quantidadeAdicionada;
 
     public Ingredientes() {
         ingredientes = new ArrayList<>();
-        valores = new ArrayList<>();
+        quantidadeAdicionada = new ArrayList<>();
     }
 
-    public void adicionarIngrediente(String ingrediente, float valor) {
+    public void adicionarIngrediente(String ingrediente, int quantidade) {
         ingredientes.add(ingrediente);
-        valores.add(valor);
+        quantidadeAdicionada.add(quantidade);
     }
 
     public void removerIngrediente(int index) {
-    try {
-        ingredientes.remove(index);
-        valores.remove(index);
-        System.out.println("Ingrediente removido");
-    } catch (IndexOutOfBoundsException e) {
-        System.out.println("Erro: Índice inválido. Não foi possível remover o produto.");
-    } catch (Exception e) {
-        System.out.println("Erro: " + e.getMessage());
+        try {
+            ingredientes.remove(index);
+            quantidadeAdicionada.remove(index);
+            System.out.println("Ingrediente removido");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Erro: Índice inválido. Não foi possível remover o produto.");
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
     }
-}
-
 
     public void mostrarIngredientes() {
         for (int i = 0; i < ingredientes.size(); i++) {
-            System.out.println(ingredientes.get(i) + ": " + valores.get(i));
+            System.out.println(ingredientes.get(i) + ": " + quantidadeAdicionada.get(i));
         }
     }
 
@@ -53,11 +54,11 @@ import java.util.List;
         this.ingredientes = ingredientes;
     }
 
-    public List<Float> getValores() {
-        return valores;
+    public List<Integer> getQuantidadeAdicionada() {
+        return quantidadeAdicionada;
     }
 
-    public void setValores(List<Float> valores) {
-        this.valores = valores;
+    public void setQuantidadeAdicionada(List<Integer> quantidadeAdicionada) {
+        this.quantidadeAdicionada = quantidadeAdicionada;
     }
 }
