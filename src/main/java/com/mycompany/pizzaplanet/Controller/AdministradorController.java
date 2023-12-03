@@ -7,15 +7,16 @@ import com.mycompany.pizzaplanet.Model.BancoDeDados;
 //import das dependências
 import com.google.gson.Gson;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
+import com.mycompany.pizzaplanet.Excecoes.ErroLogin;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import javax.swing.*;
 
 public class AdministradorController {
-    public static boolean loginAdm(String email, String senha) throws IOException, CampoVazio {
+    public static boolean loginAdm(String email, String senha) throws IOException, CampoVazio, ErroLogin {
             
-            UsuarioController.validaCamposLogin(email, senha);
+            Administrador.validaCamposLogin(email, senha);
             BancoDeDados banco = new BancoDeDados();
             BancoDeDados.leBDAdm(BancoDeDados.getBancoAdministrador());
             for (Administrador user : Administrador.getListaAdm()) {
@@ -23,7 +24,7 @@ public class AdministradorController {
                     return true;
                 }
             }
-            return false;
+            throw new ErroLogin();
     }
     
     

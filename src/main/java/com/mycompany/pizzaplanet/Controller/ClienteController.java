@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class ClienteController {
     
     public static boolean loginCliente(String email, String senha) throws IOException, CampoVazio {
-        UsuarioController.validaCamposLogin(email, senha);
+        Cliente.validaCamposLogin(email, senha);
         BancoDeDados.leBD(BancoDeDados.getBancoCliente());
         for (Cliente user : Cliente.getListaCliente()) {
             if (email.equals(user.getEmail()) && senha.equals(user.getSenha())) {

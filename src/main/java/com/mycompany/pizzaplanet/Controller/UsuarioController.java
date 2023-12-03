@@ -49,9 +49,4 @@ public class UsuarioController {
         return true;
     }
     
-    public static void validaCamposLogin(String email, String senha) throws CampoVazio {
-        if("".equals(email) || "".equals(senha))
-            throw new CampoVazio();
-    }
-    
 }

@@ -5,17 +5,17 @@ import com.mycompany.pizzaplanet.Model.Administrador;
 import com.mycompany.pizzaplanet.Model.Cliente;
 
 import java.util.*;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import javax.swing.*;
+import com.google.gson.*;
+//import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mycompany.pizzaplanet.Excecoes.ErrorBancoDeDados;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+//import java.io.BufferedReader;
+import java.io.*;
+//import java.io.FileReader;
+//import java.io.FileWriter;
+//import java.io.IOException;
 import java.lang.reflect.Type;
-import javax.swing.JOptionPane;
 
 public class BancoDeDados {
     private String pastaBanco = "Banco_De_Dados";
@@ -30,9 +30,9 @@ public class BancoDeDados {
     public BancoDeDados() {
         BancoDeDados.bancoCliente = new File(this.pastaBanco+"\\BancoDeDadosCliente.json");
         BancoDeDados.bancoAdministrador = new File(this.pastaBanco+"\\BancoDeDadosAdministrador.json");
-        BancoDeDados.bancoAdministrador = new File(this.pastaBanco+"\\BancoDeDadosIngrediente.json");
-        BancoDeDados.bancoAdministrador = new File(this.pastaBanco+"\\BancoDeDadosTamanho.json");
-        BancoDeDados.bancoAdministrador = new File(this.pastaBanco+"\\BancoDeDadosProduto.json");
+        BancoDeDados.bancoIngrediente = new File(this.pastaBanco+"\\BancoDeDadosIngrediente.json");
+        BancoDeDados.bancoTamanho = new File(this.pastaBanco+"\\BancoDeDadosTamanho.json");
+        BancoDeDados.bancoProduto = new File(this.pastaBanco+"\\BancoDeDadosProduto.json");
     }
     
     public static void leBD(File bancoDeDados) throws IOException

@@ -1,5 +1,7 @@
 package com.mycompany.pizzaplanet.Model;
 
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
+
 public class Usuario {
     private String nome, email, senha;
     private CPF cpf;
@@ -29,5 +31,10 @@ public class Usuario {
 
     public CPF getCpf() {
         return cpf;
+    }
+    
+    public static void validaCamposLogin(String email, String senha) throws CampoVazio {
+        if("".equals(email) || "".equals(senha))
+            throw new CampoVazio();
     }
 }

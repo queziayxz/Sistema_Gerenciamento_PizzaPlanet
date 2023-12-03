@@ -3,8 +3,10 @@ package com.mycompany.pizzaplanet.View;
 import com.mycompany.pizzaplanet.Controller.AdministradorController;
 import com.mycompany.pizzaplanet.Controller.ClienteController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
+import com.mycompany.pizzaplanet.Excecoes.ErroLogin;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Cliente;
+import com.mycompany.pizzaplanet.View.Ingredientes.GerenciamentoIngrediente;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -221,12 +223,15 @@ public class Login extends javax.swing.JFrame {
             // TODO add your handling code here:
             if(AdministradorController.loginAdm(txt_email.getText().trim(), txt_senha.getText().trim())) {
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso!!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Login não realizado!!");
+                this.dispose();
+                DashboardAdm dashAdm = new DashboardAdm();
+                dashAdm.setVisible(true);
             }
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Campos inválidos!");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (CampoVazio e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (ErroLogin e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btn_login_admActionPerformed
