@@ -4,6 +4,8 @@
  */
 package com.mycompany.pizzaplanet.View.Ingredientes;
 
+import com.mycompany.pizzaplanet.View.DashboardAdm;
+
 /**
  *
  * @author quezi
@@ -108,6 +110,11 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         jMenuBar1.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
 
         jMenu1.setText("Dashboard");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Pizzas");
@@ -210,6 +217,13 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         AdicionaIngrediente addV = new AdicionaIngrediente();
         addV.setVisible(true);
     }//GEN-LAST:event_btnViewAddActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        DashboardAdm dashAdm = new DashboardAdm();
+        dashAdm.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments

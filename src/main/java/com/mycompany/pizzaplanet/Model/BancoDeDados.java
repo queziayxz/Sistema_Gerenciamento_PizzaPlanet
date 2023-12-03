@@ -9,7 +9,7 @@ import javax.swing.*;
 import com.google.gson.*;
 //import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.mycompany.pizzaplanet.Excecoes.ErrorBancoDeDados;
+import com.mycompany.pizzaplanet.Excecoes.ErroValorNumerico;
 //import java.io.BufferedReader;
 import java.io.*;
 //import java.io.FileReader;
@@ -71,6 +71,24 @@ public class BancoDeDados {
             }
         }
     }
+    public static void leBDIngrediente(File bancoDeDados) throws IOException
+    {
+        Gson gson = new Gson();
+        FileWriter writer = new FileWriter(bancoDeDados,true);
+        BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
+        if(arquivoJson.ready()) {
+//        System.out.println("entrou");
+            try {
+                Type type = new TypeToken<List<Ingrediente>>(){}.getType();
+                Ingrediente.setlistaIngrediente(gson.fromJson(arquivoJson, type));
+            } catch (Exception e) {
+                throw new IOException();
+            } finally {
+                arquivoJson.close();
+                writer.close();
+            }
+        }
+    }
     
     public String getPastaBanco() {
         return pastaBanco;
@@ -83,6 +101,20 @@ public class BancoDeDados {
     public static File getBancoAdministrador() {
         return bancoAdministrador;
     }
+
+    public static File getBancoIngrediente() {
+        return bancoIngrediente;
+    }
+
+    public static File getBancoTamanho() {
+        return bancoTamanho;
+    }
+
+    public static File getBancoProduto() {
+        return bancoProduto;
+    }
+    
+    
     
     
 }
