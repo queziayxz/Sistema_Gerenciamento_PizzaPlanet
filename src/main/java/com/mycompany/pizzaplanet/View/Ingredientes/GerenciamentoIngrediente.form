@@ -162,6 +162,7 @@
               <Events>
                 <EventHandler event="componentAdded" listener="java.awt.event.ContainerListener" parameters="java.awt.event.ContainerEvent" handler="ListIngredienteComponentAdded"/>
                 <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="ListIngredienteAncestorAdded"/>
+                <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="ListIngredienteValueChanged"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -189,7 +190,7 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="369" max="-2" attributes="0"/>
+                              <Component id="txtIngrediente" min="-2" pref="369" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="66" max="32767" attributes="0"/>
@@ -202,7 +203,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIngrediente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="111" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnEditIngre" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
@@ -219,12 +220,15 @@
                 <Property name="text" type="java.lang.String" value="Nome:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="txtIngrediente">
             </Component>
             <Component class="javax.swing.JButton" name="btnEditIngre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Ingrediente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditIngreActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnDellIngre">
               <Properties>
