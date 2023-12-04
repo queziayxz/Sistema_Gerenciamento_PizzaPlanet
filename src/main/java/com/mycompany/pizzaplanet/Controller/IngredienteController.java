@@ -15,29 +15,22 @@ public class IngredienteController {
         
         try {
             //le o banco, transformando o json em objeto
-            BancoDeDados.leBD(BancoDeDados.getBancoIngrediente());
+            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
             for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
                 System.out.println(ingre.getNome());
             }
-            FileWriter writer = new FileWriter(BancoDeDados.getBancoIngrediente());
             //adiciona o novo ingrediente a lista
-            Ingrediente.getlistaIngrediente().add(ingrediente);
-            
-            
-//            //transforma a lista em json
-//            String jsonIngrediente = gson.toJson(ingrediente.getlistaIngrediente());
-//            //escreve no arquivo
-//            writer.write(jsonIngrediente);
-//            writer.flush();
-//            writer.close();
+            try (FileWriter writer = new FileWriter(BancoDeDados.getBancoIngrediente())) {
+                //adiciona o novo ingrediente a lista
+                Ingrediente.getlistaIngrediente().add(ingrediente);
+                //transforma a lista em json
+                String jsonIngrediente = gson.toJson(ingrediente.getlistaIngrediente());
+                //escreve no arquivo
+                writer.write(jsonIngrediente);
+                writer.flush();
+            }
         } catch (IOException e) {
             throw new IOException();
         } 
     }
-    
-//    public void adicionarIngrediente(String ingrediente, int quantidade) {
-//        ingredientes.add(ingrediente);
-//        quantidadeAdicionada.add(quantidade);
-//    }
-    
 }
