@@ -1,15 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.pizzaplanet.View.Ingredientes;
 
+import com.mycompany.pizzaplanet.Model.BancoDeDados;
+import com.mycompany.pizzaplanet.Model.Ingrediente;
 import com.mycompany.pizzaplanet.View.DashboardAdm;
+import java.io.IOException;
+import javax.swing.DefaultListModel;
 
-/**
- *
- * @author quezi
- */
 public class GerenciamentoIngrediente extends javax.swing.JFrame {
 
     /**
@@ -17,6 +13,7 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
      */
     public GerenciamentoIngrediente() {
         initComponents();
+        
     }
 
     /**
@@ -30,7 +27,7 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        ListIngrediente = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -50,12 +47,22 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        ListIngrediente.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        ListIngrediente.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                ListIngredienteComponentAdded(evt);
+            }
         });
-        jScrollPane1.setViewportView(jList1);
+        ListIngrediente.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                ListIngredienteAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(ListIngrediente);
 
         jSplitPane1.setLeftComponent(jScrollPane1);
 
@@ -225,6 +232,24 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         dashAdm.setVisible(true);
     }//GEN-LAST:event_jMenu1MouseClicked
 
+    private void ListIngredienteComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_ListIngredienteComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListIngredienteComponentAdded
+
+    private void ListIngredienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ListIngredienteAncestorAdded
+        // TODO add your handling code here:
+        try {
+            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
+            DefaultListModel listaIngredientesModelo = new DefaultListModel();
+            for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
+                listaIngredientesModelo.addElement(ingre.getNome());
+            }
+            ListIngrediente.setModel(listaIngredientesModelo);
+        } catch (IOException e) {
+            System.out.println("Error");
+        }
+    }//GEN-LAST:event_ListIngredienteAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -262,12 +287,12 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> ListIngrediente;
     private javax.swing.JButton btnDellIngre;
     private javax.swing.JButton btnEditIngre;
     private javax.swing.JButton btnViewAdd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

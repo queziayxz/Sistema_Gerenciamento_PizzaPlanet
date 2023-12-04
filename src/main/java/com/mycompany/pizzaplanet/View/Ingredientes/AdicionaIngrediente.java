@@ -38,8 +38,6 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNomeIngre = new javax.swing.JTextField();
         btnAddIngrediente = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        txtQuantIngre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,11 +65,6 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jLabel3.setText("Quantidade:");
-
-        txtQuantIngre.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,9 +87,7 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(txtNomeIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtQuantIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNomeIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -110,13 +101,9 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtNomeIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtQuantIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(64, 64, 64)
                 .addComponent(btnAddIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,9 +119,9 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
     private void btnAddIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddIngredienteActionPerformed
         // TODO add your handling code here:
         try {
-            Ingrediente.validaCampoVazioCadastro(txtNomeIngre.getText().trim(), txtQuantIngre.getText().trim());
-            Ingrediente.validaCampoInteiro(txtQuantIngre.getText().trim());
-            Ingrediente ingredienteCadastro = new Ingrediente(txtNomeIngre.getText().trim(), Integer.parseInt(txtQuantIngre.getText().trim()));
+            Ingrediente.validaCampoVazioCadastro(txtNomeIngre.getText().trim());
+//            Ingrediente.validaCampoInteiro(txtQuantIngre.getText().trim());
+            Ingrediente ingredienteCadastro = new Ingrediente(txtNomeIngre.getText().trim());
             IngredienteController.adiciona(ingredienteCadastro);
             JOptionPane.showMessageDialog(null, "Ingrediente adicionado com sucesso!!");
         } catch (CampoVazio e) {
@@ -186,8 +173,6 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtNomeIngre;
-    private javax.swing.JTextField txtQuantIngre;
     // End of variables declaration//GEN-END:variables
 }

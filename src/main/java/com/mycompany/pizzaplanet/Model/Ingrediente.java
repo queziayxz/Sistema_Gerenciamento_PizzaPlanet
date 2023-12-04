@@ -8,15 +8,13 @@ import java.util.List;
 public class Ingrediente {
 
     private String nome;
-    private int quantidade;
     private static List<Ingrediente> listaIngrediente;
-    private List<Integer> quantidadeAdicionada;
+//    private List<Integer> quantidadeAdicionada;
 
-    public Ingrediente(String nome, int quantidade) {
+    public Ingrediente(String nome) {
         this.nome = nome;
-        this.quantidade = quantidade;
         listaIngrediente = new ArrayList<>();
-        quantidadeAdicionada = new ArrayList<>();
+//        quantidadeAdicionada = new ArrayList<>();
     }
 
     public static List<Ingrediente> getlistaIngrediente() {
@@ -42,36 +40,27 @@ public class Ingrediente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
     
-    
-    public void removerIngrediente(int index) {
-        try {
-            listaIngrediente.remove(index);
-            quantidadeAdicionada.remove(index);
-            System.out.println("Ingrediente removido");
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Erro: Índice inválido. Não foi possível remover o produto.");
-        } catch (Exception e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
-    }
+//    public void removerIngrediente(int index) {
+//        try {
+//            listaIngrediente.remove(index);
+//            quantidadeAdicionada.remove(index);
+//            System.out.println("Ingrediente removido");
+//        } catch (IndexOutOfBoundsException e) {
+//            System.out.println("Erro: Índice inválido. Não foi possível remover o produto.");
+//        } catch (Exception e) {
+//            System.out.println("Erro: " + e.getMessage());
+//        }
+//    }
 
-    public void mostrarIngredientes() {
-        for (int i = 0; i < listaIngrediente.size(); i++) {
-            System.out.println(listaIngrediente.get(i) + ": " + quantidadeAdicionada.get(i));
-        }
-    }
+//    public void mostrarIngredientes() {
+//        for (int i = 0; i < listaIngrediente.size(); i++) {
+//            System.out.println(listaIngrediente.get(i) + ": " + quantidadeAdicionada.get(i));
+//        }
+//    }
     
-    public static void validaCampoVazioCadastro(String nome, String quantidade) throws CampoVazio {
-        if("".equals(nome) || "".equals(quantidade))
+    public static void validaCampoVazioCadastro(String nome) throws CampoVazio {
+        if("".equals(nome))
             throw new CampoVazio();
     }
     
