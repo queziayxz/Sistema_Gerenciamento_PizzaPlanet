@@ -124,6 +124,7 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
             Ingrediente ingredienteCadastro = new Ingrediente(txtNomeIngre.getText().trim());
             IngredienteController.adiciona(ingredienteCadastro);
             JOptionPane.showMessageDialog(null, "Ingrediente adicionado com sucesso!!");
+            txtNomeIngre.setText("");
         } catch (CampoVazio e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (ErroValorNumerico e) {
