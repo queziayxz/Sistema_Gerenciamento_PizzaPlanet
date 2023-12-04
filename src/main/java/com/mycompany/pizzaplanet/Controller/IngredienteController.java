@@ -66,4 +66,26 @@ public class IngredienteController {
             throw new IOException();
         }
     }
+    
+    public static void deleta(String nome)throws IOException {
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
+            for(int i = 0; i < Ingrediente.getlistaIngrediente().size(); i++) {
+                if(nome.equals(Ingrediente.getlistaIngrediente().get(i).getNome())) {
+                    Ingrediente.getlistaIngrediente().remove(i);
+                }
+            }
+            
+            Gson gson = new Gson();
+            try (FileWriter writer = new FileWriter(BancoDeDados.getBancoIngrediente())) {
+                String jsonIngrediente = gson.toJson(Ingrediente.getlistaIngrediente());
+                writer.write(jsonIngrediente);
+                writer.flush();
+            }
+            
+        } catch(IOException e) {
+            throw new IOException();
+        }
+    }
 }

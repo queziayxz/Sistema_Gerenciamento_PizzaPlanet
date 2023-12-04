@@ -84,6 +84,11 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         });
 
         btnDellIngre.setText("Deletar Ingrediente");
+        btnDellIngre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDellIngreActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -281,9 +286,22 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         } catch (CampoVazio e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao editar o valor");
+            JOptionPane.showMessageDialog(null, "Erro ao editar o ingrediente");
         }
     }//GEN-LAST:event_btnEditIngreActionPerformed
+
+    private void btnDellIngreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDellIngreActionPerformed
+        // TODO add your handling code here:
+        try {
+            IngredienteController.deleta(txtIngrediente.getText());
+            JOptionPane.showMessageDialog(null, "ingrediente deletado com sucesso");
+            this.dispose();
+            GerenciamentoIngrediente novoJ = new GerenciamentoIngrediente();
+            novoJ.setVisible(true);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar ingrediente");
+        }
+    }//GEN-LAST:event_btnDellIngreActionPerformed
 
     /**
      * @param args the command line arguments
