@@ -1,6 +1,7 @@
 package com.mycompany.pizzaplanet.View;
 
 import com.mycompany.pizzaplanet.View.Ingredientes.GerenciamentoIngrediente;
+import com.mycompany.pizzaplanet.View.Tamanho.GerenciamentoTamanho;
 
 public class DashboardAdm extends javax.swing.JFrame {
 
@@ -360,6 +361,9 @@ public class DashboardAdm extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        GerenciamentoTamanho indexT = new GerenciamentoTamanho();
+        indexT.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
