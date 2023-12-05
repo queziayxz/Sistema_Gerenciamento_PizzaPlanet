@@ -6,6 +6,7 @@ import com.mycompany.pizzaplanet.Excecoes.ErroValorNumerico;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Tamanho;
 import com.mycompany.pizzaplanet.View.DashboardAdm;
+import com.mycompany.pizzaplanet.View.Produtos.GerenciamentoProduto;
 import java.io.IOException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -207,6 +208,11 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Produtos");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Pedidos");
@@ -341,6 +347,13 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao deletar tamanho");
         }
     }//GEN-LAST:event_btnDelTamanhoActionPerformed
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        GerenciamentoProduto indexT = new GerenciamentoProduto();
+        indexT.setVisible(true);
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments

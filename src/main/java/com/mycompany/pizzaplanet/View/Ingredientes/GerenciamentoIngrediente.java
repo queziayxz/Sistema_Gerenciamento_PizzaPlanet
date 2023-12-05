@@ -5,6 +5,7 @@ import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Ingrediente;
 import com.mycompany.pizzaplanet.View.DashboardAdm;
+import com.mycompany.pizzaplanet.View.Produtos.GerenciamentoProduto;
 import com.mycompany.pizzaplanet.View.Tamanhos.GerenciamentoTamanho;
 import java.io.IOException;
 import javax.swing.DefaultListModel;
@@ -186,6 +187,11 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Produtos");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Pedidos");
@@ -310,6 +316,13 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao deletar ingrediente");
         }
     }//GEN-LAST:event_btnDellIngreActionPerformed
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        GerenciamentoProduto indexT = new GerenciamentoProduto();
+        indexT.setVisible(true);
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
