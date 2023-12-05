@@ -1,22 +1,22 @@
-
 package com.mycompany.pizzaplanet.Model;
 
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
+import com.mycompany.pizzaplanet.Excecoes.ErroValorNumerico;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Produto {
 
     private String nome;
     private float valor;
     private int quantidade;
-    private List<Produto> produtos;
+    private static List<Produto> ListaProdutos;
 
     public Produto(String nome, float valor, int quantidade) {
         this.nome = nome;
         this.valor = valor;
         this.quantidade = quantidade;
-        this.produtos = new ArrayList<>();
+        Produto.ListaProdutos = new ArrayList<>();
     }
 
     public String getNome() {
@@ -31,42 +31,34 @@ public class Produto {
         return quantidade;
     }
 
+    public static void setlistaProdutos(List<Produto> produto) {
+        Produto.ListaProdutos = produto;
+    }
+
+    public static List<Produto> getListaProdutos() {
+        return ListaProdutos;
+    }
+
     public void adicionarProduto(Produto produto) {
-        produtos.add(produto);
+        Produto.ListaProdutos.add(produto);
     }
 
-    public void comprarProduto(int index) {
-        try {
-            Produto produto = produtos.get(index);
-            int quantidade = produto.getQuantidade();
-            if (quantidade == 0) {
-                System.out.println("Erro: Produto esgotado. Não foi possível realizar a compra.");
-            } else {
-                produto.quantidade = quantidade - 1;
-                System.out.println("Compra realizada com sucesso");
-            }
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Erro: Índice inválido. Não foi possível realizar a compra.");
-        } catch (Exception e) {
-            System.out.println("Erro: " + e.getMessage());
+    public static void validaCampoVazioCadastro(String nome, String quantidade, String valor) throws CampoVazio {
+        if (nome == null || nome.trim().isEmpty() || quantidade == null || quantidade.trim().isEmpty() || valor == null || valor.trim().isEmpty()) {
+            throw new CampoVazio();
         }
     }
 
-    public void removerProduto(int index) {
+    public static void validaCampoNumerico(String quantidade, String valor) throws ErroValorNumerico {
         try {
-            produtos.remove(index);
-            System.out.println("Produto Removido");
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Erro: Índice inválido. Não foi possível remover o produto.");
-        } catch (Exception e) {
-            System.out.println("Erro: " + e.getMessage());
+            Integer.parseInt(quantidade);
+        } catch (NumberFormatException e) {
+            throw new ErroValorNumerico("A quantidade precisa ser um valor inteiro");
         }
-    }
-
-    public void mostrarProdutos() {
-        for (int i = 0; i < produtos.size(); i++) {
-            Produto produto = produtos.get(i);
-            System.out.println(produto.getNome() + " valor: " + produto.getValor() + " Quantidade: " + produto.getQuantidade());
+        try {
+            Float.parseFloat(valor);
+        } catch (NumberFormatException e) {
+            throw new ErroValorNumerico("O campo valor do produto precisa ser um valor numérico!");
         }
     }
 }
