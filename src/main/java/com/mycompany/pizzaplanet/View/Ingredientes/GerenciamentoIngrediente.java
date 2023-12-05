@@ -78,6 +78,7 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         jLabel2.setText("Nome:");
 
         btnEditIngre.setText("Editar Ingrediente");
+        btnEditIngre.setEnabled(false);
         btnEditIngre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditIngreActionPerformed(evt);
@@ -85,6 +86,7 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         });
 
         btnDellIngre.setText("Deletar Ingrediente");
+        btnDellIngre.setEnabled(false);
         btnDellIngre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDellIngreActionPerformed(evt);
@@ -276,6 +278,8 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(ListIngrediente.getSelectedValue() != null) {
             txtIngrediente.setText(ListIngrediente.getSelectedValue().toString());
+            btnDellIngre.setEnabled(true);
+            btnEditIngre.setEnabled(true);
         }
     }//GEN-LAST:event_ListIngredienteValueChanged
 

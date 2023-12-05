@@ -237,6 +237,8 @@
             <Component class="javax.swing.JButton" name="btnEditTamanho">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Tamanho"/>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditTamanhoActionPerformed"/>
@@ -245,6 +247,7 @@
             <Component class="javax.swing.JButton" name="btnDelTamanho">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Deletar Tamanho"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDelTamanhoActionPerformed"/>

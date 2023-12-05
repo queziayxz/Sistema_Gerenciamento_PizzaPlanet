@@ -225,6 +225,7 @@
             <Component class="javax.swing.JButton" name="btnEditIngre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Ingrediente"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditIngreActionPerformed"/>
@@ -233,6 +234,7 @@
             <Component class="javax.swing.JButton" name="btnDellIngre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Deletar Ingrediente"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDellIngreActionPerformed"/>

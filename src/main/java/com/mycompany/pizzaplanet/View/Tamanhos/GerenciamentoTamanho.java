@@ -82,6 +82,8 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
         jLabel2.setText("Nome:");
 
         btnEditTamanho.setText("Editar Tamanho");
+        btnEditTamanho.setEnabled(false);
+        btnEditTamanho.setSelected(true);
         btnEditTamanho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditTamanhoActionPerformed(evt);
@@ -89,6 +91,7 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
         });
 
         btnDelTamanho.setText("Deletar Tamanho");
+        btnDelTamanho.setEnabled(false);
         btnDelTamanho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDelTamanhoActionPerformed(evt);
@@ -296,6 +299,8 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(ListTamanho.getSelectedValue() != null) {
             txtITamanho.setText(ListTamanho.getSelectedValue().toString());
+            btnDelTamanho.setEnabled(true);
+            btnEditTamanho.setEnabled(true);
             for (Tamanho tam : Tamanho.getListaTamanhos()) {
                 if (ListTamanho.getSelectedValue().toString().equals(tam.getNome())) {
                     txtIQuantPedaco.setText(String.valueOf(tam.getQuantidadePecas()));
