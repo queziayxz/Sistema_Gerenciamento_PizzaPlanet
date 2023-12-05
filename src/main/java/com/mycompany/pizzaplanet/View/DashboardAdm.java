@@ -1,7 +1,7 @@
 package com.mycompany.pizzaplanet.View;
 
 import com.mycompany.pizzaplanet.View.Ingredientes.GerenciamentoIngrediente;
-import com.mycompany.pizzaplanet.View.Tamanho.GerenciamentoTamanho;
+import com.mycompany.pizzaplanet.View.Tamanhos.GerenciamentoTamanho;
 
 public class DashboardAdm extends javax.swing.JFrame {
 

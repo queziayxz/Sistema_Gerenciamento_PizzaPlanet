@@ -1,7 +1,8 @@
-package com.mycompany.pizzaplanet.View.Tamanho;
+package com.mycompany.pizzaplanet.View.Tamanhos;
 
 import com.mycompany.pizzaplanet.Controller.TamanhoController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
+import com.mycompany.pizzaplanet.Excecoes.ErroValorNumerico;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Tamanho;
 import com.mycompany.pizzaplanet.View.DashboardAdm;
@@ -307,6 +308,8 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
     private void btnEditTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTamanhoActionPerformed
         // TODO add your handling code here:
         try {
+            Tamanho.validaCampoVazioCadastro(txtITamanho.getText().trim(), txtIQuantPedaco.getText().trim(), txtIValorTamanho.getText().trim());
+            Tamanho.validaCampoNumerico(txtIQuantPedaco.getText().trim(), txtIValorTamanho.getText().trim());
             TamanhoController.edita(ListTamanho.getSelectedValue(), txtITamanho.getText().trim(), Integer.parseInt(txtIQuantPedaco.getText().trim()), Double.parseDouble(txtIValorTamanho.getText().trim()));
             JOptionPane.showMessageDialog(null, "Tamanho editado com sucesso");
             this.dispose();
@@ -316,6 +319,8 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Erro ao editar o tamanho");
+        } catch (ErroValorNumerico e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnEditTamanhoActionPerformed
 

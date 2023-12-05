@@ -2,8 +2,8 @@ package com.mycompany.pizzaplanet.Excecoes;
 
 public class ErroValorNumerico extends RuntimeException{
 
-    public ErroValorNumerico() {
-        super("Campo numérico inválido");
+    public ErroValorNumerico(String message) {
+        super(message);
     }
     
 }

@@ -5,7 +5,7 @@ import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Ingrediente;
 import com.mycompany.pizzaplanet.View.DashboardAdm;
-import com.mycompany.pizzaplanet.View.Tamanho.GerenciamentoTamanho;
+import com.mycompany.pizzaplanet.View.Tamanhos.GerenciamentoTamanho;
 import java.io.IOException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;

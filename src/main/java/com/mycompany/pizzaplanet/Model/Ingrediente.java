@@ -66,7 +66,7 @@ public class Ingrediente {
     
     public static void validaCampoInteiro(String quantidade) throws ErroValorNumerico {
         if(!quantidade.matches("^[0-9]+$"))
-            throw new ErroValorNumerico();
+            throw new ErroValorNumerico("O campo quantidade precisa ser um valor numérico");
     }
     
 }

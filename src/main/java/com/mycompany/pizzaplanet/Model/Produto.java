@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Produtos {
+public class Produto {
 
     private String nome;
     private float valor;
     private int quantidade;
-    private List<Produtos> produtos;
+    private List<Produto> produtos;
 
-    public Produtos(String nome, float valor, int quantidade) {
+    public Produto(String nome, float valor, int quantidade) {
         this.nome = nome;
         this.valor = valor;
         this.quantidade = quantidade;
@@ -31,13 +31,13 @@ public class Produtos {
         return quantidade;
     }
 
-    public void adicionarProduto(Produtos produto) {
+    public void adicionarProduto(Produto produto) {
         produtos.add(produto);
     }
 
     public void comprarProduto(int index) {
         try {
-            Produtos produto = produtos.get(index);
+            Produto produto = produtos.get(index);
             int quantidade = produto.getQuantidade();
             if (quantidade == 0) {
                 System.out.println("Erro: Produto esgotado. Não foi possível realizar a compra.");
@@ -65,7 +65,7 @@ public class Produtos {
 
     public void mostrarProdutos() {
         for (int i = 0; i < produtos.size(); i++) {
-            Produtos produto = produtos.get(i);
+            Produto produto = produtos.get(i);
             System.out.println(produto.getNome() + " valor: " + produto.getValor() + " Quantidade: " + produto.getQuantidade());
         }
     }

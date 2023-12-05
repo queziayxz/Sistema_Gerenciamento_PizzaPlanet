@@ -56,6 +56,11 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
         jLabel2.setText("Nome:");
 
         txtNomeIngre.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtNomeIngre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeIngreActionPerformed(evt);
+            }
+        });
 
         btnAddIngrediente.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         btnAddIngrediente.setText("Adicionar Ingrediente");
@@ -133,6 +138,10 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnAddIngredienteActionPerformed
+
+    private void txtNomeIngreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeIngreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeIngreActionPerformed
 
     /**
      * @param args the command line arguments

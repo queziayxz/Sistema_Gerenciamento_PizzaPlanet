@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package com.mycompany.pizzaplanet.View.Tamanho;
+package com.mycompany.pizzaplanet.View.Tamanhos;
  
 import com.mycompany.pizzaplanet.Controller.TamanhoController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
@@ -11,10 +7,6 @@ import com.mycompany.pizzaplanet.Model.Tamanho;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author quezi
- */
 public class AdicionaTamanho extends javax.swing.JFrame {
 
     /**
@@ -145,11 +137,14 @@ public class AdicionaTamanho extends javax.swing.JFrame {
     private void btnAddTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTamanhoActionPerformed
         // TODO add your handling code here:
         try {
-            Tamanho.validaCampoVazioCadastro(txtNomeTamanho.getText().trim());
+            Tamanho.validaCampoVazioCadastro(txtNomeTamanho.getText().trim(), txtQuantoPedacosAdd.getText().trim(), txtValorTamanhoAdd.getText().trim());
+            Tamanho.validaCampoNumerico(txtQuantoPedacosAdd.getText().trim(), txtValorTamanhoAdd.getText().trim());
             Tamanho tamanhoCadastro = new Tamanho(txtNomeTamanho.getText().trim(), Integer.parseInt(txtQuantoPedacosAdd.getText().trim()), Double.parseDouble(txtValorTamanhoAdd.getText().trim()));
             TamanhoController.adiciona(tamanhoCadastro);
             JOptionPane.showMessageDialog(null, "Tamanho adicionado com sucesso!!");
             txtNomeTamanho.setText("");
+            txtQuantoPedacosAdd.setText("");
+            txtValorTamanhoAdd.setText("");
         } catch (CampoVazio e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (ErroValorNumerico e) {

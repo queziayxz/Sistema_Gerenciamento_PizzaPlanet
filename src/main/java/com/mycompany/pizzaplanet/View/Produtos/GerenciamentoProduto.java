@@ -1,23 +1,26 @@
-package com.mycompany.pizzaplanet.View.Ingredientes;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package com.mycompany.pizzaplanet.View.Produtos;
 
-import com.mycompany.pizzaplanet.Controller.IngredienteController;
-import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
-import com.mycompany.pizzaplanet.Model.Ingrediente;
+import com.mycompany.pizzaplanet.Model.Produto;
 import com.mycompany.pizzaplanet.View.DashboardAdm;
-import com.mycompany.pizzaplanet.View.Tamanho.GerenciamentoTamanho;
-import java.io.IOException;
+import com.mycompany.pizzaplanet.View.Tamanhos.GerenciamentoTamanho;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author quezi
+ */
 public class GerenciamentoProduto extends javax.swing.JFrame {
 
     /**
-     * Creates new form GerenciamentoIngredietne
+     * Creates new form GerenciamentoProduto
      */
     public GerenciamentoProduto() {
         initComponents();
-        
     }
 
     /**
@@ -29,16 +32,14 @@ public class GerenciamentoProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListIngrediente = new javax.swing.JList<>();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtIngrediente = new javax.swing.JTextField();
-        btnEditIngre = new javax.swing.JButton();
-        btnDellIngre = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btnViewAdd = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -50,6 +51,16 @@ public class GerenciamentoProduto extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(898, 627));
+
+        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel1.setText("Gerenciamento Produto");
+
+        jLabel2.setText("Nome:");
+
+        jLabel3.setText("Valor:");
+
+        jLabel4.setText("Quantidade:");
 
         ListIngrediente.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         ListIngrediente.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -73,65 +84,9 @@ public class GerenciamentoProduto extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(ListIngrediente);
 
-        jSplitPane1.setLeftComponent(jScrollPane1);
+        jTextField1.setText("jTextField1");
 
-        jLabel2.setText("Nome:");
-
-        btnEditIngre.setText("Editar Ingrediente");
-        btnEditIngre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditIngreActionPerformed(evt);
-            }
-        });
-
-        btnDellIngre.setText("Deletar Ingrediente");
-        btnDellIngre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDellIngreActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEditIngre)
-                        .addGap(103, 103, 103)
-                        .addComponent(btnDellIngre))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(txtIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDellIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-        );
-
-        jSplitPane1.setRightComponent(jPanel1);
-
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        jLabel1.setText("Ingredientes");
-
-        btnViewAdd.setText("Adicionar Ingrediente");
-        btnViewAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewAddActionPerformed(evt);
-            }
-        });
+        jTextField2.setText("jTextField2");
 
         jMenuBar1.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
 
@@ -196,30 +151,60 @@ public class GerenciamentoProduto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(299, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnViewAdd)
-                .addGap(85, 85, 85))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(236, 236, 236))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addComponent(btnViewAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(171, 171, 171))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        DashboardAdm dashAdm = new DashboardAdm();
+        dashAdm.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -240,72 +225,30 @@ public class GerenciamentoProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void btnViewAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAddActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        AdicionaIngrediente addV = new AdicionaIngrediente();
-        addV.setVisible(true);
-    }//GEN-LAST:event_btnViewAddActionPerformed
-
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-        DashboardAdm dashAdm = new DashboardAdm();
-        dashAdm.setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
-
     private void ListIngredienteComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_ListIngredienteComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_ListIngredienteComponentAdded
 
     private void ListIngredienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ListIngredienteAncestorAdded
         // TODO add your handling code here:
-        try {
-            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
-            DefaultListModel listaIngredientesModelo = new DefaultListModel();
-            for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
-                listaIngredientesModelo.addElement(ingre.getNome());
-            }
-            ListIngrediente.setModel(listaIngredientesModelo);
-        } catch (IOException e) {
-            System.out.println("Error");
-        }
+//        try {
+//            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
+//            DefaultListModel listaIngredientesModelo = new DefaultListModel();
+//            for(Produto ingre : Produto.getListaProduto()) {
+//                listaIngredientesModelo.addElement(ingre.getNome());
+//            }
+//            ListIngrediente.setModel(listaIngredientesModelo);
+//        } catch (IOException e) {
+//            System.out.println("Error");
+//        }
     }//GEN-LAST:event_ListIngredienteAncestorAdded
 
     private void ListIngredienteValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListIngredienteValueChanged
         // TODO add your handling code here:
-        if(ListIngrediente.getSelectedValue() != null) {
-            txtIngrediente.setText(ListIngrediente.getSelectedValue().toString());
-        }
+//        if(ListIngrediente.getSelectedValue() != null) {
+//            txtIngrediente.setText(ListIngrediente.getSelectedValue().toString());
+//        }
     }//GEN-LAST:event_ListIngredienteValueChanged
-
-    private void btnEditIngreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditIngreActionPerformed
-        // TODO add your handling code here:
-        try {
-            IngredienteController.edita(ListIngrediente.getSelectedValue(), txtIngrediente.getText().trim());
-            JOptionPane.showMessageDialog(null, "ingrediente editado com sucesso");
-            this.dispose();
-            GerenciamentoIngrediente novoJ = new GerenciamentoIngrediente();
-            novoJ.setVisible(true);
-        } catch (CampoVazio e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao editar o ingrediente");
-        }
-    }//GEN-LAST:event_btnEditIngreActionPerformed
-
-    private void btnDellIngreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDellIngreActionPerformed
-        // TODO add your handling code here:
-        try {
-            IngredienteController.deleta(txtIngrediente.getText());
-            JOptionPane.showMessageDialog(null, "ingrediente deletado com sucesso");
-            this.dispose();
-            GerenciamentoIngrediente novoJ = new GerenciamentoIngrediente();
-            novoJ.setVisible(true);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao deletar ingrediente");
-        }
-    }//GEN-LAST:event_btnDellIngreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,32 +267,30 @@ public class GerenciamentoProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GerenciamentoIngrediente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciamentoProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GerenciamentoIngrediente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciamentoProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GerenciamentoIngrediente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciamentoProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GerenciamentoIngrediente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciamentoProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GerenciamentoIngrediente().setVisible(true);
+                new GerenciamentoProduto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> ListIngrediente;
-    private javax.swing.JButton btnDellIngre;
-    private javax.swing.JButton btnEditIngre;
-    private javax.swing.JButton btnViewAdd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -359,9 +300,8 @@ public class GerenciamentoProduto extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField txtIngrediente;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
