@@ -10,12 +10,12 @@ import java.io.IOException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class GerenciamentoIngrediente extends javax.swing.JFrame {
+public class GerenciamentoProduto extends javax.swing.JFrame {
 
     /**
      * Creates new form GerenciamentoIngredietne
      */
-    public GerenciamentoIngrediente() {
+    public GerenciamentoProduto() {
         initComponents();
         
     }

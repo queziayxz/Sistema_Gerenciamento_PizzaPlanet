@@ -3,12 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.pizzaplanet.View.Tamanho;
-
-import com.mycompany.pizzaplanet.View.Ingredientes.*;
-import com.mycompany.pizzaplanet.Controller.IngredienteController;
+ 
+import com.mycompany.pizzaplanet.Controller.TamanhoController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Excecoes.ErroValorNumerico;
-import com.mycompany.pizzaplanet.Model.Ingrediente;
+import com.mycompany.pizzaplanet.Model.Tamanho;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -37,8 +36,8 @@ public class AdicionaTamanho extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtNomeIngre = new javax.swing.JTextField();
-        btnAddIngrediente = new javax.swing.JButton();
+        txtNomeTamanho = new javax.swing.JTextField();
+        btnAddTamanho = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtQuantoPedacosAdd = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -60,13 +59,13 @@ public class AdicionaTamanho extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel2.setText("Nome:");
 
-        txtNomeIngre.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtNomeTamanho.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
 
-        btnAddIngrediente.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        btnAddIngrediente.setText("Adicionar Ingrediente");
-        btnAddIngrediente.addActionListener(new java.awt.event.ActionListener() {
+        btnAddTamanho.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        btnAddTamanho.setText("Adicionar Tamanho");
+        btnAddTamanho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddIngredienteActionPerformed(evt);
+                btnAddTamanhoActionPerformed(evt);
             }
         });
 
@@ -93,7 +92,7 @@ public class AdicionaTamanho extends javax.swing.JFrame {
                         .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(txtNomeIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomeTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(txtQuantoPedacosAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
@@ -106,7 +105,7 @@ public class AdicionaTamanho extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(275, 275, 275))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAddIngrediente)
+                        .addComponent(btnAddTamanho)
                         .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
@@ -119,7 +118,7 @@ public class AdicionaTamanho extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtNomeIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNomeTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -129,7 +128,7 @@ public class AdicionaTamanho extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtValorTamanhoAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(btnAddIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(164, Short.MAX_VALUE))
         );
 
@@ -139,19 +138,18 @@ public class AdicionaTamanho extends javax.swing.JFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        GerenciamentoTamanho indexIngre = new GerenciamentoTamanho();
-        indexIngre.setVisible(true);
+        GerenciamentoTamanho indexTamanho = new GerenciamentoTamanho();
+        indexTamanho.setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnAddIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddIngredienteActionPerformed
+    private void btnAddTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTamanhoActionPerformed
         // TODO add your handling code here:
         try {
-            Ingrediente.validaCampoVazioCadastro(txtNomeIngre.getText().trim());
-//            Ingrediente.validaCampoInteiro(txtQuantIngre.getText().trim());
-            Ingrediente ingredienteCadastro = new Ingrediente(txtNomeIngre.getText().trim());
-            IngredienteController.adiciona(ingredienteCadastro);
-            JOptionPane.showMessageDialog(null, "Ingrediente adicionado com sucesso!!");
-            txtNomeIngre.setText("");
+            Tamanho.validaCampoVazioCadastro(txtNomeTamanho.getText().trim());
+            Tamanho tamanhoCadastro = new Tamanho(txtNomeTamanho.getText().trim(), Integer.parseInt(txtQuantoPedacosAdd.getText().trim()), Double.parseDouble(txtValorTamanhoAdd.getText().trim()));
+            TamanhoController.adiciona(tamanhoCadastro);
+            JOptionPane.showMessageDialog(null, "Tamanho adicionado com sucesso!!");
+            txtNomeTamanho.setText("");
         } catch (CampoVazio e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (ErroValorNumerico e) {
@@ -159,7 +157,7 @@ public class AdicionaTamanho extends javax.swing.JFrame {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-    }//GEN-LAST:event_btnAddIngredienteActionPerformed
+    }//GEN-LAST:event_btnAddTamanhoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,13 +198,13 @@ public class AdicionaTamanho extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddIngrediente;
+    private javax.swing.JButton btnAddTamanho;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtNomeIngre;
+    private javax.swing.JTextField txtNomeTamanho;
     private javax.swing.JTextField txtQuantoPedacosAdd;
     private javax.swing.JTextField txtValorTamanhoAdd;
     // End of variables declaration//GEN-END:variables

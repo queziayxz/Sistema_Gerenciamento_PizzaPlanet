@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
  *
  * @author quezi
  */
-public class AdicionaIngrediente extends javax.swing.JFrame {
+public class AdicionaProduto extends javax.swing.JFrame {
 
     /**
      * Creates new form AdicionaIngrediente
      */
-    public AdicionaIngrediente() {
+    public AdicionaProduto() {
         initComponents();
     }
 

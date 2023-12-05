@@ -33,7 +33,7 @@
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNomeIngre" min="-2" pref="772" max="-2" attributes="0"/>
+                          <Component id="txtNomeTamanho" min="-2" pref="772" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtQuantoPedacosAdd" alignment="0" min="-2" pref="772" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -51,7 +51,7 @@
                       <EmptySpace min="-2" pref="275" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="btnAddIngrediente" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAddTamanho" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -68,7 +68,7 @@
               <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="txtNomeIngre" min="-2" max="-2" attributes="0"/>
+              <Component id="txtNomeTamanho" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -78,7 +78,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="txtValorTamanhoAdd" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="btnAddIngrediente" min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="btnAddTamanho" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace pref="164" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -112,22 +112,22 @@
         <Property name="text" type="java.lang.String" value="Nome:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNomeIngre">
+    <Component class="javax.swing.JTextField" name="txtNomeTamanho">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Monospaced" size="12" style="1"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAddIngrediente">
+    <Component class="javax.swing.JButton" name="btnAddTamanho">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Monospaced" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Adicionar Ingrediente"/>
+        <Property name="text" type="java.lang.String" value="Adicionar Tamanho"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddIngredienteActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddTamanhoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">

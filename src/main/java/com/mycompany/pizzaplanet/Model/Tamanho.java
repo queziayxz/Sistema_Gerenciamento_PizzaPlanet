@@ -4,6 +4,8 @@
  */
 package com.mycompany.pizzaplanet.Model;
 
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
+import com.mycompany.pizzaplanet.Excecoes.ErroValorNumerico;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,6 +20,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Tamanho {
+
+    public static Object getlistaTamanho() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     private String nome;
     private int quantidadePecas;
     private double valor;
@@ -35,10 +41,6 @@ public class Tamanho {
 
     public void imprimirNomeTamanho() {
         System.out.println("Nome: " + nome + ", Tamanho: " + quantidadePecas + "Pedaços");
-    }
-
-    public double getPreco() {
-        return valor;
     }
 
     public static void criarTamanho(String nome, int quantidadePecas, double valor) {
@@ -60,4 +62,31 @@ public class Tamanho {
     public static List<Tamanho> getListaTamanhos() {
         return listaTamanhos;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getQuantidadePecas() {
+        return quantidadePecas;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+    
+    public static void setListaTamanhos(List<Tamanho> listaTamanhos) {
+        Tamanho.listaTamanhos = listaTamanhos;
+    }
+    
+    public static void validaCampoVazioCadastro(String nome) throws CampoVazio {
+        if("".equals(nome))
+            throw new CampoVazio();
+    }
+    
+    public static void validaCampoInteiro(String quantidade) throws ErroValorNumerico {
+        if(!quantidade.matches("^[0-9]+$"))
+            throw new ErroValorNumerico();
+    }
+    
 }

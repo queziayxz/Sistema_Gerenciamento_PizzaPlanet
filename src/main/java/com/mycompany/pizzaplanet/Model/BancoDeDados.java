@@ -59,7 +59,6 @@ public class BancoDeDados {
         FileWriter writer = new FileWriter(bancoDeDados,true);
         BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
         if(arquivoJson.ready()) {
-//        System.out.println("entrou");
             try {
                 Type type = new TypeToken<List<Administrador>>(){}.getType();
                 Administrador.setListaAdm(gson.fromJson(arquivoJson, type));
@@ -77,10 +76,27 @@ public class BancoDeDados {
         FileWriter writer = new FileWriter(bancoDeDados,true);
         BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
         if(arquivoJson.ready()) {
-//        System.out.println("entrou");
             try {
                 Type type = new TypeToken<List<Ingrediente>>(){}.getType();
                 Ingrediente.setlistaIngrediente(gson.fromJson(arquivoJson, type));
+            } catch (Exception e) {
+                throw new IOException();
+            } finally {
+                arquivoJson.close();
+                writer.close();
+            }
+        }
+    }
+    
+    public static void leBDTamanho(File bancoDeDados) throws IOException
+    {
+        Gson gson = new Gson();
+        FileWriter writer = new FileWriter(bancoDeDados,true);
+        BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
+        if(arquivoJson.ready()) {
+            try {
+                Type type = new TypeToken<List<Tamanho>>(){}.getType();
+                Tamanho.setListaTamanhos(gson.fromJson(arquivoJson, type));
             } catch (Exception e) {
                 throw new IOException();
             } finally {
@@ -113,8 +129,4 @@ public class BancoDeDados {
     public static File getBancoProduto() {
         return bancoProduto;
     }
-    
-    
-    
-    
 }

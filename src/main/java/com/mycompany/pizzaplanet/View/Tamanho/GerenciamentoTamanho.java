@@ -1,10 +1,9 @@
 package com.mycompany.pizzaplanet.View.Tamanho;
 
-import com.mycompany.pizzaplanet.View.Ingredientes.*;
-import com.mycompany.pizzaplanet.Controller.IngredienteController;
+import com.mycompany.pizzaplanet.Controller.TamanhoController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
-import com.mycompany.pizzaplanet.Model.Ingrediente;
+import com.mycompany.pizzaplanet.Model.Tamanho;
 import com.mycompany.pizzaplanet.View.DashboardAdm;
 import java.io.IOException;
 import javax.swing.DefaultListModel;
@@ -31,7 +30,7 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ListIngrediente = new javax.swing.JList<>();
+        ListTamanho = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtITamanho = new javax.swing.JTextField();
@@ -55,27 +54,27 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ListIngrediente.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        ListIngrediente.addContainerListener(new java.awt.event.ContainerAdapter() {
+        ListTamanho.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        ListTamanho.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
-                ListIngredienteComponentAdded(evt);
+                ListTamanhoComponentAdded(evt);
             }
         });
-        ListIngrediente.addAncestorListener(new javax.swing.event.AncestorListener() {
+        ListTamanho.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                ListIngredienteAncestorAdded(evt);
+                ListTamanhoAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        ListIngrediente.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        ListTamanho.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                ListIngredienteValueChanged(evt);
+                ListTamanhoValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(ListIngrediente);
+        jScrollPane1.setViewportView(ListTamanho);
 
         jSplitPane1.setLeftComponent(jScrollPane1);
 
@@ -244,8 +243,8 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        GerenciamentoIngrediente indexI = new GerenciamentoIngrediente();
-        indexI.setVisible(true);
+        GerenciamentoTamanho indexT = new GerenciamentoTamanho();
+        indexT.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -274,56 +273,62 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
         dashAdm.setVisible(true);
     }//GEN-LAST:event_jMenu1MouseClicked
 
-    private void ListIngredienteComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_ListIngredienteComponentAdded
+    private void ListTamanhoComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_ListTamanhoComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_ListIngredienteComponentAdded
+    }//GEN-LAST:event_ListTamanhoComponentAdded
 
-    private void ListIngredienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ListIngredienteAncestorAdded
+    private void ListTamanhoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ListTamanhoAncestorAdded
         // TODO add your handling code here:
         try {
-            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
-            DefaultListModel listaIngredientesModelo = new DefaultListModel();
-            for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
-                listaIngredientesModelo.addElement(ingre.getNome());
+            BancoDeDados.leBDTamanho(BancoDeDados.getBancoTamanho());
+            DefaultListModel listaTamanhoModelo = new DefaultListModel();
+            for(Tamanho tam : Tamanho.getListaTamanhos()) {
+                listaTamanhoModelo.addElement(tam.getNome());
             }
-            ListIngrediente.setModel(listaIngredientesModelo);
+            ListTamanho.setModel(listaTamanhoModelo);
         } catch (IOException e) {
             System.out.println("Error");
         }
-    }//GEN-LAST:event_ListIngredienteAncestorAdded
+    }//GEN-LAST:event_ListTamanhoAncestorAdded
 
-    private void ListIngredienteValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListIngredienteValueChanged
+    private void ListTamanhoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListTamanhoValueChanged
         // TODO add your handling code here:
-        if(ListIngrediente.getSelectedValue() != null) {
-            txtITamanho.setText(ListIngrediente.getSelectedValue().toString());
+        if(ListTamanho.getSelectedValue() != null) {
+            txtITamanho.setText(ListTamanho.getSelectedValue().toString());
+            for (Tamanho tam : Tamanho.getListaTamanhos()) {
+                if (ListTamanho.getSelectedValue().toString().equals(tam.getNome())) {
+                    txtIQuantPedaco.setText(String.valueOf(tam.getQuantidadePecas()));
+                    txtIValorTamanho.setText(String.valueOf(tam.getValor()));
+                }
+            }
         }
-    }//GEN-LAST:event_ListIngredienteValueChanged
+    }//GEN-LAST:event_ListTamanhoValueChanged
 
     private void btnEditTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTamanhoActionPerformed
         // TODO add your handling code here:
         try {
-            IngredienteController.edita(ListIngrediente.getSelectedValue(), txtITamanho.getText().trim());
-            JOptionPane.showMessageDialog(null, "ingrediente editado com sucesso");
+            TamanhoController.edita(ListTamanho.getSelectedValue(), txtITamanho.getText().trim(), Integer.parseInt(txtIQuantPedaco.getText().trim()), Double.parseDouble(txtIValorTamanho.getText().trim()));
+            JOptionPane.showMessageDialog(null, "Tamanho editado com sucesso");
             this.dispose();
             GerenciamentoTamanho novoJ = new GerenciamentoTamanho();
             novoJ.setVisible(true);
         } catch (CampoVazio e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao editar o ingrediente");
+            JOptionPane.showMessageDialog(null, "Erro ao editar o tamanho");
         }
     }//GEN-LAST:event_btnEditTamanhoActionPerformed
 
     private void btnDelTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelTamanhoActionPerformed
         // TODO add your handling code here:
         try {
-            IngredienteController.deleta(txtITamanho.getText());
-            JOptionPane.showMessageDialog(null, "ingrediente deletado com sucesso");
+            TamanhoController.deleta(txtITamanho.getText());
+            JOptionPane.showMessageDialog(null, "Tamanho deletado com sucesso");
             this.dispose();
             GerenciamentoTamanho novoJ = new GerenciamentoTamanho();
             novoJ.setVisible(true);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao deletar ingrediente");
+            JOptionPane.showMessageDialog(null, "Erro ao deletar tamanho");
         }
     }//GEN-LAST:event_btnDelTamanhoActionPerformed
 
@@ -370,7 +375,7 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> ListIngrediente;
+    private javax.swing.JList<String> ListTamanho;
     private javax.swing.JButton btnDelTamanho;
     private javax.swing.JButton btnEditTamanho;
     private javax.swing.JButton btnViewTamanho;
