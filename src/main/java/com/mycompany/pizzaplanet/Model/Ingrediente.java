@@ -9,15 +9,18 @@ public class Ingrediente {
 
     private String nome;
     private String categoria;
-    private static List<Ingrediente> listaIngrediente;
+    private static List<Ingrediente> listaIngrediente = new ArrayList<>();
 
     public Ingrediente(String nome, String categoria) {
         this.nome = nome;
         this.categoria = categoria;
-        Ingrediente.listaIngrediente = new ArrayList<>();
+//        Ingrediente.listaIngrediente ;
 //        quantidadeAdicionada = new ArrayList<>();
     }
 
+    public Ingrediente() {
+    }
+    
     public static List<Ingrediente> getlistaIngrediente() {
         return Ingrediente.listaIngrediente;
     }

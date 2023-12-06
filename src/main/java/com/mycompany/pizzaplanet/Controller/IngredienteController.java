@@ -38,17 +38,11 @@ public class IngredienteController {
 //            throw new CampoVazio();
 //        }
         
-//        System.out.println("oi 1");
-        BancoDeDados banco = new BancoDeDados();
-//        Ingrediente ingreEdita = new Ingrediente(nomeEdita);
+        System.out.println(ingreBanco.getNome());
 
         try {
-//            System.out.println("oi 2");
-//            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
-//            System.out.println(Ingrediente.getlistaIngrediente().size());
-            for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
-                System.out.println(ingre.getNome());
-            }
+            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
+            
             for(int i = 0; i < Ingrediente.getlistaIngrediente().size(); i++) {
                 if(ingreBanco.getNome().equals(Ingrediente.getlistaIngrediente().get(i).getNome())) {
                     Ingrediente.getlistaIngrediente().set(i, ingreNovo);
