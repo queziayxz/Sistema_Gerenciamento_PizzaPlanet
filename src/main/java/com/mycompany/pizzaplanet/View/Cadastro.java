@@ -428,6 +428,7 @@ public class Cadastro extends javax.swing.JFrame {
         try {
             Endereco endereco = new Endereco(txt_rua.getText().trim(),txt_numero.getText().trim(),txt_bairro.getText().trim(),txt_cep.getText().trim(),txt_cidade.getText().trim(),txt_estado.getText().trim());
             CPF cpf = new CPF(txt_cpf.getText());
+            Cliente.validaCadastroVazio(txt_nome.getText(), txt_email.getText(), txt_senha.getText());
             Cliente clienteCadastro = new Cliente(txt_nome.getText().trim(),txt_email.getText().trim(),txt_senha.getText().trim(),cpf,endereco);
             ClienteController.CadastroCliente(clienteCadastro);
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");

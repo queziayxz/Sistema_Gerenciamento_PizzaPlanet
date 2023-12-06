@@ -26,24 +26,4 @@ public class AdministradorController {
             }
             throw new ErroLogin();
     }
-    
-    
-    
-//    public static void cadastroAdm(Administrador adm)
-//    {
-//        Gson gson = new Gson();
-//        BancoDeDados banco = new BancoDeDados();
-//        
-//        try {
-//            BancoDeDados.leBDAdm(BancoDeDados.getBancoAdministrador());
-//            Administrador.getListaAdm().add(adm);
-//            String jsonAdm = gson.toJson(Administrador.getListaAdm());
-//            FileWriter write = new FileWriter(BancoDeDados.getBancoAdministrador());
-//            write.write(jsonAdm);
-//            write.flush();
-//            write.close();
-//        } catch(IOException e) {
-//            JOptionPane.showMessageDialog(null, "Administrador não cadastrado!!");
-//        }
-//    }
 }

@@ -15,7 +15,6 @@ public class Administrador extends Usuario
     public Administrador()
     {
         this.listaAdm = new ArrayList<>();
-//        AdministradorController.cadastroAdm(new Administrador("adm","administrador@adm.com.br","123456789",new CPF("75333277052")));
     }
     
     public static void setListaAdm(List<Administrador> listaAdm) {

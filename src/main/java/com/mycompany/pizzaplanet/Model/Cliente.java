@@ -10,7 +10,6 @@ public class Cliente extends Usuario {
 
     public Cliente(String nome, String email, String senha, CPF cpf, Endereco endereco) throws CampoVazio {
         super(nome, email, senha, cpf);
-        this.validaCadastroVazio(nome, email, senha);
         this.endereco = endereco;
         Cliente.listaCliente = new ArrayList<>();
     }
@@ -31,13 +30,6 @@ public class Cliente extends Usuario {
         Cliente.listaCliente = listaCliente;
     }
     
-    private void validaCadastroVazio(String nome, String email, String senha) throws CampoVazio {
-        if(nome == null || "".equals(nome))
-            throw new CampoVazio();
-        if(email == null || "".equals(email))
-            throw new CampoVazio();
-        if(senha == null || "".equals(senha))
-            throw new CampoVazio();
-    }
+    
     
 }
