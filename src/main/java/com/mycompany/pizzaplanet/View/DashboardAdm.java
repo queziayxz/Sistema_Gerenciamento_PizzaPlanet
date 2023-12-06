@@ -1,6 +1,7 @@
 package com.mycompany.pizzaplanet.View;
 
 import com.mycompany.pizzaplanet.View.Ingredientes.GerenciamentoIngrediente;
+import com.mycompany.pizzaplanet.View.Pizzas.GerenciamentoPizza;
 import com.mycompany.pizzaplanet.View.Produtos.GerenciamentoProduto;
 import com.mycompany.pizzaplanet.View.Tamanhos.GerenciamentoTamanho;
 
@@ -57,7 +58,6 @@ public class DashboardAdm extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -268,22 +268,18 @@ public class DashboardAdm extends javax.swing.JFrame {
         jMenu2.add(jMenuItem2);
 
         jMenuItem3.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jMenuItem3.setText("Pizzas Doces");
+        jMenuItem3.setText("Gerenciador Pizza");
+        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem3MouseClicked(evt);
+            }
+        });
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
             }
         });
         jMenu2.add(jMenuItem3);
-
-        jMenuItem4.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jMenuItem4.setText("Pizzas Salgadas");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
 
@@ -350,14 +346,6 @@ public class DashboardAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -378,6 +366,20 @@ public class DashboardAdm extends javax.swing.JFrame {
         GerenciamentoProduto indexT = new GerenciamentoProduto();
         indexT.setVisible(true);
     }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        GerenciamentoPizza indexP = new GerenciamentoPizza();
+        indexP.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        GerenciamentoPizza indexP = new GerenciamentoPizza();
+        indexP.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3MouseClicked
     
     /**
      * @param args the command line arguments
@@ -438,7 +440,6 @@ public class DashboardAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
