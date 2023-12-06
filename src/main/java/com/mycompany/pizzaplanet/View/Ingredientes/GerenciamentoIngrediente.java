@@ -38,6 +38,8 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
         txtIngrediente = new javax.swing.JTextField();
         btnEditIngre = new javax.swing.JButton();
         btnDellIngre = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtICatIngre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnViewAdd = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -94,21 +96,29 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Categoria:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEditIngre)
-                        .addGap(103, 103, 103)
-                        .addComponent(btnDellIngre))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(txtIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(txtICatIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnEditIngre)
+                                .addGap(103, 103, 103)
+                                .addComponent(btnDellIngre))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(txtIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +127,11 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtICatIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDellIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -269,6 +283,7 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
     private void ListIngredienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ListIngredienteAncestorAdded
         // TODO add your handling code here:
         try {
+            BancoDeDados banco = new BancoDeDados();
             BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
             DefaultListModel listaIngredientesModelo = new DefaultListModel();
             for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
@@ -283,7 +298,14 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
     private void ListIngredienteValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListIngredienteValueChanged
         // TODO add your handling code here:
         if(ListIngrediente.getSelectedValue() != null) {
-            txtIngrediente.setText(ListIngrediente.getSelectedValue().toString());
+            for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
+                if(ingre.getNome().equals(ListIngrediente.getSelectedValue().toString())) {
+                    txtIngrediente.setText(ingre.getNome());
+                    txtICatIngre.setText(ingre.getCategoria());
+                    
+                }
+                
+            }
             btnDellIngre.setEnabled(true);
             btnEditIngre.setEnabled(true);
         }
@@ -292,7 +314,15 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
     private void btnEditIngreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditIngreActionPerformed
         // TODO add your handling code here:
         try {
-            IngredienteController.edita(ListIngrediente.getSelectedValue(), txtIngrediente.getText().trim());
+            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
+            Ingrediente ingreBanco = null;
+            Ingrediente ingreNovo = new Ingrediente(txtIngrediente.getText().trim(), txtICatIngre.getText().trim());
+            for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
+                if(ingre.getNome().equals(ListIngrediente.getSelectedValue())) {
+                    ingreBanco = ingre;
+                }
+            }
+            IngredienteController.edita(ingreBanco, ingreNovo);
             JOptionPane.showMessageDialog(null, "ingrediente editado com sucesso");
             this.dispose();
             GerenciamentoIngrediente novoJ = new GerenciamentoIngrediente();
@@ -367,6 +397,7 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
     private javax.swing.JButton btnViewAdd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -379,6 +410,7 @@ public class GerenciamentoIngrediente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTextField txtICatIngre;
     private javax.swing.JTextField txtIngrediente;
     // End of variables declaration//GEN-END:variables
 }

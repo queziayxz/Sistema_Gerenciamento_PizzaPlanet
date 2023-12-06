@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.pizzaplanet.View.Ingredientes;
 
 import com.mycompany.pizzaplanet.Controller.IngredienteController;
@@ -11,10 +7,6 @@ import com.mycompany.pizzaplanet.Model.Ingrediente;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author quezi
- */
 public class AdicionaIngrediente extends javax.swing.JFrame {
 
     /**
@@ -38,6 +30,8 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNomeIngre = new javax.swing.JTextField();
         btnAddIngrediente = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        CBCategoria = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,19 +64,20 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        jLabel3.setText("Categoria:");
+
+        CBCategoria.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        CBCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doce", "Salgado" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(275, 275, 275))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAddIngrediente)
-                        .addGap(38, 38, 38))))
+                .addComponent(jLabel1)
+                .addGap(275, 275, 275))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -90,10 +85,14 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
                         .addComponent(btnVoltar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNomeIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAddIngrediente)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(txtNomeIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3)
+                                .addComponent(CBCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,13 +101,17 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
                 .addComponent(btnVoltar)
                 .addGap(65, 65, 65)
                 .addComponent(jLabel1)
-                .addGap(104, 104, 104)
+                .addGap(85, 85, 85)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNomeIngre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CBCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addComponent(btnAddIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,7 +129,7 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
         try {
             Ingrediente.validaCampoVazioCadastro(txtNomeIngre.getText().trim());
 //            Ingrediente.validaCampoInteiro(txtQuantIngre.getText().trim());
-            Ingrediente ingredienteCadastro = new Ingrediente(txtNomeIngre.getText().trim());
+            Ingrediente ingredienteCadastro = new Ingrediente(txtNomeIngre.getText().trim(), CBCategoria.getSelectedItem().toString());
             IngredienteController.adiciona(ingredienteCadastro);
             JOptionPane.showMessageDialog(null, "Ingrediente adicionado com sucesso!!");
             txtNomeIngre.setText("");
@@ -179,10 +182,12 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBCategoria;
     private javax.swing.JButton btnAddIngrediente;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtNomeIngre;
     // End of variables declaration//GEN-END:variables
 }

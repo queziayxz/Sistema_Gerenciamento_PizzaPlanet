@@ -33,25 +33,25 @@ public class IngredienteController {
         } 
     }
     
-    public static void edita(String nomeBanco, String nomeEdita) throws CampoVazio, IOException {
-        if("".equals(nomeEdita)) {
-            throw new CampoVazio();
-        }
+    public static void edita(Ingrediente ingreBanco, Ingrediente ingreNovo) throws CampoVazio, IOException {
+//        if("".equals(nomeEdita)) {
+//            throw new CampoVazio();
+//        }
         
 //        System.out.println("oi 1");
         BancoDeDados banco = new BancoDeDados();
-        Ingrediente ingreEdita = new Ingrediente(nomeEdita);
+//        Ingrediente ingreEdita = new Ingrediente(nomeEdita);
 
         try {
 //            System.out.println("oi 2");
-            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
+//            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
 //            System.out.println(Ingrediente.getlistaIngrediente().size());
             for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
                 System.out.println(ingre.getNome());
             }
             for(int i = 0; i < Ingrediente.getlistaIngrediente().size(); i++) {
-                if(nomeBanco.equals(Ingrediente.getlistaIngrediente().get(i).getNome())) {
-                    Ingrediente.getlistaIngrediente().set(i, ingreEdita);
+                if(ingreBanco.getNome().equals(Ingrediente.getlistaIngrediente().get(i).getNome())) {
+                    Ingrediente.getlistaIngrediente().set(i, ingreNovo);
                 }
             }
             

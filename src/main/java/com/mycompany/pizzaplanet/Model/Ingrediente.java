@@ -8,12 +8,13 @@ import java.util.List;
 public class Ingrediente {
 
     private String nome;
+    private String categoria;
     private static List<Ingrediente> listaIngrediente;
-//    private List<Integer> quantidadeAdicionada;
 
-    public Ingrediente(String nome) {
+    public Ingrediente(String nome, String categoria) {
         this.nome = nome;
-        listaIngrediente = new ArrayList<>();
+        this.categoria = categoria;
+        Ingrediente.listaIngrediente = new ArrayList<>();
 //        quantidadeAdicionada = new ArrayList<>();
     }
 
@@ -25,14 +26,6 @@ public class Ingrediente {
         Ingrediente.listaIngrediente = ingredientes;
     }
 
-//    public List<Integer> getQuantidadeAdicionada() {
-//        return quantidadeAdicionada;
-//    }
-//
-//    public void setQuantidadeAdicionada(List<Integer> quantidadeAdicionada) {
-//        this.quantidadeAdicionada = quantidadeAdicionada;
-//    }
-
     public String getNome() {
         return nome;
     }
@@ -40,33 +33,17 @@ public class Ingrediente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-//    public void removerIngrediente(int index) {
-//        try {
-//            listaIngrediente.remove(index);
-//            quantidadeAdicionada.remove(index);
-//            System.out.println("Ingrediente removido");
-//        } catch (IndexOutOfBoundsException e) {
-//            System.out.println("Erro: Índice inválido. Não foi possível remover o produto.");
-//        } catch (Exception e) {
-//            System.out.println("Erro: " + e.getMessage());
-//        }
-//    }
 
-//    public void mostrarIngredientes() {
-//        for (int i = 0; i < listaIngrediente.size(); i++) {
-//            System.out.println(listaIngrediente.get(i) + ": " + quantidadeAdicionada.get(i));
-//        }
-//    }
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }   
     
     public static void validaCampoVazioCadastro(String nome) throws CampoVazio {
         if("".equals(nome))
             throw new CampoVazio();
     }
-    
-    public static void validaCampoInteiro(String quantidade) throws ErroValorNumerico {
-        if(!quantidade.matches("^[0-9]+$"))
-            throw new ErroValorNumerico("O campo quantidade precisa ser um valor numérico");
-    }
-    
 }
