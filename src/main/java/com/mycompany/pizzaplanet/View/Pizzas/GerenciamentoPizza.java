@@ -5,6 +5,7 @@ import com.mycompany.pizzaplanet.Controller.IngredienteController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Ingrediente;
+import com.mycompany.pizzaplanet.Model.PizzaSalgada;
 import com.mycompany.pizzaplanet.View.DashboardAdm;
 import com.mycompany.pizzaplanet.View.Produtos.GerenciamentoProduto;
 import com.mycompany.pizzaplanet.View.Tamanhos.GerenciamentoTamanho;
@@ -39,23 +40,33 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
         btnEditIngre = new javax.swing.JButton();
         btnDellIngre = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtNomePizzaDoce1 = new javax.swing.JTextField();
         txtNomePizzaDoce2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtNomePizzaDoce3 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtNomePizzaDoce4 = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         tableIngredientes = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listPizzaDoce = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         btnViewAdd = new javax.swing.JButton();
         btnViewAdd1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jSplitPane2 = new javax.swing.JSplitPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        txtNomePizzaSalgada = new javax.swing.JTextField();
+        btnEditPizzaSalgada = new javax.swing.JButton();
+        btnDellIngre1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtNomePizzaDoce6 = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tableIngredientes1 = new javax.swing.JTable();
+        btnDellPizzaSalgada = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaPizzaSalgada = new javax.swing.JList<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -86,8 +97,6 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
         });
 
         jLabel3.setText("Ingredientes:");
-
-        jLabel4.setText("Nome:");
 
         jLabel5.setText("Tamanho:");
 
@@ -130,34 +139,21 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel2)
-                    .addComponent(txtNomePizzaDoce, javax.swing.GroupLayout.PREFERRED_SIZE, 1206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtNomePizzaDoce, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtNomePizzaDoce2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel3))
-                        .addGap(468, 468, 468)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNomePizzaDoce4, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNomePizzaDoce3, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtNomePizzaDoce2, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEditIngre)
-                        .addGap(468, 468, 468)
+                        .addGap(34, 34, 34)
                         .addComponent(btnDellIngre)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(1171, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel4)
-                        .addComponent(txtNomePizzaDoce1))
-                    .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,51 +170,31 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomePizzaDoce3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(44, 44, 44)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomePizzaDoce4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(44, 44, 44)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(91, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEditIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnDellIngre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(jLabel4)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(txtNomePizzaDoce1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(356, Short.MAX_VALUE)))
         );
 
         jSplitPane1.setRightComponent(jPanel1);
 
-        listPizzaDoce.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                listPizzaDoceAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
         });
-        listPizzaDoce.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listPizzaDoceValueChanged(evt);
-            }
-        });
-        jScrollPane2.setViewportView(listPizzaDoce);
+        jScrollPane1.setViewportView(jList1);
 
-        jSplitPane1.setLeftComponent(jScrollPane2);
+        jSplitPane1.setLeftComponent(jScrollPane1);
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel1.setText("Pizzas");
@@ -242,6 +218,136 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel9.setText("Pizzas Salgadas:");
+
+        jLabel10.setText("Nome:");
+
+        btnEditPizzaSalgada.setText("Editar Pizza");
+        btnEditPizzaSalgada.setEnabled(false);
+        btnEditPizzaSalgada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditPizzaSalgadaActionPerformed(evt);
+            }
+        });
+
+        btnDellIngre1.setText("Deletar Ingrediente");
+        btnDellIngre1.setEnabled(false);
+        btnDellIngre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDellIngre1ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Ingredientes:");
+
+        jLabel12.setText("Nome:");
+
+        tableIngredientes1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "Nome"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tableIngredientes1);
+        if (tableIngredientes1.getColumnModel().getColumnCount() > 0) {
+            tableIngredientes1.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tableIngredientes1.getColumnModel().getColumn(0).setMaxWidth(20);
+        }
+
+        btnDellPizzaSalgada.setText("Deletar Pizza");
+        btnDellPizzaSalgada.setEnabled(false);
+        btnDellPizzaSalgada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDellPizzaSalgadaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnEditPizzaSalgada)
+                        .addGap(49, 49, 49)
+                        .addComponent(btnDellPizzaSalgada)
+                        .addGap(762, 762, 762)
+                        .addComponent(btnDellIngre1))
+                    .addComponent(txtNomePizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addContainerGap(1113, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel12)
+                        .addComponent(txtNomePizzaDoce6))
+                    .addContainerGap()))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNomePizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDellIngre1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDellPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(120, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel12)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtNomePizzaDoce6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(356, Short.MAX_VALUE)))
+        );
+
+        jSplitPane2.setRightComponent(jPanel2);
+
+        listaPizzaSalgada.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                listaPizzaSalgadaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane2.setViewportView(listaPizzaSalgada);
+
+        jSplitPane2.setLeftComponent(jScrollPane2);
 
         jMenuBar1.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
 
@@ -311,43 +417,42 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(505, 505, 505))
             .addGroup(layout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel8)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnViewAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnViewAdd1))
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addGap(329, 329, 329))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnViewAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnViewAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnViewAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel9)
-                        .addGap(438, 438, 438)))
-                .addGap(33, 33, 33))
+                        .addGap(18, 18, 18)
+                        .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(480, Short.MAX_VALUE))
         );
 
         pack();
@@ -441,33 +546,6 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewAdd1ActionPerformed
 
     Object valorSelecionadoAnterior = null;
-    private void listPizzaDoceValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listPizzaDoceValueChanged
-        // TODO add your handling code here:
-        if(listPizzaDoce.getSelectedValue() != null) {
-            if(!listPizzaDoce.getSelectedValue().equals(valorSelecionadoAnterior)) {
-                for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
-                    System.out.println(ingre.getNome());
-                }
-                valorSelecionadoAnterior = listPizzaDoce.getSelectedValue();
-            }
-        }
-    }//GEN-LAST:event_listPizzaDoceValueChanged
-
-    private void listPizzaDoceAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listPizzaDoceAncestorAdded
-        // TODO add your handling code here:
-        try {
-            BancoDeDados banco = new BancoDeDados();
-            BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
-            DefaultListModel listaIngredientesModelo = new DefaultListModel();
-            for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
-                listaIngredientesModelo.addElement(ingre.getNome());
-            }
-            listPizzaDoce.setModel(listaIngredientesModelo);
-        } catch (IOException e) {
-            System.out.println("Error");
-        }
-    }//GEN-LAST:event_listPizzaDoceAncestorAdded
-
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
 //        this.dispose();
@@ -481,6 +559,33 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
         GerenciamentoTamanho indexI = new GerenciamentoTamanho();
         indexI.setVisible(true);
     }//GEN-LAST:event_jMenuItem2MouseClicked
+
+    private void btnEditPizzaSalgadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPizzaSalgadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditPizzaSalgadaActionPerformed
+
+    private void btnDellIngre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDellIngre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDellIngre1ActionPerformed
+
+    private void btnDellPizzaSalgadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDellPizzaSalgadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDellPizzaSalgadaActionPerformed
+
+    private void listaPizzaSalgadaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listaPizzaSalgadaAncestorAdded
+        // TODO add your handling code here:
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPizzaSalgada(BancoDeDados.getBancoPizzaSalgada());
+            DefaultListModel model = new DefaultListModel();
+            for(PizzaSalgada pizza : PizzaSalgada.getListaPizzasSalgadas()) {
+                model.addElement(pizza.getNome());
+            }
+            listaPizzaSalgada.setModel(model);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }//GEN-LAST:event_listaPizzaSalgadaAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -522,18 +627,24 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDellIngre;
+    private javax.swing.JButton btnDellIngre1;
+    private javax.swing.JButton btnDellPizzaSalgada;
     private javax.swing.JButton btnEditIngre;
+    private javax.swing.JButton btnEditPizzaSalgada;
     private javax.swing.JButton btnViewAdd;
     private javax.swing.JButton btnViewAdd1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -543,15 +654,19 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JList<String> listPizzaDoce;
+    private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JList<String> listaPizzaSalgada;
     private javax.swing.JTable tableIngredientes;
+    private javax.swing.JTable tableIngredientes1;
     private javax.swing.JTextField txtNomePizzaDoce;
-    private javax.swing.JTextField txtNomePizzaDoce1;
     private javax.swing.JTextField txtNomePizzaDoce2;
-    private javax.swing.JTextField txtNomePizzaDoce3;
-    private javax.swing.JTextField txtNomePizzaDoce4;
+    private javax.swing.JTextField txtNomePizzaDoce6;
+    private javax.swing.JTextField txtNomePizzaSalgada;
     // End of variables declaration//GEN-END:variables
 }
