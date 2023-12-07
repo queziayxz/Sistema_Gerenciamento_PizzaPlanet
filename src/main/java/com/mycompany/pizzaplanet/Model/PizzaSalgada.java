@@ -3,6 +3,7 @@ package com.mycompany.pizzaplanet.Model;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PizzaSalgada extends Pizza{
 
@@ -13,6 +14,9 @@ public class PizzaSalgada extends Pizza{
         PizzaSalgada.listaPizzasSalgadas = new ArrayList<>();
     }
 
+    public PizzaSalgada() {
+    }
+    
     public static List<PizzaSalgada> getListaPizzasSalgadas() {
         return listaPizzasSalgadas;
     }
@@ -27,5 +31,18 @@ public class PizzaSalgada extends Pizza{
         if(pizza.getListaIngredientes().isEmpty())
             throw new CampoVazio();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        PizzaSalgada pizza = (PizzaSalgada) obj;
+        return Objects.equals(pizza.getNome(),super.getNome());
+    }
+
+//    @Override
+//    public int hashCode() {
+//        return Object.hash(super.getNome());
+//    }
+    
+    
     
 }

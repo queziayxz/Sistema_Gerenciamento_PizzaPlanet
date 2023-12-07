@@ -13,6 +13,11 @@ public abstract class Pizza {
 //        this.tamanhoPizza = tamanhoPizza;
     }
 
+    public Pizza() {
+    }
+    
+    
+
     public String getNome() {
         return nome;
     }
@@ -22,7 +27,7 @@ public abstract class Pizza {
     }
 
     public List<Ingrediente> getListaIngredientes() {
-        return listaIngredientes;
+        return this.listaIngredientes;
     }
 
     public void setListaIngredientes(List<Ingrediente> listaIngredientes) {

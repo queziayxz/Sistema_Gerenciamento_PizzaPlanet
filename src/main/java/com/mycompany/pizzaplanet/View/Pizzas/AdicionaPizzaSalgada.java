@@ -1,6 +1,6 @@
 package com.mycompany.pizzaplanet.View.Pizzas;
 
-import com.mycompany.pizzaplanet.Controller.PizzaSalgadaController;
+import com.mycompany.pizzaplanet.Controller.PizzaController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Ingrediente;
@@ -43,6 +43,7 @@ public class AdicionaPizzaSalgada extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtNomePizzaSalgada = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        btnVoltarPizzaSalgada = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -154,6 +155,14 @@ public class AdicionaPizzaSalgada extends javax.swing.JFrame {
             }
         });
 
+        btnVoltarPizzaSalgada.setFont(new java.awt.Font("Monospaced", 1, 10)); // NOI18N
+        btnVoltarPizzaSalgada.setText("<---");
+        btnVoltarPizzaSalgada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarPizzaSalgadaActionPerformed(evt);
+            }
+        });
+
         jMenuBar1.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
 
         jMenu1.setText("Dashboard");
@@ -222,6 +231,10 @@ public class AdicionaPizzaSalgada extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(49, 49, 49))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -229,12 +242,11 @@ public class AdicionaPizzaSalgada extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(btnVoltarPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(119, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(49, 49, 49))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(70, 70, 70)
@@ -244,11 +256,13 @@ public class AdicionaPizzaSalgada extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(30, 30, 30)
+                .addComponent(btnVoltarPizzaSalgada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(154, 154, 154)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +355,7 @@ public class AdicionaPizzaSalgada extends javax.swing.JFrame {
             }
             PizzaSalgada pizza = new PizzaSalgada(txtNomePizzaSalgada.getText().trim(), ingredientesPizza);
             PizzaSalgada.validaCampoVazioAdiciona(pizza);
-            PizzaSalgadaController.adiciona(pizza);
+            PizzaController.adicionaPizzaSalgada(pizza);
             JOptionPane.showMessageDialog(null, "Pizza cadastrada com sucesso!!");
             txtNomePizzaSalgada.setText("");
             for(int i = 0; i < linhasSelecionadas; i++) {
@@ -353,6 +367,13 @@ public class AdicionaPizzaSalgada extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnVoltarPizzaSalgadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarPizzaSalgadaActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        GerenciamentoPizza indexP = new GerenciamentoPizza();
+        indexP.setVisible(true);
+    }//GEN-LAST:event_btnVoltarPizzaSalgadaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,6 +411,7 @@ public class AdicionaPizzaSalgada extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnVoltarPizzaSalgada;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
