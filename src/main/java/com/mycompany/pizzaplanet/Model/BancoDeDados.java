@@ -27,6 +27,10 @@ public class BancoDeDados {
     private static File bancoProduto;
     private static File bancoPizzaDoce;
     private static File bancoPizzaSalgada;
+    private static File bancoPagamentoPix;
+    private static File bancoPagamentoCartao;
+    
+
 //    private static List<Cliente> listaDeCliente;
 //    private static List<Administrador> listaDeAdministrador;
     
@@ -38,6 +42,8 @@ public class BancoDeDados {
         BancoDeDados.bancoProduto = new File(this.pastaBanco+"\\BancoDeDadosProduto.json");
         BancoDeDados.bancoPizzaDoce = new File(this.pastaBanco+"\\BancoDeDadosPizzaDoce.json");
         BancoDeDados.bancoPizzaSalgada = new File(this.pastaBanco+"\\BancoDeDadosPizzaSalgada.json");
+        BancoDeDados.bancoPagamentoPix = new File(this.pastaBanco+"\\BancoDeDadosPagamentoPix.json");
+        BancoDeDados.bancoPagamentoCartao = new File(this.pastaBanco+"\\BancoDeDadosPagamentoCartao.json");
     }
     
     public static void leBD(File bancoDeDados) throws IOException
@@ -163,6 +169,42 @@ public class BancoDeDados {
             }
         }
     }
+    
+    public static void leBDPagamentoPix(File bancoDeDados) throws IOException
+    {
+        Gson gson = new Gson();
+        FileWriter writer = new FileWriter(bancoDeDados,true);
+        BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
+        if(arquivoJson.ready()) {
+            try {
+                Type type = new TypeToken<List<Pagamento>>(){}.getType();
+                Pagamento.setListaPix(gson.fromJson(arquivoJson, type));
+            } catch (Exception e) {
+                throw new IOException();
+            } finally {
+                arquivoJson.close();
+                writer.close();
+            }
+        }
+    }
+    
+    public static void leBDPagamentoCartao(File bancoDeDados) throws IOException
+    {
+        Gson gson = new Gson();
+        FileWriter writer = new FileWriter(bancoDeDados,true);
+        BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
+        if(arquivoJson.ready()) {
+            try {
+                Type type = new TypeToken<List<Pagamento>>(){}.getType();
+                Pagamento.setListaCartao(gson.fromJson(arquivoJson, type));
+            } catch (Exception e) {
+                throw new IOException();
+            } finally {
+                arquivoJson.close();
+                writer.close();
+            }
+        }
+    }
 
     public String getPastaBanco() {
         return pastaBanco;
@@ -191,18 +233,16 @@ public class BancoDeDados {
     public static File getBancoPizzaDoce() {
         return bancoPizzaDoce;
     }
-
-    public static void setBancoPizzaDoce(File bancoPizzaDoce) {
-        BancoDeDados.bancoPizzaDoce = bancoPizzaDoce;
+    
+    public static File getBancoPagamentoPix() {
+        return bancoPagamentoPix;
+    }
+    
+    public static File getBancoPagamentoCartao() {
+        return bancoPagamentoCartao;
     }
 
     public static File getBancoPizzaSalgada() {
         return bancoPizzaSalgada;
     }
-
-    public static void setBancoPizzaSalgada(File bancoPizzaSalgada) {
-        BancoDeDados.bancoPizzaSalgada = bancoPizzaSalgada;
-    }
-    
-    
 }
