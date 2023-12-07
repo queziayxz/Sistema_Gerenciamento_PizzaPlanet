@@ -7,7 +7,6 @@ public class CPF {
 
     public CPF(String cpf) throws CPFInvalido
     {
-        CPF.validarCPF(cpf);
         this.cpf = cpf;
     }
     

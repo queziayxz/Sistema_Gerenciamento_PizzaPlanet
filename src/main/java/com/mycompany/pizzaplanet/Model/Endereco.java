@@ -8,8 +8,6 @@ public class Endereco {
     private String rua, numero, bairro, cep, cidade, estado;
 
     public Endereco(String rua, String numero, String bairro, String cep, String cidade, String estado) throws CampoVazio, EnderecoInvalido{
-        this.validaEnderecoVazio(rua,numero,bairro,cep,cidade,estado);
-        this.validaNumeroEndereco(numero);
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
@@ -42,7 +40,7 @@ public class Endereco {
         return estado;
     }
     
-    private void validaEnderecoVazio(String rua, String numero, String bairro, String cep, String cidade, String estado) throws CampoVazio {
+    public static void validaEnderecoVazio(String rua, String numero, String bairro, String cep, String cidade, String estado) throws CampoVazio {
         if(rua == null || "".equals(rua))
             throw new CampoVazio();
         if(cep == null || "".equals(cep))
@@ -56,7 +54,7 @@ public class Endereco {
         if(bairro == null || "".equals(bairro))
             throw new CampoVazio();
     }
-    private void validaNumeroEndereco(String numero) throws EnderecoInvalido {
+    public static void validaNumeroEndereco(String numero) throws EnderecoInvalido {
         if(!numero.matches("[0-9].*"))
             throw new EnderecoInvalido();
     }

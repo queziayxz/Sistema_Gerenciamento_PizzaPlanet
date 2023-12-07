@@ -426,9 +426,14 @@ public class Cadastro extends javax.swing.JFrame {
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         // TODO add your handling code here:
         try {
+            Endereco.validaEnderecoVazio(txt_rua.getText().trim(), txt_numero.getText().trim(), txt_bairro.getText().trim(), txt_cep.getText().trim(), txt_cidade.getText().trim(), txt_estado.getText().trim());
+            Endereco.validaNumeroEndereco(txt_numero.getText().trim());
             Endereco endereco = new Endereco(txt_rua.getText().trim(),txt_numero.getText().trim(),txt_bairro.getText().trim(),txt_cep.getText().trim(),txt_cidade.getText().trim(),txt_estado.getText().trim());
+            
+            CPF.validarCPF(txt_cpf.getText().trim());
             CPF cpf = new CPF(txt_cpf.getText());
-            Cliente.validaCadastroVazio(txt_nome.getText(), txt_email.getText(), txt_senha.getText());
+            
+            Cliente.validaCadastroVazio(txt_nome.getText().trim(), txt_email.getText().trim(), txt_senha.getText().trim());
             Cliente clienteCadastro = new Cliente(txt_nome.getText().trim(),txt_email.getText().trim(),txt_senha.getText().trim(),cpf,endereco);
             ClienteController.CadastroCliente(clienteCadastro);
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!");
