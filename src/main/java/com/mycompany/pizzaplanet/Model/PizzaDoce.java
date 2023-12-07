@@ -6,8 +6,8 @@ public class PizzaDoce extends Pizza{
 
     private static List<PizzaDoce> listaPizzasDoces;
     
-    public PizzaDoce(String nome, List<Ingrediente> listaIngredientes, Tamanho tamanhoPizza) {
-        super(nome, listaIngredientes, tamanhoPizza);
+    public PizzaDoce(String nome, List<Ingrediente> listaIngredientes) {
+        super(nome, listaIngredientes);
     }
     
     public static List<PizzaDoce> getListaPizzasDoces() {

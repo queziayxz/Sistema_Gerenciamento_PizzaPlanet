@@ -369,6 +369,7 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void btnViewAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAddActionPerformed
@@ -434,6 +435,9 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
 
     private void btnViewAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAdd1ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        AdicionaPizzaSalgada viewPizzaSalgada = new AdicionaPizzaSalgada();
+        viewPizzaSalgada.setVisible(true);
     }//GEN-LAST:event_btnViewAdd1ActionPerformed
 
     Object valorSelecionadoAnterior = null;

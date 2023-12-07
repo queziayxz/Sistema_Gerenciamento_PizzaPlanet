@@ -187,4 +187,22 @@ public class BancoDeDados {
     public static File getBancoProduto() {
         return bancoProduto;
     }
+
+    public static File getBancoPizzaDoce() {
+        return bancoPizzaDoce;
+    }
+
+    public static void setBancoPizzaDoce(File bancoPizzaDoce) {
+        BancoDeDados.bancoPizzaDoce = bancoPizzaDoce;
+    }
+
+    public static File getBancoPizzaSalgada() {
+        return bancoPizzaSalgada;
+    }
+
+    public static void setBancoPizzaSalgada(File bancoPizzaSalgada) {
+        BancoDeDados.bancoPizzaSalgada = bancoPizzaSalgada;
+    }
+    
+    
 }

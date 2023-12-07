@@ -5,12 +5,12 @@ import java.util.*;
 public abstract class Pizza {
     private String nome;
     private List<Ingrediente> listaIngredientes;
-    private Tamanho tamanhoPizza;
+//    private Tamanho tamanhoPizza;
 
-    public Pizza(String nome, List<Ingrediente> listaIngredientes, Tamanho tamanhoPizza) {
+    public Pizza(String nome, List<Ingrediente> listaIngredientes) {
         this.nome = nome;
         this.listaIngredientes = listaIngredientes;
-        this.tamanhoPizza = tamanhoPizza;
+//        this.tamanhoPizza = tamanhoPizza;
     }
 
     public String getNome() {
@@ -29,11 +29,11 @@ public abstract class Pizza {
         this.listaIngredientes = listaIngredientes;
     }
 
-    public Tamanho getTamanhoPizza() {
-        return tamanhoPizza;
-    }
-
-    public void setTamanhoPizza(Tamanho tamanhoPizza) {
-        this.tamanhoPizza = tamanhoPizza;
-    }
+//    public Tamanho getTamanhoPizza() {
+//        return tamanhoPizza;
+//    }
+//
+//    public void setTamanhoPizza(Tamanho tamanhoPizza) {
+//        this.tamanhoPizza = tamanhoPizza;
+//    }
 }
