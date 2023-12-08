@@ -44,6 +44,8 @@ public class DashboardCliente extends javax.swing.JFrame {
         //inicializa o painel das pizzas salgadas
         SPPizzaSalgada.setLayout(new ScrollPaneLayout());
         SPPizzaSalgada.setPreferredSize(new Dimension(300, 200));
+        panelPizzaSalgada.setLayout(new BoxLayout(panelPizzaSalgada, BoxLayout.Y_AXIS));
+        panelPizzaSalgada.setPreferredSize(new Dimension(600, 200));
         panelPizzaDoce.setLayout(new BoxLayout(panelPizzaDoce, BoxLayout.Y_AXIS));
         panelPizzaDoce.setPreferredSize(new Dimension(600, 200));
         //adiciona os paineis no jfreme
@@ -78,14 +80,12 @@ public class DashboardCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        panelPizzaSalgada1 = new javax.swing.JPanel();
+        panelPizzaSalgada = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel2.setText("Conheça nossos tamanhos para pizza!");
@@ -196,9 +196,9 @@ public class DashboardCliente extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel6.setText("Pizzas Doces");
 
-        panelPizzaSalgada1.addAncestorListener(new javax.swing.event.AncestorListener() {
+        panelPizzaSalgada.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                panelPizzaSalgada1AncestorAdded(evt);
+                panelPizzaSalgadaAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -206,14 +206,14 @@ public class DashboardCliente extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelPizzaSalgada1Layout = new javax.swing.GroupLayout(panelPizzaSalgada1);
-        panelPizzaSalgada1.setLayout(panelPizzaSalgada1Layout);
-        panelPizzaSalgada1Layout.setHorizontalGroup(
-            panelPizzaSalgada1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelPizzaSalgadaLayout = new javax.swing.GroupLayout(panelPizzaSalgada);
+        panelPizzaSalgada.setLayout(panelPizzaSalgadaLayout);
+        panelPizzaSalgadaLayout.setHorizontalGroup(
+            panelPizzaSalgadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 659, Short.MAX_VALUE)
         );
-        panelPizzaSalgada1Layout.setVerticalGroup(
-            panelPizzaSalgada1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelPizzaSalgadaLayout.setVerticalGroup(
+            panelPizzaSalgadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 165, Short.MAX_VALUE)
         );
 
@@ -234,17 +234,18 @@ public class DashboardCliente extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jLabel2))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                                 .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
-                                    .addComponent(panelPizzaSalgada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(panelPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(panelPizzaDoce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
@@ -265,8 +266,7 @@ public class DashboardCliente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(361, 361, 361)
-                                .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,7 +275,7 @@ public class DashboardCliente extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)
                                 .addComponent(jLabel5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(panelPizzaSalgada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
@@ -372,7 +372,7 @@ public class DashboardCliente extends javax.swing.JFrame {
 
     private void SPPizzaSalgadaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SPPizzaSalgadaAncestorAdded
         // TODO add your handling code here:
-//        System.out.println("entrou");
+        System.out.println("entrou");
         try {
             BancoDeDados banco = new BancoDeDados();
             BancoDeDados.leBDPizzaSalgada(BancoDeDados.getBancoPizzaSalgada());
@@ -405,6 +405,7 @@ public class DashboardCliente extends javax.swing.JFrame {
     private void panelPizzaDoceAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelPizzaDoceAncestorAdded
         // TODO add your handling code here:
         try {
+//            System.out.println("entrou");
             BancoDeDados banco = new BancoDeDados();
             BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
             for(PizzaDoce pizza : PizzaDoce.getListaPizzasDoces()) {
@@ -427,8 +428,8 @@ public class DashboardCliente extends javax.swing.JFrame {
                 
                 panelPizzaDoce.add(nome);
                 panelPizzaDoce.add(ingredientes);
-                SPPizzaSalgada.revalidate();
-                SPPizzaSalgada.repaint();
+//                SPPizzaSalgada.revalidate();
+//                SPPizzaSalgada.repaint();
                 
                 
                 
@@ -439,9 +440,43 @@ public class DashboardCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_panelPizzaDoceAncestorAdded
 
-    private void panelPizzaSalgada1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelPizzaSalgada1AncestorAdded
+    private void panelPizzaSalgadaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelPizzaSalgadaAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_panelPizzaSalgada1AncestorAdded
+         try {
+//            System.out.println("entrou");
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPizzaSalgada(BancoDeDados.getBancoPizzaSalgada());
+            for(PizzaSalgada pizza : PizzaSalgada.getListaPizzasSalgadas()) {
+                JLabel nome = new JLabel(pizza.getNome());
+                JTextPane ingredientes = new JTextPane();
+                
+                nome.setFont(fonteCabecalho);
+                nome.setHorizontalAlignment(nome.LEFT);
+                ingredientes.setFont(fonteCorpo);
+                
+                int aux = 0;
+                for(Ingrediente ingre : pizza.getListaIngredientes()) {
+                    if(aux == 0) {
+                        ingredientes.setText(ingre.getNome());
+                        aux++;
+                    } else {
+                        ingredientes.setText(ingredientes.getText()+", "+ingre.getNome());
+                    }
+                }
+//                
+                panelPizzaSalgada.add(nome);
+                panelPizzaSalgada.add(ingredientes);
+//                SPPizzaSalgada.revalidate();
+//                SPPizzaSalgada.repaint();
+                
+                
+                
+                pack();
+            }
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_panelPizzaSalgadaAncestorAdded
 
     
     private void addRadioButton(String label) {
@@ -505,7 +540,7 @@ public class DashboardCliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel panelPizzaDoce;
-    private javax.swing.JPanel panelPizzaSalgada1;
+    private javax.swing.JPanel panelPizzaSalgada;
     private javax.swing.JPanel panelTamanhos;
     private javax.swing.JTable tableTamanho;
     // End of variables declaration//GEN-END:variables
