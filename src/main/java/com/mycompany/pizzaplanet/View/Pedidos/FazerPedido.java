@@ -1,8 +1,10 @@
 package com.mycompany.pizzaplanet.View.Pedidos;
 
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
+import com.mycompany.pizzaplanet.Model.Ingrediente;
 import com.mycompany.pizzaplanet.Model.PizzaDoce;
 import com.mycompany.pizzaplanet.Model.PizzaSalgada;
+import com.mycompany.pizzaplanet.Model.Produto;
 import com.mycompany.pizzaplanet.Model.Tamanho;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -10,12 +12,17 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
 import javax.swing.JRadioButton;
 
 public class FazerPedido extends javax.swing.JFrame {
 
     public Font fonteCabecalho = new Font("Monospaced", Font.BOLD, 14);
     public Font fonteCorpo = new Font("Monospaced", Font.PLAIN, 12);
+    public JRadioButton JRadioButtonTamanho = new JRadioButton();
+    public JRadioButton JRadioButtonPizza = new JRadioButton();
+    public JRadioButton JRadioButtonProduto = new JRadioButton();
     
     /**
      * Creates new form FazerPedido
@@ -23,8 +30,8 @@ public class FazerPedido extends javax.swing.JFrame {
     public FazerPedido() {
         initComponents();
         //inicializa o painel dos tamanhos
-        panelTamanhosPedido1.setLayout(new FlowLayout());
-        panelTamanhosPedido1.setPreferredSize(new Dimension(300, 200));
+        panelTamanhosPedido.setLayout(new FlowLayout());
+        panelTamanhosPedido.setPreferredSize(new Dimension(300, 200));
         //inicializa o painel dos tamanhos
         panelPizzaPedido.setLayout(new FlowLayout());
         panelPizzaPedido.setPreferredSize(new Dimension(300, 200));
@@ -48,7 +55,7 @@ public class FazerPedido extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        panelTamanhosPedido1 = new javax.swing.JPanel();
+        panelTamanhosPedido = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         panelPizzaPedido = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -56,19 +63,15 @@ public class FazerPedido extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel1.setText("Escolha o tamanho desejado!");
 
-        panelTamanhosPedido1.setBackground(new java.awt.Color(255, 0, 255));
-        panelTamanhosPedido1.addAncestorListener(new javax.swing.event.AncestorListener() {
+        panelTamanhosPedido.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                panelTamanhosPedido1AncestorAdded(evt);
+                panelTamanhosPedidoAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -76,21 +79,20 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelTamanhosPedido1Layout = new javax.swing.GroupLayout(panelTamanhosPedido1);
-        panelTamanhosPedido1.setLayout(panelTamanhosPedido1Layout);
-        panelTamanhosPedido1Layout.setHorizontalGroup(
-            panelTamanhosPedido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelTamanhosPedidoLayout = new javax.swing.GroupLayout(panelTamanhosPedido);
+        panelTamanhosPedido.setLayout(panelTamanhosPedidoLayout);
+        panelTamanhosPedidoLayout.setHorizontalGroup(
+            panelTamanhosPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 787, Short.MAX_VALUE)
         );
-        panelTamanhosPedido1Layout.setVerticalGroup(
-            panelTamanhosPedido1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelTamanhosPedidoLayout.setVerticalGroup(
+            panelTamanhosPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 99, Short.MAX_VALUE)
         );
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel2.setText("Escolha a Pizza Desejada!");
 
-        panelPizzaPedido.setBackground(new java.awt.Color(255, 0, 255));
         panelPizzaPedido.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 panelPizzaPedidoAncestorAdded(evt);
@@ -115,7 +117,6 @@ public class FazerPedido extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel3.setText("Algum produto adicional?");
 
-        panelProdutoPedido.setBackground(new java.awt.Color(255, 0, 255));
         panelProdutoPedido.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 panelProdutoPedidoAncestorAdded(evt);
@@ -139,6 +140,11 @@ public class FazerPedido extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jButton1.setText("Finalizar Pedido");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,11 +157,11 @@ public class FazerPedido extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jLabel1)
                         .addComponent(jLabel2)
-                        .addComponent(panelTamanhosPedido1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelTamanhosPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelPizzaPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelProdutoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +169,7 @@ public class FazerPedido extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
-                .addComponent(panelTamanhosPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelTamanhosPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jLabel2)
                 .addGap(29, 29, 29)
@@ -172,18 +178,15 @@ public class FazerPedido extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(panelProdutoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
 
         jScrollPane1.setViewportView(jPanel1);
 
-        jMenu1.setText("File");
+        jMenu1.setText("Dashboard");
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -192,15 +195,13 @@ public class FazerPedido extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -209,13 +210,21 @@ public class FazerPedido extends javax.swing.JFrame {
     private void panelPizzaPedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelPizzaPedidoAncestorAdded
         // TODO add your handling code here:
         try {
-            System.out.println("entrou");
             BancoDeDados banco = new BancoDeDados();
             BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
             for(PizzaDoce pizza : PizzaDoce.getListaPizzasDoces()) {
                 int optionNumber = buttonGroup2.getButtonCount() + 1;
                 JRadioButton radioButton = new JRadioButton(pizza.getNome());
                 radioButton.setFont(fonteCorpo);
+                int aux = 0;
+                for(Ingrediente ingre : pizza.getListaIngredientes()) {
+                    if(aux == 0) {
+                        radioButton.setToolTipText("Ingredientes: " + ingre.getNome());
+                        aux++;
+                    } else {
+                        radioButton.setToolTipText(radioButton.getToolTipText() + ", " + ingre.getNome());
+                    }
+                }
                 buttonGroup2.add(radioButton);
                 panelPizzaPedido.add(radioButton);
                 radioButton.setVisible(true);
@@ -223,7 +232,14 @@ public class FazerPedido extends javax.swing.JFrame {
                 panelPizzaPedido.repaint();
                 radioButton.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("Selecionado: ");
+                        Enumeration<AbstractButton> buttons = buttonGroup2.getElements();
+                        while (buttons.hasMoreElements()) {
+                            AbstractButton button = buttons.nextElement();
+                            if (button.isSelected()) {
+                                JRadioButtonPizza = (JRadioButton)button;
+                                break;
+                            }
+                        }
                     }
                 });
             }
@@ -233,13 +249,83 @@ public class FazerPedido extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_panelPizzaPedidoAncestorAdded
 
-    private void panelTamanhosPedido1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelTamanhosPedido1AncestorAdded
+    private void panelTamanhosPedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelTamanhosPedidoAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_panelTamanhosPedido1AncestorAdded
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDTamanho(BancoDeDados.getBancoTamanho());
+            for(Tamanho tamanho : Tamanho.getListaTamanhos()) {
+                int optionNumber = buttonGroup1.getButtonCount() + 1;
+                JRadioButton radioButton = new JRadioButton(tamanho.getNome());
+                radioButton.setFont(fonteCorpo);
+                radioButton.setToolTipText("Quant. Pedaços: " + tamanho.getQuantidadePecas() + " - Valor: " + tamanho.getValor());
+                buttonGroup1.add(radioButton);
+                panelTamanhosPedido.add(radioButton);
+                radioButton.setVisible(true);
+                panelTamanhosPedido.revalidate();
+                panelTamanhosPedido.repaint();
+                radioButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        Enumeration<AbstractButton> buttons = buttonGroup1.getElements();
+                        while (buttons.hasMoreElements()) {
+                            AbstractButton button = buttons.nextElement();
+                            if (button.isSelected()) {
+                                JRadioButtonTamanho = (JRadioButton)button;
+                                break;
+                            }
+                        }
+                    }
+                });
+            }
+
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_panelTamanhosPedidoAncestorAdded
 
     private void panelProdutoPedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelProdutoPedidoAncestorAdded
         // TODO add your handling code here:
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDProduto(BancoDeDados.getBancoProduto());
+            for(Produto produto : Produto.getListaProdutos()) {
+                int optionNumber = buttonGroup3.getButtonCount() + 1;
+                JRadioButton radioButton = new JRadioButton(produto.getNome());
+                radioButton.setFont(fonteCorpo);
+                radioButton.setToolTipText("Preço: " + produto.getValor());
+                buttonGroup3.add(radioButton);
+                panelProdutoPedido.add(radioButton);
+                radioButton.setVisible(true);
+                panelProdutoPedido.revalidate();
+                panelProdutoPedido.repaint();
+                radioButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        Enumeration<AbstractButton> buttons = buttonGroup3.getElements();
+                        while (buttons.hasMoreElements()) {
+                            AbstractButton button = buttons.nextElement();
+                            if (button.isSelected()) {
+                                JRadioButtonProduto = (JRadioButton)button;
+                                break;
+                            }
+                        }
+                    }
+                });
+            }
+
+        } catch (IOException e) {
+            System.out.println("error");
+        }
     }//GEN-LAST:event_panelProdutoPedidoAncestorAdded
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+//        try {
+//            BancoDeDados banco = new BancoDeDados();
+//            BancoDeDados.leBDTamanho(BancoDeDados.getBancoTamanho());
+//        } catch (IOException e) {
+//            System.out.println("error");
+//        } 
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,12 +371,11 @@ public class FazerPedido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelPizzaPedido;
     private javax.swing.JPanel panelProdutoPedido;
-    private javax.swing.JPanel panelTamanhosPedido1;
+    private javax.swing.JPanel panelTamanhosPedido;
     // End of variables declaration//GEN-END:variables
 }
