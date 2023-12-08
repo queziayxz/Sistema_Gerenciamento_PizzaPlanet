@@ -1,8 +1,11 @@
 package com.mycompany.pizzaplanet.View;
 
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
+import com.mycompany.pizzaplanet.Model.Ingrediente;
+import com.mycompany.pizzaplanet.Model.PizzaDoce;
 import com.mycompany.pizzaplanet.Model.PizzaSalgada;
 import com.mycompany.pizzaplanet.Model.Tamanho;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -17,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JTextPane;
 import javax.swing.ScrollPaneLayout;
 import javax.swing.plaf.basic.BasicBorders;
 import javax.swing.table.DefaultTableModel;
@@ -26,6 +30,8 @@ import javax.swing.table.TableColumn;
 
 public class DashboardCliente extends javax.swing.JFrame {
 
+    public Font fonteCabecalho = new Font("Monospaced", Font.BOLD, 14);
+    public Font fonteCorpo = new Font("Monospaced", Font.PLAIN, 12);
     /**
      * Creates new form DashboardCliente
      */
@@ -38,10 +44,12 @@ public class DashboardCliente extends javax.swing.JFrame {
         //inicializa o painel das pizzas salgadas
         SPPizzaSalgada.setLayout(new ScrollPaneLayout());
         SPPizzaSalgada.setPreferredSize(new Dimension(300, 200));
+        panelPizzaDoce.setLayout(new BoxLayout(panelPizzaDoce, BoxLayout.Y_AXIS));
+        panelPizzaDoce.setPreferredSize(new Dimension(600, 200));
         //adiciona os paineis no jfreme
         this.add(panelTamanhos);
         this.add(SPPizzaSalgada);
-        Font fonteCabecalho = new Font("Monospaced", Font.BOLD, 14); // Substitua por sua fonte desejada
+         // Substitua por sua fonte desejada
         JTableHeader cabecalho = tableTamanho.getTableHeader();
         cabecalho.setFont(fonteCabecalho);
 //        CBPizzasSalgadas = new javax.swing.JComboBox<>();
@@ -57,51 +65,27 @@ public class DashboardCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        panelTamanhos = new javax.swing.JPanel();
-        addButton = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableTamanho = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         SPPizzaSalgada = new javax.swing.JScrollPane();
+        panelTamanhos = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        panelPizzaDoce = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        panelPizzaSalgada1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
-        jLabel1.setText("Bem Vindo!");
-
-        panelTamanhos.setBackground(new java.awt.Color(153, 153, 153));
-        panelTamanhos.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                panelTamanhosAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
-        javax.swing.GroupLayout panelTamanhosLayout = new javax.swing.GroupLayout(panelTamanhos);
-        panelTamanhos.setLayout(panelTamanhosLayout);
-        panelTamanhosLayout.setHorizontalGroup(
-            panelTamanhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 532, Short.MAX_VALUE)
-        );
-        panelTamanhosLayout.setVerticalGroup(
-            panelTamanhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 99, Short.MAX_VALUE)
-        );
-
-        addButton.setText("adicionar");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel2.setText("Conheça nossos tamanhos para pizza!");
@@ -147,7 +131,7 @@ public class DashboardCliente extends javax.swing.JFrame {
             tableTamanho.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel3.setText("Conheça nossas Pizzas!!");
 
         SPPizzaSalgada.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -159,6 +143,149 @@ public class DashboardCliente extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+
+        panelTamanhos.setBackground(new java.awt.Color(153, 153, 153));
+        panelTamanhos.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                panelTamanhosAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        javax.swing.GroupLayout panelTamanhosLayout = new javax.swing.GroupLayout(panelTamanhos);
+        panelTamanhos.setLayout(panelTamanhosLayout);
+        panelTamanhosLayout.setHorizontalGroup(
+            panelTamanhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 532, Short.MAX_VALUE)
+        );
+        panelTamanhosLayout.setVerticalGroup(
+            panelTamanhosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 99, Short.MAX_VALUE)
+        );
+
+        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel1.setText("Bem Vindo!");
+
+        panelPizzaDoce.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                panelPizzaDoceAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        javax.swing.GroupLayout panelPizzaDoceLayout = new javax.swing.GroupLayout(panelPizzaDoce);
+        panelPizzaDoce.setLayout(panelPizzaDoceLayout);
+        panelPizzaDoceLayout.setHorizontalGroup(
+            panelPizzaDoceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 659, Short.MAX_VALUE)
+        );
+        panelPizzaDoceLayout.setVerticalGroup(
+            panelPizzaDoceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 165, Short.MAX_VALUE)
+        );
+
+        jLabel5.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel5.setText("Pizzas Salgadas");
+
+        jLabel6.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel6.setText("Pizzas Doces");
+
+        panelPizzaSalgada1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                panelPizzaSalgada1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        javax.swing.GroupLayout panelPizzaSalgada1Layout = new javax.swing.GroupLayout(panelPizzaSalgada1);
+        panelPizzaSalgada1.setLayout(panelPizzaSalgada1Layout);
+        panelPizzaSalgada1Layout.setHorizontalGroup(
+            panelPizzaSalgada1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 659, Short.MAX_VALUE)
+        );
+        panelPizzaSalgada1Layout.setVerticalGroup(
+            panelPizzaSalgada1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 165, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(SPPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                                .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(panelPizzaSalgada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(panelPizzaDoce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(519, 519, 519)
+                        .addComponent(SPPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(361, 361, 361)
+                                .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelPizzaSalgada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelPizzaDoce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+
+        jScrollPane3.setViewportView(jPanel1);
 
         jMenu1.setText("Dashboard");
         jMenuBar1.add(jMenu1);
@@ -172,45 +299,16 @@ public class DashboardCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addButton)
-                        .addGap(46, 46, 46))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(SPPizzaSalgada, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                        .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(addButton))
-                .addGap(63, 63, 63)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(SPPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1134, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -241,13 +339,6 @@ public class DashboardCliente extends javax.swing.JFrame {
             System.out.println("error");
         }
     }//GEN-LAST:event_panelTamanhosAncestorAdded
-
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-        // Adiciona um novo JRadioButton à lista dinamicamente
-        
-//        System.out.println(optionNumber);
-    }//GEN-LAST:event_addButtonActionPerformed
 
     
     
@@ -292,7 +383,8 @@ public class DashboardCliente extends javax.swing.JFrame {
                 panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
                 panel.setSize(200, 50);
                 
-                nome.setSize(50, 50);
+                nome.setSize(200, 50);
+                nome.setHorizontalAlignment(nome.RIGHT);
                 
                 panel.add(nome);
                 nome.setVisible(true);
@@ -300,12 +392,56 @@ public class DashboardCliente extends javax.swing.JFrame {
                 SPPizzaSalgada.add(panel);
                 SPPizzaSalgada.revalidate();
                 SPPizzaSalgada.repaint();
+                
+                
+                
                 pack();
             }
         } catch (IOException e) {
             System.out.println("error");
         }
     }//GEN-LAST:event_SPPizzaSalgadaAncestorAdded
+
+    private void panelPizzaDoceAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelPizzaDoceAncestorAdded
+        // TODO add your handling code here:
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
+            for(PizzaDoce pizza : PizzaDoce.getListaPizzasDoces()) {
+                JLabel nome = new JLabel(pizza.getNome());
+                JTextPane ingredientes = new JTextPane();
+                
+                nome.setFont(fonteCabecalho);
+                nome.setHorizontalAlignment(nome.LEFT);
+                ingredientes.setFont(fonteCorpo);
+                
+                int aux = 0;
+                for(Ingrediente ingre : pizza.getListaIngredientes()) {
+                    if(aux == 0) {
+                        ingredientes.setText(ingre.getNome());
+                        aux++;
+                    } else {
+                        ingredientes.setText(ingredientes.getText()+", "+ingre.getNome());
+                    }
+                }
+                
+                panelPizzaDoce.add(nome);
+                panelPizzaDoce.add(ingredientes);
+                SPPizzaSalgada.revalidate();
+                SPPizzaSalgada.repaint();
+                
+                
+                
+                pack();
+            }
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_panelPizzaDoceAncestorAdded
+
+    private void panelPizzaSalgada1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelPizzaSalgada1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelPizzaSalgada1AncestorAdded
 
     
     private void addRadioButton(String label) {
@@ -355,15 +491,21 @@ public class DashboardCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane SPPizzaSalgada;
-    private javax.swing.JButton addButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPanel panelPizzaDoce;
+    private javax.swing.JPanel panelPizzaSalgada1;
     private javax.swing.JPanel panelTamanhos;
     private javax.swing.JTable tableTamanho;
     // End of variables declaration//GEN-END:variables
