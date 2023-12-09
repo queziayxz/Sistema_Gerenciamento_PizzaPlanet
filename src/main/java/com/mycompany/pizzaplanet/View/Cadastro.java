@@ -4,6 +4,7 @@ import com.mycompany.pizzaplanet.Controller.ClienteController;
 import com.mycompany.pizzaplanet.Controller.EnderecoController;
 import com.mycompany.pizzaplanet.Excecoes.CPFInvalido;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
+import com.mycompany.pizzaplanet.Excecoes.CpfJaCadastrado;
 import com.mycompany.pizzaplanet.Excecoes.EnderecoInvalido;
 import com.mycompany.pizzaplanet.Model.CPF;
 import com.mycompany.pizzaplanet.Model.Cliente;
@@ -446,6 +447,8 @@ public class Cadastro extends javax.swing.JFrame {
         } catch(CampoVazio e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch(EnderecoInvalido e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch(CpfJaCadastrado e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch(IOException e) {
             JOptionPane.showMessageDialog(null, "Cliente não cadastrado!!");

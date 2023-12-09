@@ -9,6 +9,14 @@ public class CPF {
     {
         this.cpf = cpf;
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
     
     public static void validarCPF(String cpf) throws CPFInvalido {
         cpf = cpf.replaceAll("[^\\d]+", "");

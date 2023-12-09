@@ -3,6 +3,7 @@ package com.mycompany.pizzaplanet.Controller;
 //import das models
 import com.google.gson.Gson;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
+import com.mycompany.pizzaplanet.Excecoes.CpfJaCadastrado;
 import com.mycompany.pizzaplanet.Excecoes.ErroLogin;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
 import com.mycompany.pizzaplanet.Model.Cliente;
@@ -26,12 +27,18 @@ public class ClienteController {
         throw new ErroLogin();
     }
     
-    public static void CadastroCliente(Cliente usuario) throws IOException {
+    public static void CadastroCliente(Cliente usuario) throws IOException, CpfJaCadastrado {
         Gson gson = new Gson();
         BancoDeDados conn = new BancoDeDados();
-        
         try {
             BancoDeDados.leBD(BancoDeDados.getBancoCliente());
+            
+            for(Cliente usuarioBanco : Cliente.getListaCliente()) {
+                if(usuario.getCpf().getCpf().equals(usuarioBanco.getCpf().getCpf())) {
+                    throw new CpfJaCadastrado();
+                }
+            }
+            
             FileWriter writer = new FileWriter(BancoDeDados.getBancoCliente());
             Cliente.getListaCliente().add(usuario);
             
@@ -41,6 +48,8 @@ public class ClienteController {
             writer.close();
         } catch (IOException e) {
             throw new IOException();
+        } catch (CpfJaCadastrado e) {
+            throw new CpfJaCadastrado();
         } 
     }
 }
