@@ -364,7 +364,6 @@ public class DashboardCliente extends javax.swing.JFrame {
             for(Tamanho tam : Tamanho.getListaTamanhos()) {
                 int optionNumber = buttonGroup1.getButtonCount() + 1;
                 JRadioButton radioButton = new JRadioButton(tam.getNome()+" - "+tam.getQuantidadePecas()+" pedaços - R$"+tam.getValor());
-//                System.out.println(radioButton.getText());
                 buttonGroup1.add(radioButton);
                 panelTamanhos.add(radioButton);
                 radioButton.setVisible(true);
@@ -414,7 +413,6 @@ public class DashboardCliente extends javax.swing.JFrame {
 
     private void SPPizzaSalgadaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_SPPizzaSalgadaAncestorAdded
         // TODO add your handling code here:
-        System.out.println("entrou");
         try {
             BancoDeDados banco = new BancoDeDados();
             BancoDeDados.leBDPizzaSalgada(BancoDeDados.getBancoPizzaSalgada());
@@ -467,11 +465,7 @@ public class DashboardCliente extends javax.swing.JFrame {
                 }
                 
                 panelPizzaDoce.add(nome);
-                panelPizzaDoce.add(ingredientes);
-//                SPPizzaSalgada.revalidate();
-//                SPPizzaSalgada.repaint();
-                
-                
+                panelPizzaDoce.add(ingredientes);              
                 
                 pack();
             }

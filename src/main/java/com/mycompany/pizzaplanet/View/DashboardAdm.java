@@ -169,14 +169,11 @@ public class DashboardAdm extends javax.swing.JFrame {
                     .addComponent(txtTamanhoListSoli, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                     .addComponent(txtEnderecoClienteListSoli)
                     .addComponent(txtNomeClienteListSoli)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEnviarProducao)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(btnEnviarProducao)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -433,7 +430,17 @@ public class DashboardAdm extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Pedidos");
+        jMenu4.setText("Logout");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -482,10 +489,8 @@ public class DashboardAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             PedidoController.alteraStatusPedido(pedidoLista,"Em Produção");
-//            PedidoController.deletaPedidoSolicitado(pedidoLista);
             
             BancoDeDados banco = new BancoDeDados();
-//            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
             BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
             
             //cria o modelo da lista de produção
@@ -720,6 +725,18 @@ public class DashboardAdm extends javax.swing.JFrame {
             btnFinalizaPedidoProducao.setEnabled(true);
         }
     }//GEN-LAST:event_listPedidosProducaoValueChanged
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
+        Cliente.setClienteLogado(null);
+    }//GEN-LAST:event_jMenu4MouseClicked
     
     /**
      * @param args the command line arguments
