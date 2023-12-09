@@ -32,6 +32,16 @@ public abstract class Usuario {
     public CPF getCpf() {
         return cpf;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
+    
     
     public static void validaCamposLogin(String email, String senha) throws CampoVazio {
         if("".equals(email) || "".equals(senha))

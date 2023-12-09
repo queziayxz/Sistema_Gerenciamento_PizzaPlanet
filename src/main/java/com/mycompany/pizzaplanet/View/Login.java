@@ -205,6 +205,7 @@ public class Login extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             if(ClienteController.loginCliente(txt_email.getText(), txt_senha.getText())) {
+                Cliente.setClienteLogado(new Cliente(txt_email.getText().trim(),txt_senha.getText().trim()));
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso!!");
             } else {
                 JOptionPane.showMessageDialog(null, "Login não realizado!!");

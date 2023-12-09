@@ -5,6 +5,7 @@ import java.util.*;
 
 abstract public class Pagamento {
     double valor;
+    String nome;
     static List<Pagamento> listaPix = new ArrayList<>();
     static List<Pagamento> listaCartao = new ArrayList<>();
 

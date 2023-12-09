@@ -1,20 +1,32 @@
 package com.mycompany.pizzaplanet.View.Pedidos;
 
+import com.mycompany.pizzaplanet.Controller.PizzaController;
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
+import com.mycompany.pizzaplanet.Model.Cliente;
 import com.mycompany.pizzaplanet.Model.Ingrediente;
+import com.mycompany.pizzaplanet.Model.Pedido;
+import com.mycompany.pizzaplanet.Model.Pizza;
 import com.mycompany.pizzaplanet.Model.PizzaDoce;
 import com.mycompany.pizzaplanet.Model.PizzaSalgada;
 import com.mycompany.pizzaplanet.Model.Produto;
 import com.mycompany.pizzaplanet.Model.Tamanho;
+import com.mycompany.pizzaplanet.View.Pizzas.GerenciamentoPizza;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.List;
 import javax.swing.AbstractButton;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.table.DefaultTableModel;
 
 public class FazerPedido extends javax.swing.JFrame {
 
@@ -23,6 +35,7 @@ public class FazerPedido extends javax.swing.JFrame {
     public JRadioButton JRadioButtonTamanho = new JRadioButton();
     public JRadioButton JRadioButtonPizza = new JRadioButton();
     public JRadioButton JRadioButtonProduto = new JRadioButton();
+    public JRadioButton JRadioButtonPagamento = new JRadioButton();
     
     /**
      * Creates new form FazerPedido
@@ -32,12 +45,13 @@ public class FazerPedido extends javax.swing.JFrame {
         //inicializa o painel dos tamanhos
         panelTamanhosPedido.setLayout(new FlowLayout());
         panelTamanhosPedido.setPreferredSize(new Dimension(300, 200));
-        //inicializa o painel dos tamanhos
-        panelPizzaPedido.setLayout(new FlowLayout());
-        panelPizzaPedido.setPreferredSize(new Dimension(300, 200));
-        //inicializa o painel dos tamanhos
-        panelProdutoPedido.setLayout(new FlowLayout());
-        panelProdutoPedido.setPreferredSize(new Dimension(300, 200));
+        //inicializa o painel das pizzas
+//        panelPizzaPedido.setLayout(new FlowLayout());
+//        panelPizzaPedido.setPreferredSize(new Dimension(300, 200));
+//        //inicializa o painel dos produtos
+//        panelProdutoPedido.setLayout(new FlowLayout());
+//        panelProdutoPedido.setPreferredSize(new Dimension(300, 200));
+//        //inicializa o painel dos pagamentos
     }
 
     /**
@@ -52,15 +66,47 @@ public class FazerPedido extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         panelTamanhosPedido = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        panelPizzaPedido = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        panelProdutoPedido = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        finalizaProduto = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        CBPagamentoPedido = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        txtNomePizzaDocePedido = new javax.swing.JTextField();
+        btnEditPizzaDoce = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tableIngredientePizzasDocesPedido = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        listaPizzaDocePedido = new javax.swing.JList<>();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listaPizzaSalgadaPedido = new javax.swing.JList<>();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        txtNomePizzaSalgadaPedido = new javax.swing.JTextField();
+        btnEditPizzaSalgada = new javax.swing.JButton();
+        btnDellIngre1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtNomePizzaDoce6 = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tableIngredientePizzaSalgadaPedido = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ListProdutoPedido = new javax.swing.JList<>();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        txtNomeProdPedido = new javax.swing.JTextField();
+        btnDesmarcarProdutoPedido = new javax.swing.JButton();
+        txtValorProdPedido = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -93,58 +139,305 @@ public class FazerPedido extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel2.setText("Escolha a Pizza Desejada!");
 
-        panelPizzaPedido.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                panelPizzaPedidoAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
-        javax.swing.GroupLayout panelPizzaPedidoLayout = new javax.swing.GroupLayout(panelPizzaPedido);
-        panelPizzaPedido.setLayout(panelPizzaPedidoLayout);
-        panelPizzaPedidoLayout.setHorizontalGroup(
-            panelPizzaPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelPizzaPedidoLayout.setVerticalGroup(
-            panelPizzaPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
-        jLabel3.setText("Algum produto adicional?");
+        jLabel3.setText("Selecione a forma de pagamento");
 
-        panelProdutoPedido.addAncestorListener(new javax.swing.event.AncestorListener() {
+        finalizaProduto.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        finalizaProduto.setText("Finalizar Pedido");
+        finalizaProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalizaProdutoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel4.setText("Algum produto adicional?");
+
+        CBPagamentoPedido.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        CBPagamentoPedido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pix", "Cartão de Crédito", "Cartão de Débito", "Dinheiro" }));
+
+        jLabel5.setText("Nome:");
+
+        btnEditPizzaDoce.setText("Desmarcar Pizza");
+        btnEditPizzaDoce.setEnabled(false);
+        btnEditPizzaDoce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditPizzaDoceActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Ingredientes:");
+
+        tableIngredientePizzasDocesPedido.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tableIngredientePizzasDocesPedido);
+
+        listaPizzaDocePedido.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        listaPizzaDocePedido.setLayoutOrientation(javax.swing.JList.VERTICAL_WRAP);
+        listaPizzaDocePedido.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                panelProdutoPedidoAncestorAdded(evt);
+                listaPizzaDocePedidoAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-
-        javax.swing.GroupLayout panelProdutoPedidoLayout = new javax.swing.GroupLayout(panelProdutoPedido);
-        panelProdutoPedido.setLayout(panelProdutoPedidoLayout);
-        panelProdutoPedidoLayout.setHorizontalGroup(
-            panelProdutoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelProdutoPedidoLayout.setVerticalGroup(
-            panelProdutoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-
-        jButton1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jButton1.setText("Finalizar Pedido");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        listaPizzaDocePedido.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaPizzaDocePedidoValueChanged(evt);
             }
         });
+        jScrollPane7.setViewportView(listaPizzaDocePedido);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(txtNomePizzaDocePedido, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditPizzaDoce)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNomePizzaDocePedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addComponent(btnEditPizzaDoce, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane7)
+        );
+
+        jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel7.setText("Pizzas Salgadas");
+
+        listaPizzaSalgadaPedido.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        listaPizzaSalgadaPedido.setLayoutOrientation(javax.swing.JList.VERTICAL_WRAP);
+        listaPizzaSalgadaPedido.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                listaPizzaSalgadaPedidoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        listaPizzaSalgadaPedido.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaPizzaSalgadaPedidoValueChanged(evt);
+            }
+        });
+        jScrollPane3.setViewportView(listaPizzaSalgadaPedido);
+
+        jLabel10.setText("Nome:");
+
+        btnEditPizzaSalgada.setText("Desmarcar Pizza");
+        btnEditPizzaSalgada.setEnabled(false);
+        btnEditPizzaSalgada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditPizzaSalgadaActionPerformed(evt);
+            }
+        });
+
+        btnDellIngre1.setText("Deletar Ingrediente");
+        btnDellIngre1.setEnabled(false);
+        btnDellIngre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDellIngre1ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Ingredientes:");
+
+        jLabel12.setText("Nome:");
+
+        tableIngredientePizzaSalgadaPedido.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tableIngredientePizzaSalgadaPedido);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(btnEditPizzaSalgada)
+                        .addGap(923, 923, 923)
+                        .addComponent(btnDellIngre1))
+                    .addComponent(txtNomePizzaSalgadaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addContainerGap(1121, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel12)
+                        .addComponent(txtNomePizzaDoce6))
+                    .addContainerGap()))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
+                        .addComponent(btnDellIngre1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNomePizzaSalgadaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addComponent(btnEditPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel12)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtNomePizzaDoce6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(356, Short.MAX_VALUE)))
+        );
+
+        jLabel8.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel8.setText("Pizzas Doces");
+
+        ListProdutoPedido.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        ListProdutoPedido.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                ListProdutoPedidoComponentAdded(evt);
+            }
+        });
+        ListProdutoPedido.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                ListProdutoPedidoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        ListProdutoPedido.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                ListProdutoPedidoValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(ListProdutoPedido);
+
+        jLabel9.setText("Nome:");
+
+        txtNomeProdPedido.setEnabled(false);
+        txtNomeProdPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeProdPedidoActionPerformed(evt);
+            }
+        });
+
+        btnDesmarcarProdutoPedido.setText("Desmarcar Produto");
+        btnDesmarcarProdutoPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesmarcarProdutoPedidoActionPerformed(evt);
+            }
+        });
+
+        txtValorProdPedido.setEnabled(false);
+
+        jLabel13.setText("Valor:");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDesmarcarProdutoPedido)
+                    .addComponent(jLabel9)
+                    .addComponent(txtNomeProdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValorProdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNomeProdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addGap(8, 8, 8)
+                .addComponent(txtValorProdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(btnDesmarcarProdutoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -152,35 +445,76 @@ public class FazerPedido extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
-                        .addComponent(panelTamanhosPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelPizzaPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelProdutoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(panelTamanhosPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(CBPagamentoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(finalizaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(189, 189, 189))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(651, 651, 651)
+                                .addComponent(jLabel7)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelTamanhosPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jLabel2)
-                .addGap(29, 29, 29)
-                .addComponent(panelPizzaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(panelProdutoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addComponent(jLabel2)
+                .addGap(48, 48, 48)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(jLabel4)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel3)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addComponent(finalizaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(CBPagamentoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -194,60 +528,15 @@ public class FazerPedido extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1464, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1397, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void panelPizzaPedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelPizzaPedidoAncestorAdded
-        // TODO add your handling code here:
-        try {
-            BancoDeDados banco = new BancoDeDados();
-            BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
-            for(PizzaDoce pizza : PizzaDoce.getListaPizzasDoces()) {
-                int optionNumber = buttonGroup2.getButtonCount() + 1;
-                JRadioButton radioButton = new JRadioButton(pizza.getNome());
-                radioButton.setFont(fonteCorpo);
-                int aux = 0;
-                for(Ingrediente ingre : pizza.getListaIngredientes()) {
-                    if(aux == 0) {
-                        radioButton.setToolTipText("Ingredientes: " + ingre.getNome());
-                        aux++;
-                    } else {
-                        radioButton.setToolTipText(radioButton.getToolTipText() + ", " + ingre.getNome());
-                    }
-                }
-                buttonGroup2.add(radioButton);
-                panelPizzaPedido.add(radioButton);
-                radioButton.setVisible(true);
-                panelPizzaPedido.revalidate();
-                panelPizzaPedido.repaint();
-                radioButton.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        Enumeration<AbstractButton> buttons = buttonGroup2.getElements();
-                        while (buttons.hasMoreElements()) {
-                            AbstractButton button = buttons.nextElement();
-                            if (button.isSelected()) {
-                                JRadioButtonPizza = (JRadioButton)button;
-                                break;
-                            }
-                        }
-                    }
-                });
-            }
-
-        } catch (IOException e) {
-            System.out.println("error");
-        }
-    }//GEN-LAST:event_panelPizzaPedidoAncestorAdded
 
     private void panelTamanhosPedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelTamanhosPedidoAncestorAdded
         // TODO add your handling code here:
@@ -283,49 +572,285 @@ public class FazerPedido extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_panelTamanhosPedidoAncestorAdded
 
-    private void panelProdutoPedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelProdutoPedidoAncestorAdded
-        // TODO add your handling code here:
+    private PizzaDoce selecionaPizzaDoce(String nome) {
+        PizzaDoce pizzaDoce = new PizzaDoce();
         try {
             BancoDeDados banco = new BancoDeDados();
-            BancoDeDados.leBDProduto(BancoDeDados.getBancoProduto());
-            for(Produto produto : Produto.getListaProdutos()) {
-                int optionNumber = buttonGroup3.getButtonCount() + 1;
-                JRadioButton radioButton = new JRadioButton(produto.getNome());
-                radioButton.setFont(fonteCorpo);
-                radioButton.setToolTipText("Preço: " + produto.getValor());
-                buttonGroup3.add(radioButton);
-                panelProdutoPedido.add(radioButton);
-                radioButton.setVisible(true);
-                panelProdutoPedido.revalidate();
-                panelProdutoPedido.repaint();
-                radioButton.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        Enumeration<AbstractButton> buttons = buttonGroup3.getElements();
-                        while (buttons.hasMoreElements()) {
-                            AbstractButton button = buttons.nextElement();
-                            if (button.isSelected()) {
-                                JRadioButtonProduto = (JRadioButton)button;
-                                break;
-                            }
-                        }
-                    }
-                });
+            BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
+            
+            for(PizzaDoce pizza : PizzaDoce.getListaPizzasDoces()) {
+                if(nome.equals(pizza.getNome())) {
+                    pizzaDoce.setNome(nome);
+                    pizzaDoce.setListaIngredientes(pizza.getListaIngredientes());
+                    return pizzaDoce;
+                }
             }
-
+            
+            
         } catch (IOException e) {
             System.out.println("error");
         }
-    }//GEN-LAST:event_panelProdutoPedidoAncestorAdded
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        return null;
+    }
+    
+    private PizzaSalgada selecionaPizzaSalgada(String nome) {
+        PizzaSalgada pizzaSalgada = new PizzaSalgada();
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPizzaSalgada(BancoDeDados.getBancoPizzaSalgada());
+            
+            for(PizzaSalgada pizza : PizzaSalgada.getListaPizzasSalgadas()) {
+                if(nome.equals(pizza.getNome())) {
+                    pizzaSalgada.setNome(nome);
+                    pizzaSalgada.setListaIngredientes(pizza.getListaIngredientes());
+                    return pizzaSalgada;
+                }
+            }
+            
+            
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+        return null;
+    }
+    
+    private Tamanho selecionaTamanho(String nome) {
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDTamanho(BancoDeDados.getBancoTamanho());
+            
+            for(Tamanho tamanho : Tamanho.getListaTamanhos()) {
+                if(nome.equals(tamanho.getNome())) {
+                    return tamanho;
+                }
+            }
+            
+            
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+        return null;
+    }
+    
+    private void finalizaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizaProdutoActionPerformed
         // TODO add your handling code here:
-//        try {
-//            BancoDeDados banco = new BancoDeDados();
-//            BancoDeDados.leBDTamanho(BancoDeDados.getBancoTamanho());
-//        } catch (IOException e) {
-//            System.out.println("error");
-//        } 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        //exceção: caso o cliente não tenha selecionado nenhuma pizza ou tamanho
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBD(BancoDeDados.getBancoCliente());
+            BancoDeDados.leBDTamanho(BancoDeDados.getBancoTamanho());
+            BancoDeDados.leBDPizzaSalgada(BancoDeDados.getBancoPizzaSalgada());
+            BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
+            
+            //seleciona a pizza
+            PizzaSalgada pizzaSalgada;
+            PizzaDoce pizzaDoce;
+            List<Pizza> pizzas = new ArrayList<>();
+            if(listaPizzaDocePedido.getSelectedValue() == null && listaPizzaSalgadaPedido.getSelectedValue() == null) {
+                JOptionPane.showMessageDialog(null, "Por favor, selecione uma pizza! *fazer exceção*");
+            } else if(listaPizzaDocePedido.getSelectedValue() == null) {
+                pizzaSalgada = selecionaPizzaSalgada(listaPizzaSalgadaPedido.getSelectedValue());
+                pizzas.add(pizzaSalgada);
+            } else if(listaPizzaSalgadaPedido.getSelectedValue() == null) {
+                pizzaDoce = selecionaPizzaDoce(listaPizzaDocePedido.getSelectedValue());
+                pizzas.add(pizzaDoce);
+            } else {
+                pizzaSalgada = selecionaPizzaSalgada(listaPizzaSalgadaPedido.getSelectedValue());
+                pizzaDoce = selecionaPizzaDoce(listaPizzaDocePedido.getSelectedValue());
+                pizzas.add(pizzaDoce);
+                pizzas.add(pizzaSalgada);
+            }
+            
+            //seleciona o tamanho
+            Tamanho tamanho = selecionaTamanho(JRadioButtonTamanho.getText());
+            if(tamanho == null) {
+                JOptionPane.showMessageDialog(null, "Por favor, selecione um tamanho");
+            }
+            
+            //seleciona a forma de pagamento
+            System.out.println(CBPagamentoPedido.getSelectedItem().toString());
+            
+            Pedido pedido = new Pedido(Cliente.getClienteLogado(),CBPagamentoPedido.getSelectedItem().toString(),pizzas,tamanho);
+            
+            JOptionPane.showMessageDialog(null, "Pedido Realizado!");
+            
+//            System.out.println(pedido.getPizza().getNome());
+        } catch (IOException e) {
+            System.out.println("error");
+        } 
+    }//GEN-LAST:event_finalizaProdutoActionPerformed
+
+    private void listaPizzaDocePedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listaPizzaDocePedidoAncestorAdded
+        // TODO add your handling code here:
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
+            DefaultListModel model = new DefaultListModel();
+            for(PizzaDoce pizza : PizzaDoce.getListaPizzasDoces()) {
+                model.addElement(pizza.getNome());
+            }
+            listaPizzaDocePedido.setModel(model);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }//GEN-LAST:event_listaPizzaDocePedidoAncestorAdded
+
+    private void listaPizzaDocePedidoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPizzaDocePedidoValueChanged
+        // TODO add your handling code here:
+        if(listaPizzaDocePedido.getSelectedValue() != null) {
+            DefaultTableModel model = (DefaultTableModel)tableIngredientePizzasDocesPedido.getModel();
+            PizzaDoce pizzaSelecionada = new PizzaDoce();
+            model.setNumRows(0);
+
+            //escreve no input nome o nome da pizza selecionada
+            txtNomePizzaDocePedido.setText(listaPizzaDocePedido.getSelectedValue());
+
+            try {
+                BancoDeDados banco = new BancoDeDados();
+                BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
+                //pega qual pizza que foi selecionada na lista
+                BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
+                for(PizzaDoce pizza : PizzaDoce.getListaPizzasDoces()) {
+                    if(pizza.getNome().equals(listaPizzaDocePedido.getSelectedValue())) {
+                        pizzaSelecionada = pizza;
+                    }
+                }
+
+                for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
+                    for(Ingrediente aux : pizzaSelecionada.getListaIngredientes()) {
+                        if(aux.getNome().equals(ingre.getNome())) {
+                            model.addRow(new Object[]{ingre.getNome()});
+                            break;
+                        }
+                    }
+                }
+                tableIngredientePizzasDocesPedido.setModel(model);
+                btnEditPizzaDoce.setEnabled(true);
+            } catch (IOException e) {
+                System.out.println("erro");
+            }
+        }
+    }//GEN-LAST:event_listaPizzaDocePedidoValueChanged
+
+    private void listaPizzaSalgadaPedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listaPizzaSalgadaPedidoAncestorAdded
+        // TODO add your handling code here:
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPizzaSalgada(BancoDeDados.getBancoPizzaSalgada());
+            DefaultListModel model = new DefaultListModel();
+            for(PizzaSalgada pizza : PizzaSalgada.getListaPizzasSalgadas()) {
+                model.addElement(pizza.getNome());
+            }
+            listaPizzaSalgadaPedido.setModel(model);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }//GEN-LAST:event_listaPizzaSalgadaPedidoAncestorAdded
+
+    private void listaPizzaSalgadaPedidoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPizzaSalgadaPedidoValueChanged
+        // TODO add your handling code here:
+        if(listaPizzaSalgadaPedido.getSelectedValue() != null) {
+            DefaultTableModel model = (DefaultTableModel)tableIngredientePizzaSalgadaPedido.getModel();
+            PizzaSalgada pizzaSelecionada = new PizzaSalgada();
+            model.setNumRows(0);
+
+            //escreve no input nome o nome da pizza selecionada
+            txtNomePizzaSalgadaPedido.setText(listaPizzaSalgadaPedido.getSelectedValue());
+
+            try {
+                BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());
+                //pega qual pizza que foi selecionada na lista
+                for(PizzaSalgada pizza : PizzaSalgada.getListaPizzasSalgadas()) {
+                    if(pizza.getNome().equals(listaPizzaSalgadaPedido.getSelectedValue())) {
+                        pizzaSelecionada = pizza;
+                    }
+                }
+                for(Ingrediente ingre : Ingrediente.getlistaIngrediente()) {
+                    for(Ingrediente aux : pizzaSelecionada.getListaIngredientes()) {
+                        if(aux.getNome().equals(ingre.getNome())) {
+                            model.addRow(new Object[]{ingre.getNome()});
+                            break;
+                        }
+                    }
+                }
+                tableIngredientePizzaSalgadaPedido.setModel(model);
+                btnEditPizzaSalgada.setEnabled(true);
+            } catch (IOException e) {
+                System.out.println("erro");
+            }
+        }
+    }//GEN-LAST:event_listaPizzaSalgadaPedidoValueChanged
+
+    private void btnEditPizzaSalgadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPizzaSalgadaActionPerformed
+        // TODO add your handling code here:
+        if(listaPizzaSalgadaPedido.getSelectedValue() != null) {
+            listaPizzaSalgadaPedido.removeSelectionInterval(listaPizzaSalgadaPedido.getSelectedIndex(), listaPizzaSalgadaPedido.getSelectedIndex());
+            txtNomePizzaSalgadaPedido.setText("");
+            DefaultTableModel model = (DefaultTableModel)tableIngredientePizzaSalgadaPedido.getModel();
+            model.setNumRows(0);
+            tableIngredientePizzaSalgadaPedido.setModel(model);
+        }
+    }//GEN-LAST:event_btnEditPizzaSalgadaActionPerformed
+
+    private void btnDellIngre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDellIngre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDellIngre1ActionPerformed
+
+    private void btnEditPizzaDoceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPizzaDoceActionPerformed
+        // TODO add your handling code here:
+        if(listaPizzaDocePedido.getSelectedValue() != null) {
+            listaPizzaDocePedido.removeSelectionInterval(listaPizzaDocePedido.getSelectedIndex(), listaPizzaDocePedido.getSelectedIndex());
+            txtNomePizzaDocePedido.setText("");
+            DefaultTableModel model = (DefaultTableModel)tableIngredientePizzasDocesPedido.getModel();
+            model.setNumRows(0);
+            tableIngredientePizzasDocesPedido.setModel(model);
+        }
+        
+    }//GEN-LAST:event_btnEditPizzaDoceActionPerformed
+
+    private void ListProdutoPedidoComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_ListProdutoPedidoComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListProdutoPedidoComponentAdded
+
+    private void ListProdutoPedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ListProdutoPedidoAncestorAdded
+        // TODO add your handling code here:
+        try {
+            BancoDeDados.leBDProduto(BancoDeDados.getBancoProduto());
+            DefaultListModel listaProdutosModelo = new DefaultListModel();
+            for(Produto prod : Produto.getListaProdutos()) {
+                listaProdutosModelo.addElement(prod.getNome());
+            }
+            ListProdutoPedido.setModel(listaProdutosModelo);
+        } catch (IOException e) {
+            System.out.println("Error");
+        }
+    }//GEN-LAST:event_ListProdutoPedidoAncestorAdded
+
+    private void ListProdutoPedidoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListProdutoPedidoValueChanged
+        // TODO add your handling code here:
+        if(ListProdutoPedido.getSelectedValue() != null) {
+            txtNomeProdPedido.setText(ListProdutoPedido.getSelectedValue().toString());
+            btnDesmarcarProdutoPedido.setEnabled(true);
+            for (Produto prod : Produto.getListaProdutos()) {
+                if (ListProdutoPedido.getSelectedValue().toString().equals(prod.getNome())) {
+                    txtValorProdPedido.setText(String.valueOf(prod.getValor()));
+                }
+            }
+        }
+    }//GEN-LAST:event_ListProdutoPedidoValueChanged
+
+    private void txtNomeProdPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdPedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeProdPedidoActionPerformed
+
+    private void btnDesmarcarProdutoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesmarcarProdutoPedidoActionPerformed
+        // TODO add your handling code here:
+        if(ListProdutoPedido.getSelectedValue() != null) {
+            ListProdutoPedido.removeSelectionInterval(ListProdutoPedido.getSelectedIndex(), ListProdutoPedido.getSelectedIndex());
+            txtNomeProdPedido.setText("");
+            txtValorProdPedido.setText("");
+        }
+    }//GEN-LAST:event_btnDesmarcarProdutoPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,19 +888,51 @@ public class FazerPedido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBPagamentoPedido;
+    private javax.swing.JList<String> ListProdutoPedido;
+    private javax.swing.JButton btnDellIngre1;
+    private javax.swing.JButton btnDesmarcarProdutoPedido;
+    private javax.swing.JButton btnEditPizzaDoce;
+    private javax.swing.JButton btnEditPizzaSalgada;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.JButton finalizaProduto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panelPizzaPedido;
-    private javax.swing.JPanel panelProdutoPedido;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JList<String> listaPizzaDocePedido;
+    private javax.swing.JList<String> listaPizzaSalgadaPedido;
     private javax.swing.JPanel panelTamanhosPedido;
+    private javax.swing.JTable tableIngredientePizzaSalgadaPedido;
+    private javax.swing.JTable tableIngredientePizzasDocesPedido;
+    private javax.swing.JTextField txtNomePizzaDoce6;
+    private javax.swing.JTextField txtNomePizzaDocePedido;
+    private javax.swing.JTextField txtNomePizzaSalgadaPedido;
+    private javax.swing.JTextField txtNomeProdPedido;
+    private javax.swing.JTextField txtValorProdPedido;
     // End of variables declaration//GEN-END:variables
 }
