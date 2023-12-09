@@ -5,18 +5,14 @@ import java.util.*;
 public class Pizza {
     private String nome;
     private List<Ingrediente> listaIngredientes;
-//    private Tamanho tamanhoPizza;
 
     public Pizza(String nome, List<Ingrediente> listaIngredientes) {
         this.nome = nome;
         this.listaIngredientes = listaIngredientes;
-//        this.tamanhoPizza = tamanhoPizza;
     }
 
     public Pizza() {
     }
-    
-    
 
     public String getNome() {
         return nome;
@@ -33,12 +29,4 @@ public class Pizza {
     public void setListaIngredientes(List<Ingrediente> listaIngredientes) {
         this.listaIngredientes = listaIngredientes;
     }
-
-//    public Tamanho getTamanhoPizza() {
-//        return tamanhoPizza;
-//    }
-//
-//    public void setTamanhoPizza(Tamanho tamanhoPizza) {
-//        this.tamanhoPizza = tamanhoPizza;
-//    }
 }

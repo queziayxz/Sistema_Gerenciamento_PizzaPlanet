@@ -37,12 +37,5 @@ public class PizzaSalgada extends Pizza{
         PizzaSalgada pizza = (PizzaSalgada) obj;
         return Objects.equals(pizza.getNome(),super.getNome());
     }
-
-//    @Override
-//    public int hashCode() {
-//        return Object.hash(super.getNome());
-//    }
-    
-    
     
 }

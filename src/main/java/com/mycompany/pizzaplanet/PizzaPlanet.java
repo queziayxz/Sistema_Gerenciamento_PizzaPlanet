@@ -22,13 +22,13 @@ import javax.swing.*;
 public class PizzaPlanet {
 
     public static void main(String[] args) {
-        //amém!!!
+
         try {
+
             BancoDeDados banco = new BancoDeDados();
             Cadastro telaCadastro = new Cadastro();
             telaCadastro.setVisible(true);
-//            AcompanharPedido acomp = new AcompanharPedido();
-//            acomp.setVisible(true);
+
         } catch (Exception e) {
             System.out.println("Cliente nao cadastrado");
         }

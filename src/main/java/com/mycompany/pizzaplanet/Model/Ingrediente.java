@@ -14,8 +14,6 @@ public class Ingrediente {
     public Ingrediente(String nome, String categoria) {
         this.nome = nome;
         this.categoria = categoria;
-//        Ingrediente.listaIngrediente ;
-//        quantidadeAdicionada = new ArrayList<>();
     }
 
     public Ingrediente() {

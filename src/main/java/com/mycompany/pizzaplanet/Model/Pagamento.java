@@ -2,13 +2,11 @@ package com.mycompany.pizzaplanet.Model;
 
 import java.util.*;
 
-
 abstract public class Pagamento {
     double valor;
     String nome;
     static List<Pagamento> listaPix = new ArrayList<>();
     static List<Pagamento> listaCartao = new ArrayList<>();
-
 
     public Pagamento(double valor) {
         this.valor = valor;
@@ -29,8 +27,6 @@ abstract public class Pagamento {
     public static void setListaCartao(List<Pagamento> listaCartao) {
         Pagamento.listaCartao = listaCartao;
     }
-    
-    
     
     abstract public double retornaTotal();
 

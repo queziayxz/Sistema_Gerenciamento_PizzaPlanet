@@ -34,11 +34,6 @@ public class IngredienteController {
     }
     
     public static void edita(Ingrediente ingreBanco, Ingrediente ingreNovo) throws CampoVazio, IOException {
-//        if("".equals(nomeEdita)) {
-//            throw new CampoVazio();
-//        }
-        
-        System.out.println(ingreBanco.getNome());
 
         try {
             BancoDeDados.leBDIngrediente(BancoDeDados.getBancoIngrediente());

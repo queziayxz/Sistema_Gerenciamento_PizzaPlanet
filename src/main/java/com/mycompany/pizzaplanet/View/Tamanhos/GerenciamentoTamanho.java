@@ -353,9 +353,6 @@ public class GerenciamentoTamanho extends javax.swing.JFrame {
 
     private void jMenuItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseClicked
         // TODO add your handling code here:
-//        this.dispose();
-//        GerenciamentoPizza indexP = new GerenciamentoPizza();
-//        indexP.setVisible(true);
     }//GEN-LAST:event_jMenuItem4MouseClicked
 
     /**

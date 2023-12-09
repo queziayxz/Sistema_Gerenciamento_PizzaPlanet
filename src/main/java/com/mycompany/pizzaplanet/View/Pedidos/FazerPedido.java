@@ -44,16 +44,8 @@ public class FazerPedido extends javax.swing.JFrame {
      */
     public FazerPedido() {
         initComponents();
-        //inicializa o painel dos tamanhos
         panelTamanhosPedido.setLayout(new FlowLayout());
         panelTamanhosPedido.setPreferredSize(new Dimension(300, 200));
-        //inicializa o painel das pizzas
-//        panelPizzaPedido.setLayout(new FlowLayout());
-//        panelPizzaPedido.setPreferredSize(new Dimension(300, 200));
-//        //inicializa o painel dos produtos
-//        panelProdutoPedido.setLayout(new FlowLayout());
-//        panelProdutoPedido.setPreferredSize(new Dimension(300, 200));
-//        //inicializa o painel dos pagamentos
     }
 
     /**
@@ -607,7 +599,6 @@ public class FazerPedido extends javax.swing.JFrame {
                 }
             }
             
-            
         } catch (IOException e) {
             System.out.println("error");
         }
@@ -625,7 +616,6 @@ public class FazerPedido extends javax.swing.JFrame {
                 }
             }
             
-            
         } catch (IOException e) {
             System.out.println("error");
         }
@@ -642,7 +632,6 @@ public class FazerPedido extends javax.swing.JFrame {
                     return produto;
                 }
             }
-            
             
         } catch (IOException e) {
             System.out.println("error");

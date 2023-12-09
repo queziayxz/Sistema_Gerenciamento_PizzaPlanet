@@ -57,7 +57,6 @@ public class DashboardCliente extends javax.swing.JFrame {
          // Substitua por sua fonte desejada
         JTableHeader cabecalho = tableTamanho.getTableHeader();
         cabecalho.setFont(fonteCabecalho);
-//        CBPizzasSalgadas = new javax.swing.JComboBox<>();
     }
 
     /**
@@ -431,7 +430,6 @@ public class DashboardCliente extends javax.swing.JFrame {
                 
                 panel.add(nome);
                 nome.setVisible(true);
-//                System.out.println(nome.getText());
                 SPPizzaSalgada.add(panel);
                 SPPizzaSalgada.revalidate();
                 SPPizzaSalgada.repaint();
@@ -448,7 +446,6 @@ public class DashboardCliente extends javax.swing.JFrame {
     private void panelPizzaDoceAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelPizzaDoceAncestorAdded
         // TODO add your handling code here:
         try {
-//            System.out.println("entrou");
             BancoDeDados banco = new BancoDeDados();
             BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
             for(PizzaDoce pizza : PizzaDoce.getListaPizzasDoces()) {
@@ -486,7 +483,6 @@ public class DashboardCliente extends javax.swing.JFrame {
     private void panelPizzaSalgadaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelPizzaSalgadaAncestorAdded
         // TODO add your handling code here:
          try {
-//            System.out.println("entrou");
             BancoDeDados banco = new BancoDeDados();
             BancoDeDados.leBDPizzaSalgada(BancoDeDados.getBancoPizzaSalgada());
             for(PizzaSalgada pizza : PizzaSalgada.getListaPizzasSalgadas()) {
@@ -506,13 +502,9 @@ public class DashboardCliente extends javax.swing.JFrame {
                         ingredientes.setText(ingredientes.getText()+", "+ingre.getNome());
                     }
                 }
-//                
+
                 panelPizzaSalgada.add(nome);
                 panelPizzaSalgada.add(ingredientes);
-//                SPPizzaSalgada.revalidate();
-//                SPPizzaSalgada.repaint();
-                
-                
                 
                 pack();
             }
@@ -550,13 +542,6 @@ public class DashboardCliente extends javax.swing.JFrame {
 
     
     private void addRadioButton(String label) {
-
-//        // Adiciona um ActionListener para lidar com eventos de seleção
-//        radioButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                System.out.println("Selecionado: " + label);
-//            }
-//        });
     }
     
     /**

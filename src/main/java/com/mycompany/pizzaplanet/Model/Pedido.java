@@ -34,8 +34,6 @@ public class Pedido implements Serializable {
         this.valorTotal = valorTotal;
         this.status = status;
     }
-    
-    
 
     public Pedido(String formaPagamento) {
         this.formaPagamento = formaPagamento;

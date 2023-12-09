@@ -128,7 +128,6 @@ public class AdicionaIngrediente extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Ingrediente.validaCampoVazioCadastro(txtNomeIngre.getText().trim());
-//            Ingrediente.validaCampoInteiro(txtQuantIngre.getText().trim());
             Ingrediente ingredienteCadastro = new Ingrediente(txtNomeIngre.getText().trim(), CBCategoria.getSelectedItem().toString());
             IngredienteController.adiciona(ingredienteCadastro);
             JOptionPane.showMessageDialog(null, "Ingrediente adicionado com sucesso!!");

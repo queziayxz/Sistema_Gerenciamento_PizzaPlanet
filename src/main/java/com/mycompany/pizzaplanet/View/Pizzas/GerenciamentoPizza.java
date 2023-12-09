@@ -504,9 +504,6 @@ public class GerenciamentoPizza extends javax.swing.JFrame {
     Object valorSelecionadoAnterior = null;
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
-//        this.dispose();
-//        GerenciamentoIngrediente indexI = new GerenciamentoIngrediente();
-//        indexI.setVisible(true);
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked

@@ -8,10 +8,6 @@ import com.mycompany.pizzaplanet.Model.Pix;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/**
- *
- * @author Giovanni
- */
 public class PagamentoController {
         
     public static void adicionaPix(Pagamento pagamento) throws IOException {

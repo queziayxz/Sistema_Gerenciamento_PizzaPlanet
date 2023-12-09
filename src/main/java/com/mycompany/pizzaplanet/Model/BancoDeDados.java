@@ -1,6 +1,5 @@
 package com.mycompany.pizzaplanet.Model;
 
-
 //import das models
 import com.mycompany.pizzaplanet.Model.Administrador;
 import com.mycompany.pizzaplanet.Model.Cliente;
@@ -8,14 +7,9 @@ import com.mycompany.pizzaplanet.Model.Cliente;
 import java.util.*;
 import javax.swing.*;
 import com.google.gson.*;
-//import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.mycompany.pizzaplanet.Excecoes.ErroValorNumerico;
-//import java.io.BufferedReader;
 import java.io.*;
-//import java.io.FileReader;
-//import java.io.FileWriter;
-//import java.io.IOException;
 import java.lang.reflect.Type;
 
 public class BancoDeDados {
@@ -31,9 +25,6 @@ public class BancoDeDados {
     private static File bancoPagamentoCartao;
     private static File bancoPedido;
     
-
-//    private static List<Cliente> listaDeCliente;
-//    private static List<Administrador> listaDeAdministrador;
     
     public BancoDeDados() {
         BancoDeDados.bancoCliente = new File(this.pastaBanco+"\\BancoDeDadosCliente.json");
@@ -72,7 +63,6 @@ public class BancoDeDados {
         FileWriter writer = new FileWriter(bancoDeDados,true);
         BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
         if(arquivoJson.ready()) {
-//        System.out.println("entrou");
             try {
                 Type type = new TypeToken<List<Administrador>>(){}.getType();
                 Administrador.setListaAdm(gson.fromJson(arquivoJson, type));
@@ -90,7 +80,6 @@ public class BancoDeDados {
         FileWriter writer = new FileWriter(bancoDeDados,true);
         BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
         if(arquivoJson.ready()) {
-//        System.out.println("entrou");
             try {
                 Type type = new TypeToken<List<Ingrediente>>(){}.getType();
                 Ingrediente.setlistaIngrediente(gson.fromJson(arquivoJson, type));

@@ -273,9 +273,6 @@ public class AdicionaPizzaDoce extends javax.swing.JFrame {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
-        //        this.dispose();
-        //        GerenciamentoIngrediente indexI = new GerenciamentoIngrediente();
-        //        indexI.setVisible(true);
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
