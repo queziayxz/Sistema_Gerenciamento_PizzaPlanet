@@ -2,7 +2,7 @@ package com.mycompany.pizzaplanet.Model;
 
 import java.util.*;
 
-public abstract class Pizza {
+public class Pizza {
     private String nome;
     private List<Ingrediente> listaIngredientes;
 //    private Tamanho tamanhoPizza;

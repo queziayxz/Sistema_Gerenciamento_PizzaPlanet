@@ -45,10 +45,6 @@ public class PedidoController {
             BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
             Pedido.getListaPedidos().add(pedido);
             
-            for(Pedido pedidoteste : Pedido.getListaPedidos()) {
-                System.out.println(pedidoteste.getFormaPagamento());
-            }
-            
             String arquivoPedido = gson.toJson(Pedido.getListaPedidos());
             FileWriter writer = new FileWriter(BancoDeDados.getBancoPedido());
             writer.write(arquivoPedido);

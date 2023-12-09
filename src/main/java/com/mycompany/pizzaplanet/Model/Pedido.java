@@ -1,10 +1,10 @@
 package com.mycompany.pizzaplanet.Model;
 
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
-public class Pedido {
+public class Pedido implements Serializable {
     private Cliente cliente;
     private String formaPagamento;
     private List<Pizza> pizza;
@@ -23,7 +23,22 @@ public class Pedido {
         this.tamanho = tamanho;
         this.produto = new Produto();
     }
+    
+    public Pedido(String formaPagamento, List<Pizza> pizza, Tamanho tamanho, Produto produto, double valorTotal) {
+        this.cliente = cliente;
+        this.formaPagamento = formaPagamento;
+        this.pizza = pizza;
+        this.tamanho = tamanho;
+        this.produto = produto;
+        this.valorTotal = valorTotal;
+    }
+    
+    
 
+    public Pedido(String formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
+    
     //getters e setters
     public Cliente getCliente() {
         return cliente;
@@ -80,10 +95,7 @@ public class Pedido {
     }
 
     public static void setListaPedidos(List<Pedido> listaPedidos) {
-        for(Pedido pedido : listaPedidos) {
-            System.out.println(pedido.getProduto().getNome());
-        }
-//        Pedido.listaPedidos = listaPedidos;
+        Pedido.listaPedidos = listaPedidos;
     }
     
     public static void verificaPizzaTamanhoVazia(String pizzaSalgada, String pizzaDoce, Tamanho tamanho)throws CampoVazio {

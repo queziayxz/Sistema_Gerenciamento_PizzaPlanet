@@ -216,15 +216,8 @@ public class BancoDeDados {
         if(arquivoJson.ready()) {
             try {
                 Type type = new TypeToken<List<Pedido>>(){}.getType();
-//                System.out.println(Pedido.getListaPedidos().size());
-                Pedido.setListaPedidos(gson.fromJson(arquivoJson, type));
-//                System.out.println(type.getTypeName());
-//                List<Pedido> listaNova = Arrays.asList(gson.fromJson(arquivoJson, type));
-//                for(Pedido pedido : listaNova) {
-//                    System.out.println(pedido.getFormaPagamento());
-//                }
-                
-//                System.out.println(Pedido.getListaPedidos().size());
+                List<Pedido> pedido = gson.fromJson(arquivoJson,type);
+                Pedido.setListaPedidos(pedido);
             } catch (Exception e) {
                 throw new IOException();
             } finally {
@@ -283,11 +276,14 @@ public class BancoDeDados {
         try {
             BancoDeDados banco = new BancoDeDados();
             leBDPedido(BancoDeDados.getBancoPedido());
-            for(Pedido pedido : Pedido.getListaPedidos()) {
-                System.out.println(pedido.getProduto().getNome());
-            }
+            String arquivo = "{'formaPagamento':'Pix','pizza':[{'nome':'Banana com Chocolate','listaI'ngredientes':[{'nome''Banana','categoria':'Doce'},{'nome':'Chocolate','categoria':'Doce'}]}],'tamanho':{'nome':'Pequeno','quantidadePecas':6,'valor':30.0},'produto':{'nome':'Refrigerante Mantiqueira','valor':6.0,'quantidade':20},'valorTotal':36.0}";
+            String nova = "{\"formaPagamento\":\"Pix\",\"pizza\":[{\"nome\":\"Banana com Chocolate\",\"listaIngredientes\":[{\"nome\":\"Banana\",\"Categoria\",\"Doce\"},{\"nome\":\"Chocolate\",\"Categoria\":\"Doce\"}]}],\"tamanho\":{\"nome\":\"Pequeno\",\"quantidadePecas\":\"6\",\"valor\":\"30.0\"},\"produto\":{\"nome:\":\"Refrigerante Mantigueira\",\"valor\":\"6.0\",\"quantidade\":\"20\"},\"valorTotal\":\"36.6\"}";
+            String novamente = "[{\"formaPagamento\":\"Pix\",\"pizza\":[{\"nome\":\"Banana com Chocolate\",\"listaIngredientes\":[{\"nome\":\"Banana\",\"categoria\":\"Doce\"},{\"nome\":\"Chocolate\",\"categoria\":\"Doce\"}]}],\"tamanho\":{\"nome\":\"Pequeno\",\"quantidadePecas\":6,\"valor\":30.0},\"produto\":{\"nome\":\"Refrigerante Mantiqueira\",\"valor\":6.0,\"quantidade\":20},\"valorTotal\":36.0}]";
+            Gson gson = new Gson();
+            
+            
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("error");
         }
         
     }
