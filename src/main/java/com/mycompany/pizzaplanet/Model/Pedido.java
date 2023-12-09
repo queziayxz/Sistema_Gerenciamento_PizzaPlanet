@@ -1,5 +1,6 @@
 package com.mycompany.pizzaplanet.Model;
 
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,4 +61,10 @@ public class Pedido {
         this.valorTotal = valorTotal;
     }
     
+    public static void verificaPizzaTamanhoVazia(String pizzaSalgada, String pizzaDoce, Tamanho tamanho)throws CampoVazio {
+        if(pizzaSalgada == null && pizzaDoce == null)
+            throw new CampoVazio();
+        if(tamanho == null)
+            throw new CampoVazio();
+    }    
 }

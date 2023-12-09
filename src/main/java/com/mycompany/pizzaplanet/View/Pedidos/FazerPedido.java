@@ -642,13 +642,18 @@ public class FazerPedido extends javax.swing.JFrame {
             BancoDeDados.leBDPizzaSalgada(BancoDeDados.getBancoPizzaSalgada());
             BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
             
+            //seleciona o tamanho
+            Tamanho tamanho = selecionaTamanho(JRadioButtonTamanho.getText());
+            
             //seleciona a pizza
             PizzaSalgada pizzaSalgada;
             PizzaDoce pizzaDoce;
             List<Pizza> pizzas = new ArrayList<>();
-            if(listaPizzaDocePedido.getSelectedValue() == null && listaPizzaSalgadaPedido.getSelectedValue() == null) {
-                JOptionPane.showMessageDialog(null, "Por favor, selecione uma pizza! *fazer exceção*");
-            } else if(listaPizzaDocePedido.getSelectedValue() == null) {
+            
+            //verifica na exceção se pizza doce e salgada estão vazias ou o tamanho está vazio
+            Pedido.verificaPizzaTamanhoVazia(listaPizzaSalgadaPedido.getSelectedValue(), listaPizzaDocePedido.getSelectedValue(),tamanho);
+            
+            if(listaPizzaDocePedido.getSelectedValue() == null) {
                 pizzaSalgada = selecionaPizzaSalgada(listaPizzaSalgadaPedido.getSelectedValue());
                 pizzas.add(pizzaSalgada);
             } else if(listaPizzaSalgadaPedido.getSelectedValue() == null) {
@@ -660,23 +665,18 @@ public class FazerPedido extends javax.swing.JFrame {
                 pizzas.add(pizzaDoce);
                 pizzas.add(pizzaSalgada);
             }
-            
-            //seleciona o tamanho
-            Tamanho tamanho = selecionaTamanho(JRadioButtonTamanho.getText());
-            if(tamanho == null) {
-                JOptionPane.showMessageDialog(null, "Por favor, selecione um tamanho");
-            }
-            
-            //seleciona a forma de pagamento
-            System.out.println(CBPagamentoPedido.getSelectedItem().toString());
-            
+
+            //cria o pedido
             Pedido pedido = new Pedido(Cliente.getClienteLogado(),CBPagamentoPedido.getSelectedItem().toString(),pizzas,tamanho);
+            
             
             JOptionPane.showMessageDialog(null, "Pedido Realizado!");
             
-//            System.out.println(pedido.getPizza().getNome());
+//            System.out.println(pedido.getTamanho().getNome());
         } catch (IOException e) {
-            System.out.println("error");
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (CampoVazio e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         } 
     }//GEN-LAST:event_finalizaProdutoActionPerformed
 
