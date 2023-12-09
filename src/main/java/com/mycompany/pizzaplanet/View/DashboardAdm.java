@@ -94,8 +94,6 @@ public class DashboardAdm extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jLabel7.setText("Pedidos em Produção");
 
-        jPanel3.setBackground(new java.awt.Color(255, 153, 153));
-
         listPedidoSolicitado.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         listPedidoSolicitado.setMaximumSize(new java.awt.Dimension(70, 95));
         listPedidoSolicitado.setPreferredSize(new java.awt.Dimension(60, 95));
@@ -229,8 +227,6 @@ public class DashboardAdm extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel4.setBackground(new java.awt.Color(255, 204, 204));
 
         listPedidosProducao.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         listPedidosProducao.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -500,7 +496,6 @@ public class DashboardAdm extends javax.swing.JFrame {
                     model.addElement(pedidoProducao.getCliente().getNome());
                 }
             }
-            
             listPedidosProducao.setModel(model);
             
             //cria o modelo da lista de pedido solicitado
@@ -510,8 +505,16 @@ public class DashboardAdm extends javax.swing.JFrame {
                     modelSoli.addElement(pedidoSolicitado.getCliente().getNome());
                 }
             }
-            
             listPedidoSolicitado.setModel(modelSoli);
+            
+            //limpando os campos da lista solicitada
+            txtNomeClienteListSoli.setText("");
+            txtEnderecoClienteListSoli.setText("");
+            txtProdSoli.setText("");
+            txtTamanhoListSoli.setText("");
+            DefaultListModel modelLimpar = new DefaultListModel();
+            modelLimpar.setSize(0);
+            listPizzaSoli.setModel(modelLimpar);
             
         } catch (IOException e) {
             System.out.println("error");
@@ -529,14 +532,24 @@ public class DashboardAdm extends javax.swing.JFrame {
             //cria o modelo da lista de produção
             DefaultListModel model = new DefaultListModel();
             for(Pedido pedidoProducao : Pedido.getListaPedidos()) {
-                if(pedidoProducao.getStatus().equals("Finaliza")) {
+                if(pedidoProducao.getStatus().equals("Em Produção")) {
                     System.out.println(pedidoProducao.getCliente().getNome());
                     model.addElement(pedidoProducao.getCliente().getNome());
                 }
             }
-            
             listPedidosProducao.setModel(model);
-
+            
+            //limpa os campos dos inputs
+            txtNomeClienteProducao.setText("");
+            txtEnderecoClienteProducao.setText("");
+            txtTamanhoProducao.setText("");
+            txtProdProducao.setText("");
+            txtFormaPagamentoProducao.setText("");
+            txtValorTotalProducao.setText("");
+            
+            DefaultListModel modelLimpa = new DefaultListModel();
+            modelLimpa.setSize(0);
+            listPizzaProducao.setModel(modelLimpa);
             
         } catch (IOException e) {
             System.out.println("error");
