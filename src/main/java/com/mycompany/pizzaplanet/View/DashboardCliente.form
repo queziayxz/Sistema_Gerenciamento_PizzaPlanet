@@ -16,6 +16,7 @@
             <Property name="text" type="java.lang.String" value="Logout"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu2MouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu2ActionPerformed"/>
           </Events>
         </Menu>
@@ -334,6 +335,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Acompanhe seu Pedido!"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_acompanharPedidoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnFazerPedido">
               <Properties>

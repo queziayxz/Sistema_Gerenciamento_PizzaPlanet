@@ -90,7 +90,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextPane" name="jTextPane1">
+            <Component class="javax.swing.JTextPane" name="TPLogin">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -98,7 +98,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Monospaced" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Aqui vir&#xe1; um texto falando um pouco&#xa;sobre a pizzaria&#xa;bem legal isso"/>
+                <Property name="text" type="java.lang.String" value="Bem vindo a PizzaPlanet!&#xa;&#xa;N&#xf3;s somos uma pizzaria tradicional, reconhecida por nossas deliciosas pizzas h&#xe1; mais de 33 anos!&#xa;S&#xf3; n&#xe3;o somos mais velhos que o nosso cliente mais fiel, Gleiph Ghiotto!"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>

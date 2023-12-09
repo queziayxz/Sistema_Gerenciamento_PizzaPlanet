@@ -6,6 +6,7 @@ import com.mycompany.pizzaplanet.Model.Ingrediente;
 import com.mycompany.pizzaplanet.Model.PizzaDoce;
 import com.mycompany.pizzaplanet.Model.PizzaSalgada;
 import com.mycompany.pizzaplanet.Model.Tamanho;
+import com.mycompany.pizzaplanet.View.Pedidos.AcompanharPedido;
 import com.mycompany.pizzaplanet.View.Pedidos.FazerPedido;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -222,6 +223,11 @@ public class DashboardCliente extends javax.swing.JFrame {
         );
 
         btn_acompanharPedido.setText("Acompanhe seu Pedido!");
+        btn_acompanharPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_acompanharPedidoActionPerformed(evt);
+            }
+        });
 
         btnFazerPedido.setText("Faça seu Pedido!");
         btnFazerPedido.addActionListener(new java.awt.event.ActionListener() {
@@ -320,6 +326,11 @@ public class DashboardCliente extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Logout");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu2ActionPerformed(evt);
@@ -519,11 +530,23 @@ public class DashboardCliente extends javax.swing.JFrame {
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void btn_acompanharPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_acompanharPedidoActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        AcompanharPedido acompPedido = new AcompanharPedido();
+        acompPedido.setVisible(true);
+    }//GEN-LAST:event_btn_acompanharPedidoActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
         this.dispose();
         Login login = new Login();
         login.setVisible(true);
         Cliente.setClienteLogado(null);
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     
     private void addRadioButton(String label) {

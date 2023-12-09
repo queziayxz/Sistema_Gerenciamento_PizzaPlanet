@@ -56,7 +56,7 @@ public class PedidoController {
         }
     }
     
-    public static void deletaPedidoSolicitado(Pedido pedido) throws IOException {
+     public static void alteraStatusPedido(Pedido pedido, String status) throws IOException {
         try {
             Gson gson = new Gson();
             BancoDeDados banco = new BancoDeDados();
@@ -64,7 +64,8 @@ public class PedidoController {
             
             for(int i = 0; i < Pedido.getListaPedidos().size(); i++) {
                 if(pedido.getCliente().getNome().equals(Pedido.getListaPedidos().get(i).getCliente().getNome())) {
-                    Pedido.getListaPedidos().remove(i);
+                    pedido.setStatus(status);
+                    Pedido.getListaPedidos().set(i, pedido);
                     break;
                 }
             }
@@ -86,15 +87,20 @@ public class PedidoController {
         try {
             Gson gson = new Gson();
             BancoDeDados banco = new BancoDeDados();
-            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
+            BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
             
-            //adiciona o pedido a lista
-            Pedido.getListaPedidosProducao().add(pedido);
+            for(int i = 0; i < Pedido.getListaPedidos().size(); i++) {
+                if(pedido.getCliente().getNome().equals(Pedido.getListaPedidos().get(i).getCliente().getNome())) {
+                    pedido.setStatus("Em Produção");
+                    Pedido.getListaPedidos().set(i, pedido);
+                    break;
+                }
+            }
             
             //transforma a lista em json
-            String arquivoPedido = gson.toJson(Pedido.getListaPedidosProducao());
+            String arquivoPedido = gson.toJson(Pedido.getListaPedidos());
             //escreve no arquivo
-            FileWriter writer = new FileWriter(BancoDeDados.getBancoPedidoProducao());
+            FileWriter writer = new FileWriter(BancoDeDados.getBancoPedido());
             writer.write(arquivoPedido);
             writer.flush();
             writer.close();
@@ -103,4 +109,5 @@ public class PedidoController {
             System.out.println("error");
         }
     }
+    
 }

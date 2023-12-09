@@ -11,8 +11,8 @@ public class Pedido implements Serializable {
     private Tamanho tamanho;
     private Produto produto;
     private double valorTotal;
+    private String status;
     private static List<Pedido> listaPedidos = new ArrayList<>();
-    private static List<Pedido> listaPedidosProducao = new ArrayList<>();
 
     public Pedido() {
     }
@@ -25,13 +25,14 @@ public class Pedido implements Serializable {
         this.produto = new Produto();
     }
     
-    public Pedido(String formaPagamento, List<Pizza> pizza, Tamanho tamanho, Produto produto, double valorTotal) {
+    public Pedido(String formaPagamento, List<Pizza> pizza, Tamanho tamanho, Produto produto, double valorTotal, String status) {
         this.cliente = cliente;
         this.formaPagamento = formaPagamento;
         this.pizza = pizza;
         this.tamanho = tamanho;
         this.produto = produto;
         this.valorTotal = valorTotal;
+        this.status = status;
     }
     
     
@@ -97,12 +98,12 @@ public class Pedido implements Serializable {
         Pedido.listaPedidos = listaPedidos;
     }
 
-    public static List<Pedido> getListaPedidosProducao() {
-        return Pedido.listaPedidosProducao;
+    public String getStatus() {
+        return status;
     }
 
-    public static void setListaPedidosProducao(List<Pedido> listaPedidosProducao) {
-        Pedido.listaPedidosProducao = listaPedidosProducao;
+    public void setStatus(String status) {
+        this.status = status;
     }
     
     public static void verificaPizzaTamanhoVazia(String pizzaSalgada, String pizzaDoce, Tamanho tamanho)throws CampoVazio {

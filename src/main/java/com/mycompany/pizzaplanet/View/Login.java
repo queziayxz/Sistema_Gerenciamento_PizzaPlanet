@@ -12,6 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 public class Login extends javax.swing.JFrame {
 
@@ -20,6 +23,17 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        // Obtém o StyledDocument associado ao JTextPane
+        StyledDocument doc = TPLogin.getStyledDocument();
+
+        // Cria um conjunto de atributos simples para configurar o estilo
+        SimpleAttributeSet center = new SimpleAttributeSet();
+        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+
+        // Define o estilo para o documento
+        doc.setParagraphAttributes(0, doc.getLength(), center, false);
+
+        pack();
     }
 
     /**
@@ -34,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         paineiImagem = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        TPLogin = new javax.swing.JTextPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -50,11 +64,11 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\quezi\\OneDrive\\Documentos\\UFJF\\Orientação a Objetos\\Trabalho Final\\PizzaPlanet\\src\\main\\java\\com\\mycompany\\pizzaplanet\\Imagens\\Pizza - Copia.png")); // NOI18N
         jLabel2.setText("jLabel2");
 
-        jTextPane1.setBorder(null);
-        jTextPane1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jTextPane1.setText("Aqui virá um texto falando um pouco\nsobre a pizzaria\nbem legal isso");
-        jTextPane1.setEnabled(false);
-        jScrollPane2.setViewportView(jTextPane1);
+        TPLogin.setBorder(null);
+        TPLogin.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        TPLogin.setText("Bem vindo a PizzaPlanet!\n\nNós somos uma pizzaria tradicional, reconhecida por nossas deliciosas pizzas há mais de 33 anos!\nSó não somos mais velhos que o nosso cliente mais fiel, Gleiph Ghiotto!");
+        TPLogin.setEnabled(false);
+        jScrollPane2.setViewportView(TPLogin);
 
         javax.swing.GroupLayout paineiImagemLayout = new javax.swing.GroupLayout(paineiImagem);
         paineiImagem.setLayout(paineiImagemLayout);
@@ -276,6 +290,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane TPLogin;
     private javax.swing.JButton btn_login_adm;
     private javax.swing.JButton btn_login_cliente;
     private javax.swing.JLabel jLabel1;
@@ -285,7 +300,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JPanel paineiImagem;
     private javax.swing.JTextField txt_email;
     private javax.swing.JPasswordField txt_senha;

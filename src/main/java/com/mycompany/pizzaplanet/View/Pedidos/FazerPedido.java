@@ -696,6 +696,7 @@ public class FazerPedido extends javax.swing.JFrame {
             
             //calcula valor total do pedido
             PedidoController.calculaValor(pedido);
+            pedido.setStatus("Solicitado");
             
             //escreve no arquivo json
             PedidoController.adicionaPedido(pedido);

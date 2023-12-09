@@ -30,7 +30,6 @@ public class BancoDeDados {
     private static File bancoPagamentoPix;
     private static File bancoPagamentoCartao;
     private static File bancoPedido;
-    private static File bancoPedidoProducao;
     
 
 //    private static List<Cliente> listaDeCliente;
@@ -47,7 +46,6 @@ public class BancoDeDados {
         BancoDeDados.bancoPagamentoPix = new File(this.pastaBanco+"\\BancoDeDadosPagamentoPix.json");
         BancoDeDados.bancoPagamentoCartao = new File(this.pastaBanco+"\\BancoDeDadosPagamentoCartao.json");
         BancoDeDados.bancoPedido = new File(this.pastaBanco+"\\BancoDeDadosPedido.json");
-        BancoDeDados.bancoPedidoProducao = new File(this.pastaBanco+"\\BancoDeDadosPedidoProducao.json");
     }
     
     public static void leBD(File bancoDeDados) throws IOException
@@ -228,25 +226,6 @@ public class BancoDeDados {
             }
         }
     }
-    
-    public static void leBDPedidoProducao(File bancoDeDados) throws IOException
-    {
-        Gson gson = new Gson();
-        FileWriter writer = new FileWriter(bancoDeDados,true);
-        BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
-        if(arquivoJson.ready()) {
-            try {
-                Type type = new TypeToken<List<Pedido>>(){}.getType();
-                List<Pedido> pedido = gson.fromJson(arquivoJson,type);
-                Pedido.setListaPedidosProducao(pedido);
-            } catch (Exception e) {
-                throw new IOException();
-            } finally {
-                arquivoJson.close();
-                writer.close();
-            }
-        }
-    }
 
     public String getPastaBanco() {
         return pastaBanco;
@@ -290,14 +269,6 @@ public class BancoDeDados {
 
     public static File getBancoPedido() {
         return bancoPedido;
-    }
-
-    public static File getBancoPedidoProducao() {
-        return bancoPedidoProducao;
-    }
-
-    public static void setBancoPedidoProducao(File bancoPedidoProducao) {
-        BancoDeDados.bancoPedidoProducao = bancoPedidoProducao;
     }
     
 }

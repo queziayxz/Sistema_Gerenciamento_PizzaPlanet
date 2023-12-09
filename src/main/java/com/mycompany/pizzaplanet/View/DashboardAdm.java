@@ -168,16 +168,17 @@ public class DashboardAdm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnEnviarProducao)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
                     .addComponent(txtTamanhoListSoli, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                     .addComponent(txtEnderecoClienteListSoli)
                     .addComponent(txtNomeClienteListSoli)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(61, 61, 61)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEnviarProducao)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -270,6 +271,7 @@ public class DashboardAdm extends javax.swing.JFrame {
         jLabel11.setText("Pizzas Solicitadas:");
 
         btnFinalizaPedidoProducao.setText("Finalizar Pedido");
+        btnFinalizaPedidoProducao.setEnabled(false);
         btnFinalizaPedidoProducao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizaPedidoProducaoActionPerformed(evt);
@@ -467,9 +469,9 @@ public class DashboardAdm extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addComponent(jLabel1)
                 .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -483,18 +485,20 @@ public class DashboardAdm extends javax.swing.JFrame {
     private void btnEnviarProducaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarProducaoActionPerformed
         // TODO add your handling code here:
         try {
-            PedidoController.adicionaPedidoProducao(pedidoLista);
-            PedidoController.deletaPedidoSolicitado(pedidoLista);
+            PedidoController.alteraStatusPedido(pedidoLista,"Em Produção");
+//            PedidoController.deletaPedidoSolicitado(pedidoLista);
             
             BancoDeDados banco = new BancoDeDados();
-            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
+//            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
             BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
             
             //cria o modelo da lista de produção
             DefaultListModel model = new DefaultListModel();
-            for(Pedido pedidoProducao : Pedido.getListaPedidosProducao()) {
-                System.out.println(pedidoProducao.getCliente().getNome());
-                model.addElement(pedidoProducao.getCliente().getNome());
+            for(Pedido pedidoProducao : Pedido.getListaPedidos()) {
+                if(pedidoProducao.getStatus().equals("Em Produção")) {
+                    System.out.println(pedidoProducao.getCliente().getNome());
+                    model.addElement(pedidoProducao.getCliente().getNome());
+                }
             }
             
             listPedidosProducao.setModel(model);
@@ -502,7 +506,9 @@ public class DashboardAdm extends javax.swing.JFrame {
             //cria o modelo da lista de pedido solicitado
             DefaultListModel modelSoli = new DefaultListModel();
             for(Pedido pedidoSolicitado : Pedido.getListaPedidos()) {
-                modelSoli.addElement(pedidoSolicitado.getCliente().getNome());
+                if(pedidoSolicitado.getStatus().equals("Solicitado")) {
+                    modelSoli.addElement(pedidoSolicitado.getCliente().getNome());
+                }
             }
             
             listPedidoSolicitado.setModel(modelSoli);
@@ -514,6 +520,28 @@ public class DashboardAdm extends javax.swing.JFrame {
 
     private void btnFinalizaPedidoProducaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizaPedidoProducaoActionPerformed
         // TODO add your handling code here:
+        try {
+            PedidoController.alteraStatusPedido(pedidoListaProducao,"Finalizado");
+            
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
+          
+            //cria o modelo da lista de produção
+            DefaultListModel model = new DefaultListModel();
+            for(Pedido pedidoProducao : Pedido.getListaPedidos()) {
+                if(pedidoProducao.getStatus().equals("Finaliza")) {
+                    System.out.println(pedidoProducao.getCliente().getNome());
+                    model.addElement(pedidoProducao.getCliente().getNome());
+                }
+            }
+            
+            listPedidosProducao.setModel(model);
+
+            
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+        
     }//GEN-LAST:event_btnFinalizaPedidoProducaoActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -559,7 +587,9 @@ public class DashboardAdm extends javax.swing.JFrame {
             DefaultListModel model = new DefaultListModel();
             model.setSize(0);
             for(Pedido pedido : Pedido.getListaPedidos()) {
-                model.addElement(pedido.getCliente().getNome());
+                if(pedido.getStatus().equals("Solicitado")) {
+                    model.addElement(pedido.getCliente().getNome());
+                }
             }
             listPedidoSolicitado.setModel(model);
         } catch (IOException e) {
@@ -588,10 +618,10 @@ public class DashboardAdm extends javax.swing.JFrame {
     private void selecionaPedidoProducao(String nomeCliente) {
         try {
             BancoDeDados banco = new BancoDeDados();
-            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
+            BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
             
-            for(Pedido pedido : Pedido.getListaPedidosProducao()) {
-                if(nomeCliente.equals(pedido.getCliente().getNome())) {
+            for(Pedido pedido : Pedido.getListaPedidos()) {
+                if(nomeCliente.equals(pedido.getCliente().getNome()) && pedido.getStatus().equals("Em Produção")) {
                     pedidoListaProducao = pedido;
                     break;
                 }
@@ -634,11 +664,14 @@ public class DashboardAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             BancoDeDados banco = new BancoDeDados();
-            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
+            BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
             DefaultListModel model = new DefaultListModel();
             model.setSize(0);
-            for(Pedido pedido : Pedido.getListaPedidosProducao()) {
-                model.addElement(pedido.getCliente().getNome());
+            for(Pedido pedido : Pedido.getListaPedidos()) {
+                if(pedido.getStatus().equals("Em Produção")) {
+                    System.out.println("FFFFFOOOOII");
+                    model.addElement(pedido.getCliente().getNome());
+                }
             }
             listPedidosProducao.setModel(model);
         } catch (IOException e) {

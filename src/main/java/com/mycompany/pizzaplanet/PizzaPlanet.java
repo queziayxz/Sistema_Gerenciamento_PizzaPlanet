@@ -12,6 +12,7 @@ import com.mycompany.pizzaplanet.Model.Usuario;
 //import das views
 import com.mycompany.pizzaplanet.View.Cadastro;
 import com.mycompany.pizzaplanet.View.Login;
+import com.mycompany.pizzaplanet.View.Pedidos.AcompanharPedido;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -26,6 +27,8 @@ public class PizzaPlanet {
             BancoDeDados banco = new BancoDeDados();
             Cadastro telaCadastro = new Cadastro();
             telaCadastro.setVisible(true);
+//            AcompanharPedido acomp = new AcompanharPedido();
+//            acomp.setVisible(true);
         } catch (Exception e) {
             System.out.println("Cliente nao cadastrado");
         }
