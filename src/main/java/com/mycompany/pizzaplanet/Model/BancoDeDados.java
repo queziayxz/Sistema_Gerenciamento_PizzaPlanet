@@ -216,7 +216,7 @@ public class BancoDeDados {
         if(arquivoJson.ready()) {
             try {
                 Type type = new TypeToken<List<Pedido>>(){}.getType();
-                System.out.println(Pedido.getListaPedidos().size());
+//                System.out.println(Pedido.getListaPedidos().size());
                 Pedido.setListaPedidos(gson.fromJson(arquivoJson, type));
 //                System.out.println(type.getTypeName());
 //                List<Pedido> listaNova = Arrays.asList(gson.fromJson(arquivoJson, type));
