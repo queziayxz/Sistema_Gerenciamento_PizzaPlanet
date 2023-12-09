@@ -1,6 +1,7 @@
 package com.mycompany.pizzaplanet.Model;
 
 import com.mycompany.pizzaplanet.Excecoes.CPFInvalido;
+import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 
 public class CPF {
     private String cpf;
@@ -18,9 +19,10 @@ public class CPF {
         this.cpf = cpf;
     }
     
-    public static void validarCPF(String cpf) throws CPFInvalido {
+    public static void validarCPF(String cpf) throws CPFInvalido, CampoVazio {
         cpf = cpf.replaceAll("[^\\d]+", "");
-//        if (cpf.equals("")) return false;
+        if (cpf.equals(""))
+            throw new CampoVazio();
 
         // Elimina CPFs inválidos conhecidos
         if (cpf.length() != 11 ||
@@ -34,6 +36,8 @@ public class CPF {
             cpf.equals("77777777777") ||
             cpf.equals("88888888888") ||
             cpf.equals("99999999999")) {
+            
+            throw new CPFInvalido();
             
         }
 
@@ -62,5 +66,7 @@ public class CPF {
         if (rev != Integer.parseInt(String.valueOf(cpf.charAt(10)))) {
             throw new CPFInvalido();
         }
-    }
+       }
+            
 }
+

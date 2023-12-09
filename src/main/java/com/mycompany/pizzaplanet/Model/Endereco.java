@@ -1,6 +1,5 @@
 package com.mycompany.pizzaplanet.Model;
 
-import com.mycompany.pizzaplanet.Controller.EnderecoController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Excecoes.EnderecoInvalido;
 

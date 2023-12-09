@@ -1,7 +1,6 @@
 package com.mycompany.pizzaplanet.View;
 
 import com.mycompany.pizzaplanet.Controller.ClienteController;
-import com.mycompany.pizzaplanet.Controller.EnderecoController;
 import com.mycompany.pizzaplanet.Excecoes.CPFInvalido;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Excecoes.CpfJaCadastrado;
