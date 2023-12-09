@@ -30,6 +30,7 @@ public class BancoDeDados {
     private static File bancoPagamentoPix;
     private static File bancoPagamentoCartao;
     private static File bancoPedido;
+    private static File bancoPedidoProducao;
     
 
 //    private static List<Cliente> listaDeCliente;
@@ -46,6 +47,7 @@ public class BancoDeDados {
         BancoDeDados.bancoPagamentoPix = new File(this.pastaBanco+"\\BancoDeDadosPagamentoPix.json");
         BancoDeDados.bancoPagamentoCartao = new File(this.pastaBanco+"\\BancoDeDadosPagamentoCartao.json");
         BancoDeDados.bancoPedido = new File(this.pastaBanco+"\\BancoDeDadosPedido.json");
+        BancoDeDados.bancoPedidoProducao = new File(this.pastaBanco+"\\BancoDeDadosPedidoProducao.json");
     }
     
     public static void leBD(File bancoDeDados) throws IOException
@@ -226,6 +228,25 @@ public class BancoDeDados {
             }
         }
     }
+    
+    public static void leBDPedidoProducao(File bancoDeDados) throws IOException
+    {
+        Gson gson = new Gson();
+        FileWriter writer = new FileWriter(bancoDeDados,true);
+        BufferedReader  arquivoJson = new BufferedReader (new FileReader(bancoDeDados));
+        if(arquivoJson.ready()) {
+            try {
+                Type type = new TypeToken<List<Pedido>>(){}.getType();
+                List<Pedido> pedido = gson.fromJson(arquivoJson,type);
+                Pedido.setListaPedidosProducao(pedido);
+            } catch (Exception e) {
+                throw new IOException();
+            } finally {
+                arquivoJson.close();
+                writer.close();
+            }
+        }
+    }
 
     public String getPastaBanco() {
         return pastaBanco;
@@ -270,21 +291,13 @@ public class BancoDeDados {
     public static File getBancoPedido() {
         return bancoPedido;
     }
-    
-    public static void main(String[] args) {
-        
-        try {
-            BancoDeDados banco = new BancoDeDados();
-            leBDPedido(BancoDeDados.getBancoPedido());
-            String arquivo = "{'formaPagamento':'Pix','pizza':[{'nome':'Banana com Chocolate','listaI'ngredientes':[{'nome''Banana','categoria':'Doce'},{'nome':'Chocolate','categoria':'Doce'}]}],'tamanho':{'nome':'Pequeno','quantidadePecas':6,'valor':30.0},'produto':{'nome':'Refrigerante Mantiqueira','valor':6.0,'quantidade':20},'valorTotal':36.0}";
-            String nova = "{\"formaPagamento\":\"Pix\",\"pizza\":[{\"nome\":\"Banana com Chocolate\",\"listaIngredientes\":[{\"nome\":\"Banana\",\"Categoria\",\"Doce\"},{\"nome\":\"Chocolate\",\"Categoria\":\"Doce\"}]}],\"tamanho\":{\"nome\":\"Pequeno\",\"quantidadePecas\":\"6\",\"valor\":\"30.0\"},\"produto\":{\"nome:\":\"Refrigerante Mantigueira\",\"valor\":\"6.0\",\"quantidade\":\"20\"},\"valorTotal\":\"36.6\"}";
-            String novamente = "[{\"formaPagamento\":\"Pix\",\"pizza\":[{\"nome\":\"Banana com Chocolate\",\"listaIngredientes\":[{\"nome\":\"Banana\",\"categoria\":\"Doce\"},{\"nome\":\"Chocolate\",\"categoria\":\"Doce\"}]}],\"tamanho\":{\"nome\":\"Pequeno\",\"quantidadePecas\":6,\"valor\":30.0},\"produto\":{\"nome\":\"Refrigerante Mantiqueira\",\"valor\":6.0,\"quantidade\":20},\"valorTotal\":36.0}]";
-            Gson gson = new Gson();
-            
-            
-        } catch (IOException e) {
-            System.out.println("error");
-        }
-        
+
+    public static File getBancoPedidoProducao() {
+        return bancoPedidoProducao;
     }
+
+    public static void setBancoPedidoProducao(File bancoPedidoProducao) {
+        BancoDeDados.bancoPedidoProducao = bancoPedidoProducao;
+    }
+    
 }

@@ -1,10 +1,12 @@
 package com.mycompany.pizzaplanet.View;
 
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
+import com.mycompany.pizzaplanet.Model.Cliente;
 import com.mycompany.pizzaplanet.Model.Ingrediente;
 import com.mycompany.pizzaplanet.Model.PizzaDoce;
 import com.mycompany.pizzaplanet.Model.PizzaSalgada;
 import com.mycompany.pizzaplanet.Model.Tamanho;
+import com.mycompany.pizzaplanet.View.Pedidos.FazerPedido;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -222,6 +224,11 @@ public class DashboardCliente extends javax.swing.JFrame {
         btn_acompanharPedido.setText("Acompanhe seu Pedido!");
 
         btnFazerPedido.setText("Faça seu Pedido!");
+        btnFazerPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFazerPedidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -312,7 +319,12 @@ public class DashboardCliente extends javax.swing.JFrame {
         jMenu1.setText("Dashboard");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Logout");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -497,6 +509,21 @@ public class DashboardCliente extends javax.swing.JFrame {
             System.out.println("error");
         }
     }//GEN-LAST:event_panelPizzaSalgadaAncestorAdded
+
+    private void btnFazerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFazerPedidoActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        FazerPedido fazerPedido = new FazerPedido();
+        fazerPedido.setVisible(true);
+    }//GEN-LAST:event_btnFazerPedidoActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
+        Cliente.setClienteLogado(null);
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     
     private void addRadioButton(String label) {

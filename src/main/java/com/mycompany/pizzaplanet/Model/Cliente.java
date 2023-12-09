@@ -20,6 +20,9 @@ public class Cliente extends Usuario {
         Cliente.clienteLogado.setSenha(senha);
     }
 
+    public Cliente() {
+    }
+    
     public Endereco getEndereco() {
         return this.endereco;
     }

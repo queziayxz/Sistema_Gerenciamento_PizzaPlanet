@@ -55,4 +55,52 @@ public class PedidoController {
             throw new IOException();
         }
     }
+    
+    public static void deletaPedidoSolicitado(Pedido pedido) throws IOException {
+        try {
+            Gson gson = new Gson();
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
+            
+            for(int i = 0; i < Pedido.getListaPedidos().size(); i++) {
+                if(pedido.getCliente().getNome().equals(Pedido.getListaPedidos().get(i).getCliente().getNome())) {
+                    Pedido.getListaPedidos().remove(i);
+                    break;
+                }
+            }
+            
+            //transforma a lista em json
+            String arquivoPedido = gson.toJson(Pedido.getListaPedidos());
+            //escreve no arquivo
+            FileWriter writer = new FileWriter(BancoDeDados.getBancoPedido());
+            writer.write(arquivoPedido);
+            writer.flush();
+            writer.close();
+            
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+    }
+    
+    public static void adicionaPedidoProducao(Pedido pedido) throws IOException {
+        try {
+            Gson gson = new Gson();
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
+            
+            //adiciona o pedido a lista
+            Pedido.getListaPedidosProducao().add(pedido);
+            
+            //transforma a lista em json
+            String arquivoPedido = gson.toJson(Pedido.getListaPedidosProducao());
+            //escreve no arquivo
+            FileWriter writer = new FileWriter(BancoDeDados.getBancoPedidoProducao());
+            writer.write(arquivoPedido);
+            writer.flush();
+            writer.close();
+            
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+    }
 }

@@ -1,12 +1,24 @@
 package com.mycompany.pizzaplanet.View;
 
+import com.mycompany.pizzaplanet.Controller.ClienteController;
+import com.mycompany.pizzaplanet.Controller.PedidoController;
+import com.mycompany.pizzaplanet.Model.BancoDeDados;
+import com.mycompany.pizzaplanet.Model.Cliente;
+import com.mycompany.pizzaplanet.Model.Pedido;
+import com.mycompany.pizzaplanet.Model.Pizza;
+import com.mycompany.pizzaplanet.Model.Produto;
+import com.mycompany.pizzaplanet.Model.Tamanho;
 import com.mycompany.pizzaplanet.View.Ingredientes.GerenciamentoIngrediente;
 import com.mycompany.pizzaplanet.View.Pizzas.GerenciamentoPizza;
 import com.mycompany.pizzaplanet.View.Produtos.GerenciamentoProduto;
 import com.mycompany.pizzaplanet.View.Tamanhos.GerenciamentoTamanho;
+import java.io.IOException;
+import javax.swing.DefaultListModel;
 
 public class DashboardAdm extends javax.swing.JFrame {
 
+    public Pedido pedidoLista = new Pedido();
+    public Pedido pedidoListaProducao = new Pedido();
     /**
      * Creates new form DashboardAdm
      */
@@ -24,34 +36,44 @@ public class DashboardAdm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jSplitPane2 = new javax.swing.JSplitPane();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listPedidoSolicitado = new javax.swing.JList<>();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNomeClienteListSoli = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtEnderecoClienteListSoli = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtTamanhoListSoli = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        btnEnviarProducao = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listPizzaSoli = new javax.swing.JList<>();
+        jLabel15 = new javax.swing.JLabel();
+        txtProdSoli = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listPedidosProducao = new javax.swing.JList<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtNomeClienteProducao = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtEnderecoClienteProducao = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtTamanhoProducao = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnFinalizaPedidoProducao = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        listPizzaProducao = new javax.swing.JList<>();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtValorTotalProducao = new javax.swing.JTextField();
+        txtProdProducao = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtFormaPagamentoProducao = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -66,65 +88,97 @@ public class DashboardAdm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         jLabel1.setText("Bem vindo!!");
 
-        jList1.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList1.setMaximumSize(new java.awt.Dimension(70, 95));
-        jList1.setPreferredSize(new java.awt.Dimension(60, 95));
-        jScrollPane1.setViewportView(jList1);
+        jLabel6.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel6.setText("Pedidos Solicitados");
 
-        jSplitPane1.setLeftComponent(jScrollPane1);
+        jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel7.setText("Pedidos em Produção");
+
+        jPanel3.setBackground(new java.awt.Color(255, 153, 153));
+
+        listPedidoSolicitado.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        listPedidoSolicitado.setMaximumSize(new java.awt.Dimension(70, 95));
+        listPedidoSolicitado.setPreferredSize(new java.awt.Dimension(60, 95));
+        listPedidoSolicitado.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                listPedidoSolicitadoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        listPedidoSolicitado.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listPedidoSolicitadoValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(listPedidoSolicitado);
+
+        jPanel1.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel2.setText("Nome:");
 
-        jTextField1.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtNomeClienteListSoli.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtNomeClienteListSoli.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel3.setText("Endereço:");
 
-        jTextField2.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtEnderecoClienteListSoli.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtEnderecoClienteListSoli.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jLabel4.setText("Sabor Pizza:");
+        jLabel4.setText("Tamanho Pizza:");
 
-        jTextField3.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtTamanhoListSoli.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtTamanhoListSoli.setEnabled(false);
 
         jLabel5.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jLabel5.setText("Tamanho Pizza:");
+        jLabel5.setText("Pizzas Solicitadas:");
 
-        jTextField4.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-
-        jButton1.setText("Enviar para Produção");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEnviarProducao.setText("Enviar para Produção");
+        btnEnviarProducao.setEnabled(false);
+        btnEnviarProducao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEnviarProducaoActionPerformed(evt);
             }
         });
+
+        jScrollPane4.setViewportView(listPizzaSoli);
+
+        jLabel15.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        jLabel15.setText("Produtos Adicionais:");
+
+        txtProdSoli.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(txtProdSoli, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEnviarProducao)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(txtTamanhoListSoli, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                    .addComponent(txtEnderecoClienteListSoli)
+                    .addComponent(txtNomeClienteListSoli)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabel5)
+                        .addGap(61, 61, 61)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,89 +186,148 @@ public class DashboardAdm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNomeClienteListSoli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEnderecoClienteListSoli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTamanhoListSoli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtProdSoli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(btnEnviarProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
-        jSplitPane1.setRightComponent(jPanel1);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jLabel6.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel6.setText("Pedidos Solicitados");
+        jPanel4.setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel7.setText("Pedidos em Produção");
-
-        jList2.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        listPedidosProducao.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        listPedidosProducao.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                listPedidosProducaoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
         });
-        jScrollPane2.setViewportView(jList2);
-
-        jSplitPane2.setLeftComponent(jScrollPane2);
+        listPedidosProducao.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listPedidosProducaoValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(listPedidosProducao);
 
         jLabel8.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel8.setText("Nome:");
 
-        jTextField5.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtNomeClienteProducao.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtNomeClienteProducao.setEnabled(false);
 
         jLabel9.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel9.setText("Endereço:");
 
-        jTextField6.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtEnderecoClienteProducao.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtEnderecoClienteProducao.setEnabled(false);
 
         jLabel10.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jLabel10.setText("Sabor Pizza:");
+        jLabel10.setText("Tamanho Pizza:");
 
-        jTextField7.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtTamanhoProducao.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        txtTamanhoProducao.setEnabled(false);
 
         jLabel11.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jLabel11.setText("Tamanho Pizza:");
+        jLabel11.setText("Pizzas Solicitadas:");
 
-        jTextField8.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-
-        jButton2.setText("Enviar para Entrega");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnFinalizaPedidoProducao.setText("Finalizar Pedido");
+        btnFinalizaPedidoProducao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnFinalizaPedidoProducaoActionPerformed(evt);
             }
         });
+
+        jScrollPane5.setViewportView(listPizzaProducao);
+
+        jLabel14.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        jLabel14.setText("Produtos Adicionais");
+
+        jLabel13.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        jLabel13.setText("Valor Total:");
+
+        txtValorTotalProducao.setEnabled(false);
+
+        txtProdProducao.setEnabled(false);
+
+        jLabel16.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        jLabel16.setText("Método de Pagamento:");
+
+        txtFormaPagamentoProducao.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField5)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(txtNomeClienteProducao)
+                            .addComponent(txtEnderecoClienteProducao)
+                            .addComponent(txtTamanhoProducao)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(btnFinalizaPedidoProducao))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addComponent(jLabel14)
+                        .addGap(76, 76, 76))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtProdProducao)
+                            .addComponent(jLabel13)
+                            .addComponent(txtValorTotalProducao)
+                            .addComponent(jLabel16)
+                            .addComponent(txtFormaPagamentoProducao, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,25 +335,56 @@ public class DashboardAdm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNomeClienteProducao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEnderecoClienteProducao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTamanhoProducao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtProdProducao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFormaPagamentoProducao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtValorTotalProducao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
+                .addComponent(btnFinalizaPedidoProducao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jSplitPane2.setRightComponent(jPanel2);
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         jMenuBar1.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
 
@@ -301,50 +445,76 @@ public class DashboardAdm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addGap(89, 89, 89))))
+                        .addContainerGap()
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addGap(37, 37, 37)
-                        .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addGap(37, 37, 37)
-                        .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(48, 48, 48))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jLabel1)
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEnviarProducaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarProducaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try {
+            PedidoController.adicionaPedidoProducao(pedidoLista);
+            PedidoController.deletaPedidoSolicitado(pedidoLista);
+            
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
+            BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
+            
+            //cria o modelo da lista de produção
+            DefaultListModel model = new DefaultListModel();
+            for(Pedido pedidoProducao : Pedido.getListaPedidosProducao()) {
+                System.out.println(pedidoProducao.getCliente().getNome());
+                model.addElement(pedidoProducao.getCliente().getNome());
+            }
+            
+            listPedidosProducao.setModel(model);
+            
+            //cria o modelo da lista de pedido solicitado
+            DefaultListModel modelSoli = new DefaultListModel();
+            for(Pedido pedidoSolicitado : Pedido.getListaPedidos()) {
+                modelSoli.addElement(pedidoSolicitado.getCliente().getNome());
+            }
+            
+            listPedidoSolicitado.setModel(modelSoli);
+            
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_btnEnviarProducaoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnFinalizaPedidoProducaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizaPedidoProducaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnFinalizaPedidoProducaoActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
@@ -380,6 +550,130 @@ public class DashboardAdm extends javax.swing.JFrame {
         GerenciamentoPizza indexP = new GerenciamentoPizza();
         indexP.setVisible(true);
     }//GEN-LAST:event_jMenuItem3MouseClicked
+
+    private void listPedidoSolicitadoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listPedidoSolicitadoAncestorAdded
+        // TODO add your handling code here:
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
+            DefaultListModel model = new DefaultListModel();
+            model.setSize(0);
+            for(Pedido pedido : Pedido.getListaPedidos()) {
+                model.addElement(pedido.getCliente().getNome());
+            }
+            listPedidoSolicitado.setModel(model);
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_listPedidoSolicitadoAncestorAdded
+
+    private void selecionaPedido(String nomeCliente) {
+        
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPedido(BancoDeDados.getBancoPedido());
+            
+            for(Pedido pedido : Pedido.getListaPedidos()) {
+                if(nomeCliente.equals(pedido.getCliente().getNome())) {
+                    pedidoLista = pedido;
+                    break;
+                }
+            }
+            
+        } catch(IOException e) {
+            System.out.println("error");
+        }
+    }
+    
+    private void selecionaPedidoProducao(String nomeCliente) {
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
+            
+            for(Pedido pedido : Pedido.getListaPedidosProducao()) {
+                if(nomeCliente.equals(pedido.getCliente().getNome())) {
+                    pedidoListaProducao = pedido;
+                    break;
+                }
+            }
+            
+        } catch(IOException e) {
+            System.out.println("error");
+        }
+    }
+    
+    private void listPedidoSolicitadoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listPedidoSolicitadoValueChanged
+        // TODO add your handling code here:
+        if(listPedidoSolicitado.getSelectedValue() != null) {
+            //pega o pedido de acordo com o nome do cliente na lista
+            selecionaPedido(listPedidoSolicitado.getSelectedValue());
+            //seta os valores dos inputs
+            txtNomeClienteListSoli.setText(pedidoLista.getCliente().getNome());
+            txtEnderecoClienteListSoli.setText(pedidoLista.getCliente().getEndereco().getRua()+" "+pedidoLista.getCliente().getEndereco().getNumero()+" "+pedidoLista.getCliente().getEndereco().getBairro()+" "+pedidoLista.getCliente().getEndereco().getCidade());
+            txtTamanhoListSoli.setText(pedidoLista.getTamanho().getNome());
+            
+            //setando a lista de pizza
+            DefaultListModel model = new DefaultListModel();
+            model.setSize(0);
+            for(Pizza pizza : pedidoLista.getPizza()) {
+                model.addElement(pizza.getNome());
+            }
+            listPizzaSoli.setModel(model);
+            
+            //setando input de produtos adicionais caso tenha
+            if(pedidoLista.getProduto() != null) {
+                txtProdSoli.setText(pedidoLista.getProduto().getNome());
+            }
+            
+            //habilitando o botão de enviar para produção
+            btnEnviarProducao.setEnabled(true);
+        }
+    }//GEN-LAST:event_listPedidoSolicitadoValueChanged
+
+    private void listPedidosProducaoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listPedidosProducaoAncestorAdded
+        // TODO add your handling code here:
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDPedidoProducao(BancoDeDados.getBancoPedidoProducao());
+            DefaultListModel model = new DefaultListModel();
+            model.setSize(0);
+            for(Pedido pedido : Pedido.getListaPedidosProducao()) {
+                model.addElement(pedido.getCliente().getNome());
+            }
+            listPedidosProducao.setModel(model);
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_listPedidosProducaoAncestorAdded
+
+    private void listPedidosProducaoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listPedidosProducaoValueChanged
+        // TODO add your handling code here:
+        if(listPedidosProducao.getSelectedValue() != null) {
+            //pega o pedido de acordo com o nome do cliente na lista
+            selecionaPedidoProducao(listPedidosProducao.getSelectedValue());
+            //seta os valores dos inputs
+            txtNomeClienteProducao.setText(pedidoListaProducao.getCliente().getNome());
+            txtEnderecoClienteProducao.setText(pedidoListaProducao.getCliente().getEndereco().getRua()+" "+pedidoListaProducao.getCliente().getEndereco().getNumero()+" "+pedidoListaProducao.getCliente().getEndereco().getBairro()+" "+pedidoListaProducao.getCliente().getEndereco().getCidade());
+            txtTamanhoProducao.setText(pedidoListaProducao.getTamanho().getNome());
+            txtValorTotalProducao.setText(Double.toString(pedidoListaProducao.getValorTotal()));
+            txtFormaPagamentoProducao.setText(pedidoListaProducao.getFormaPagamento());
+
+            if(pedidoListaProducao.getProduto() != null) {
+                txtProdProducao.setText(pedidoListaProducao.getProduto().getNome());
+            }
+            
+            //setando a lista de pizza
+            DefaultListModel model = new DefaultListModel();
+            model.setSize(0);
+            for(Pizza pizza : pedidoListaProducao.getPizza()) {
+                model.addElement(pizza.getNome());
+            }
+            listPizzaProducao.setModel(model);
+            
+            //habilitando o botão de enviar para produção
+            btnFinalizaPedidoProducao.setEnabled(true);
+        }
+    }//GEN-LAST:event_listPedidosProducaoValueChanged
     
     /**
      * @param args the command line arguments
@@ -417,11 +711,15 @@ public class DashboardAdm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEnviarProducao;
+    private javax.swing.JButton btnFinalizaPedidoProducao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -430,8 +728,6 @@ public class DashboardAdm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -442,17 +738,25 @@ public class DashboardAdm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JList<String> listPedidoSolicitado;
+    private javax.swing.JList<String> listPedidosProducao;
+    private javax.swing.JList<String> listPizzaProducao;
+    private javax.swing.JList<String> listPizzaSoli;
+    private javax.swing.JTextField txtEnderecoClienteListSoli;
+    private javax.swing.JTextField txtEnderecoClienteProducao;
+    private javax.swing.JTextField txtFormaPagamentoProducao;
+    private javax.swing.JTextField txtNomeClienteListSoli;
+    private javax.swing.JTextField txtNomeClienteProducao;
+    private javax.swing.JTextField txtProdProducao;
+    private javax.swing.JTextField txtProdSoli;
+    private javax.swing.JTextField txtTamanhoListSoli;
+    private javax.swing.JTextField txtTamanhoProducao;
+    private javax.swing.JTextField txtValorTotalProducao;
     // End of variables declaration//GEN-END:variables
 }

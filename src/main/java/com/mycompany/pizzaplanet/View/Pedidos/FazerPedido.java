@@ -12,6 +12,7 @@ import com.mycompany.pizzaplanet.Model.PizzaDoce;
 import com.mycompany.pizzaplanet.Model.PizzaSalgada;
 import com.mycompany.pizzaplanet.Model.Produto;
 import com.mycompany.pizzaplanet.Model.Tamanho;
+import com.mycompany.pizzaplanet.View.DashboardCliente;
 import com.mycompany.pizzaplanet.View.Pizzas.GerenciamentoPizza;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -691,16 +692,17 @@ public class FazerPedido extends javax.swing.JFrame {
             if(ListProdutoPedido.getSelectedValue() != null) {
                 pedido.setProduto(selecionaProduto(ListProdutoPedido.getSelectedValue()));
             }
+            System.out.println(pedido.getCliente().getNome());
             
             //calcula valor total do pedido
             PedidoController.calculaValor(pedido);
             
             //escreve no arquivo json
             PedidoController.adicionaPedido(pedido);
-            
             JOptionPane.showMessageDialog(null, "Pedido Realizado!");
-            
-//            System.out.println(pedido.getTamanho().getNome());
+            this.dispose();
+            DashboardCliente dashCliente = new DashboardCliente();
+            dashCliente.setVisible(true);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (CampoVazio e) {

@@ -12,6 +12,7 @@ public class Pedido implements Serializable {
     private Produto produto;
     private double valorTotal;
     private static List<Pedido> listaPedidos = new ArrayList<>();
+    private static List<Pedido> listaPedidosProducao = new ArrayList<>();
 
     public Pedido() {
     }
@@ -88,14 +89,20 @@ public class Pedido implements Serializable {
         this.produto = produto;
     }
     
-    
-    
     public static List<Pedido> getListaPedidos() {
         return Pedido.listaPedidos;
     }
 
     public static void setListaPedidos(List<Pedido> listaPedidos) {
         Pedido.listaPedidos = listaPedidos;
+    }
+
+    public static List<Pedido> getListaPedidosProducao() {
+        return Pedido.listaPedidosProducao;
+    }
+
+    public static void setListaPedidosProducao(List<Pedido> listaPedidosProducao) {
+        Pedido.listaPedidosProducao = listaPedidosProducao;
     }
     
     public static void verificaPizzaTamanhoVazia(String pizzaSalgada, String pizzaDoce, Tamanho tamanho)throws CampoVazio {
