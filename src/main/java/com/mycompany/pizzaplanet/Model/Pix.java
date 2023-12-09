@@ -19,7 +19,7 @@ public class Pix extends Pagamento {
     }
     
     @Override
-    double retornaTotal() {
+    public double retornaTotal() {
         return this.valor;
     }
 

@@ -1,5 +1,6 @@
 package com.mycompany.pizzaplanet.View.Pedidos;
 
+import com.mycompany.pizzaplanet.Controller.PedidoController;
 import com.mycompany.pizzaplanet.Controller.PizzaController;
 import com.mycompany.pizzaplanet.Excecoes.CampoVazio;
 import com.mycompany.pizzaplanet.Model.BancoDeDados;
@@ -632,6 +633,24 @@ public class FazerPedido extends javax.swing.JFrame {
         return null;
     }
     
+    private Produto selecionaProduto(String nome) {
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDProduto(BancoDeDados.getBancoProduto());
+            
+            for(Produto produto : Produto.getListaProdutos()) {
+                if(nome.equals(produto.getNome())) {
+                    return produto;
+                }
+            }
+            
+            
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+        return null;
+    }
+    
     private void finalizaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizaProdutoActionPerformed
         // TODO add your handling code here:
         //exceção: caso o cliente não tenha selecionado nenhuma pizza ou tamanho
@@ -669,6 +688,15 @@ public class FazerPedido extends javax.swing.JFrame {
             //cria o pedido
             Pedido pedido = new Pedido(Cliente.getClienteLogado(),CBPagamentoPedido.getSelectedItem().toString(),pizzas,tamanho);
             
+            if(ListProdutoPedido.getSelectedValue() != null) {
+                pedido.setProduto(selecionaProduto(ListProdutoPedido.getSelectedValue()));
+            }
+            
+            //calcula valor total do pedido
+            PedidoController.calculaValor(pedido);
+            
+            //escreve no arquivo json
+            PedidoController.adicionaPedido(pedido);
             
             JOptionPane.showMessageDialog(null, "Pedido Realizado!");
             

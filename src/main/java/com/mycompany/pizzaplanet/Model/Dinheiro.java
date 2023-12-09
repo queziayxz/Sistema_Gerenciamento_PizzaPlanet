@@ -14,7 +14,7 @@ public class Dinheiro extends Pagamento {
     }
     
     @Override
-    double retornaTotal() {
+    public double retornaTotal() {
         return this.valor - 0.1 * this.valor;
     }
     

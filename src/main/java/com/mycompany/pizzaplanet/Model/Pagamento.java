@@ -32,7 +32,7 @@ abstract public class Pagamento {
     
     
     
-    abstract double retornaTotal();
+    abstract public double retornaTotal();
 
     abstract public String getID();
 }

@@ -19,6 +19,9 @@ public class Produto {
         Produto.ListaProdutos = new ArrayList<>();
     }
 
+    public Produto() {
+    }
+    
     public String getNome() {
         return nome;
     }

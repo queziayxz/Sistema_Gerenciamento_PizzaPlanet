@@ -9,7 +9,9 @@ public class Pedido {
     private String formaPagamento;
     private List<Pizza> pizza;
     private Tamanho tamanho;
+    private Produto produto;
     private double valorTotal;
+    private static List<Pedido> listaPedidos = new ArrayList<>();
 
     public Pedido() {
     }
@@ -17,10 +19,12 @@ public class Pedido {
     public Pedido(Cliente cliente, String formaPagamento, List<Pizza> pizza, Tamanho tamanho) {
         this.cliente = cliente;
         this.formaPagamento = formaPagamento;
-        this.pizza = new ArrayList<>();
+        this.pizza = pizza;
         this.tamanho = tamanho;
+        this.produto = new Produto();
     }
 
+    //getters e setters
     public Cliente getCliente() {
         return cliente;
     }
@@ -59,6 +63,27 @@ public class Pedido {
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+    
+    
+    
+    public static List<Pedido> getListaPedidos() {
+        return Pedido.listaPedidos;
+    }
+
+    public static void setListaPedidos(List<Pedido> listaPedidos) {
+        for(Pedido pedido : listaPedidos) {
+            System.out.println(pedido.getProduto().getNome());
+        }
+//        Pedido.listaPedidos = listaPedidos;
     }
     
     public static void verificaPizzaTamanhoVazia(String pizzaSalgada, String pizzaDoce, Tamanho tamanho)throws CampoVazio {

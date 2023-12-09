@@ -17,7 +17,7 @@ public class CartaoDebito extends Pagamento {
     }
     
     @Override
-    double retornaTotal() {
+    public double retornaTotal() {
         return this.valor + 0.05 * this.valor;
     }
     
