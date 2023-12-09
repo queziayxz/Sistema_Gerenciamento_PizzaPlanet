@@ -1,7 +1,9 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+- Giovanni Almeida Dutra - 202065032AB
+- Quezia Emanuelly da Silva Oliveira - 202265561C
+- Augusto Benedito Carvalho da Silva - 202265552C
+*/
+
 package com.mycompany.pizzaplanet.View.Produtos;
 
 import com.mycompany.pizzaplanet.Controller.ProdutoController;
@@ -17,10 +19,6 @@ import java.io.IOException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author augus
- */
 public class GerenciamentoProduto extends javax.swing.JFrame {
 
 
