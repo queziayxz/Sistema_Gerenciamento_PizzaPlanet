@@ -93,7 +93,6 @@ public class PizzaController {
         try {
             Gson gson = new Gson();
             BancoDeDados.leBDPizzaDoce(BancoDeDados.getBancoPizzaDoce());
-            System.out.println(pizzabanco.getNome());
             //pega o indice na lista da pizza que está no banco
             int indexPizzaBanco = PizzaDoce.getListaPizzasDoces().indexOf(pizzabanco);
             //altera o que está no banco para o novo

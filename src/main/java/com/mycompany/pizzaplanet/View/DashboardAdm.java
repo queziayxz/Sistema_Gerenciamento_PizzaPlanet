@@ -124,20 +124,20 @@ public class DashboardAdm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel2.setText("Nome:");
 
+        txtNomeClienteListSoli.setEditable(false);
         txtNomeClienteListSoli.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        txtNomeClienteListSoli.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel3.setText("Endereço:");
 
+        txtEnderecoClienteListSoli.setEditable(false);
         txtEnderecoClienteListSoli.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        txtEnderecoClienteListSoli.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel4.setText("Tamanho Pizza:");
 
+        txtTamanhoListSoli.setEditable(false);
         txtTamanhoListSoli.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        txtTamanhoListSoli.setEnabled(false);
 
         jLabel5.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel5.setText("Pizzas Solicitadas:");
@@ -150,12 +150,13 @@ public class DashboardAdm extends javax.swing.JFrame {
             }
         });
 
+        listPizzaSoli.setEnabled(false);
         jScrollPane4.setViewportView(listPizzaSoli);
 
         jLabel15.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel15.setText("Produtos Adicionais:");
 
-        txtProdSoli.setEnabled(false);
+        txtProdSoli.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -251,20 +252,20 @@ public class DashboardAdm extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel8.setText("Nome:");
 
+        txtNomeClienteProducao.setEditable(false);
         txtNomeClienteProducao.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        txtNomeClienteProducao.setEnabled(false);
 
         jLabel9.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel9.setText("Endereço:");
 
+        txtEnderecoClienteProducao.setEditable(false);
         txtEnderecoClienteProducao.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        txtEnderecoClienteProducao.setEnabled(false);
 
         jLabel10.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel10.setText("Tamanho Pizza:");
 
+        txtTamanhoProducao.setEditable(false);
         txtTamanhoProducao.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        txtTamanhoProducao.setEnabled(false);
 
         jLabel11.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel11.setText("Pizzas Solicitadas:");
@@ -277,6 +278,7 @@ public class DashboardAdm extends javax.swing.JFrame {
             }
         });
 
+        listPizzaProducao.setEnabled(false);
         jScrollPane5.setViewportView(listPizzaProducao);
 
         jLabel14.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
@@ -285,14 +287,14 @@ public class DashboardAdm extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel13.setText("Valor Total:");
 
-        txtValorTotalProducao.setEnabled(false);
+        txtValorTotalProducao.setEditable(false);
 
-        txtProdProducao.setEnabled(false);
+        txtProdProducao.setEditable(false);
 
         jLabel16.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
         jLabel16.setText("Método de Pagamento:");
 
-        txtFormaPagamentoProducao.setEnabled(false);
+        txtFormaPagamentoProducao.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

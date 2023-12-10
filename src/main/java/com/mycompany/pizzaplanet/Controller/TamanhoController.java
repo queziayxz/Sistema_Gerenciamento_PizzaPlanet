@@ -50,9 +50,6 @@ public class TamanhoController {
 
             BancoDeDados.leBDTamanho(BancoDeDados.getBancoTamanho());
 
-            for(Tamanho tam : Tamanho.getListaTamanhos()) {
-                System.out.println(tam.getNome());
-            }
             for(int i = 0; i < Tamanho.getListaTamanhos().size(); i++) {
                 if(nomeBanco.equals(Tamanho.getListaTamanhos().get(i).getNome())) {
                     Tamanho.getListaTamanhos().set(i, tamanhoEdita);

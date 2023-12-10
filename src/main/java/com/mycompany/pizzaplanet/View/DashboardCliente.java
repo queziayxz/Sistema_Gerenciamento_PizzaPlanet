@@ -87,10 +87,11 @@ public class DashboardCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        panelPizzaSalgada = new javax.swing.JPanel();
         panelTamanhos = new javax.swing.JPanel();
         btn_acompanharPedido = new javax.swing.JButton();
         btnFazerPedido = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panelPizzaSalgada = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -175,7 +176,7 @@ public class DashboardCliente extends javax.swing.JFrame {
         );
         panelPizzaDoceLayout.setVerticalGroup(
             panelPizzaDoceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 165, Short.MAX_VALUE)
+            .addGap(0, 280, Short.MAX_VALUE)
         );
 
         jLabel5.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
@@ -183,27 +184,6 @@ public class DashboardCliente extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel6.setText("Pizzas Doces");
-
-        panelPizzaSalgada.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                panelPizzaSalgadaAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
-        javax.swing.GroupLayout panelPizzaSalgadaLayout = new javax.swing.GroupLayout(panelPizzaSalgada);
-        panelPizzaSalgada.setLayout(panelPizzaSalgadaLayout);
-        panelPizzaSalgadaLayout.setHorizontalGroup(
-            panelPizzaSalgadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
-        );
-        panelPizzaSalgadaLayout.setVerticalGroup(
-            panelPizzaSalgadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 165, Short.MAX_VALUE)
-        );
 
         panelTamanhos.setBackground(new java.awt.Color(153, 153, 153));
         panelTamanhos.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -241,18 +221,35 @@ public class DashboardCliente extends javax.swing.JFrame {
             }
         });
 
+        panelPizzaSalgada.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                panelPizzaSalgadaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        javax.swing.GroupLayout panelPizzaSalgadaLayout = new javax.swing.GroupLayout(panelPizzaSalgada);
+        panelPizzaSalgada.setLayout(panelPizzaSalgadaLayout);
+        panelPizzaSalgadaLayout.setHorizontalGroup(
+            panelPizzaSalgadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 659, Short.MAX_VALUE)
+        );
+        panelPizzaSalgadaLayout.setVerticalGroup(
+            panelPizzaSalgadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 269, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(panelPizzaSalgada);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(jLabel2))
@@ -261,33 +258,36 @@ public class DashboardCliente extends javax.swing.JFrame {
                         .addComponent(SPPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel4))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(210, 210, 210)
-                                        .addComponent(jLabel3))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(282, 282, 282)
-                                        .addComponent(jLabel5)))
-                                .addGap(180, 180, 180))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addGap(715, 715, 715))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(panelPizzaSalgada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(panelPizzaDoce, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(panelPizzaDoce, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(312, 312, 312)
-                        .addComponent(jLabel6))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(86, 86, 86)
+                                .addComponent(btnFazerPedido)
+                                .addGap(212, 212, 212)
+                                .addComponent(btn_acompanharPedido))
+                            .addComponent(jLabel1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(158, 158, 158)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(btnFazerPedido)
-                        .addGap(129, 129, 129)
-                        .addComponent(btn_acompanharPedido)))
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(308, 308, 308)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(324, 324, 324)
+                        .addComponent(jLabel6)))
                 .addContainerGap(628, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -297,32 +297,35 @@ public class DashboardCliente extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(409, 409, 409)
                         .addComponent(SPPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(panelPizzaSalgada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addComponent(panelPizzaDoce, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_acompanharPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFazerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(107, 107, 107))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_acompanharPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFazerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(107, 107, 107))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(panelTamanhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))))
         );
 
         jScrollPane3.setViewportView(jPanel1);
@@ -349,10 +352,7 @@ public class DashboardCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 817, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,31 +361,6 @@ public class DashboardCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void panelTamanhosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelTamanhosAncestorAdded
-        // TODO add your handling code here:
-        try {
-            BancoDeDados banco = new BancoDeDados();
-            BancoDeDados.leBDTamanho(BancoDeDados.getBancoTamanho());
-            for(Tamanho tam : Tamanho.getListaTamanhos()) {
-                int optionNumber = buttonGroup1.getButtonCount() + 1;
-                JRadioButton radioButton = new JRadioButton(tam.getNome()+" - "+tam.getQuantidadePecas()+" pedaços - R$"+tam.getValor());
-                buttonGroup1.add(radioButton);
-                panelTamanhos.add(radioButton);
-                radioButton.setVisible(true);
-                panelTamanhos.revalidate();
-                panelTamanhos.repaint();
-                radioButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("Selecionado: ");
-                }   
-                });
-            }
-            
-        } catch (IOException e) {
-            System.out.println("error");
-        }
-    }//GEN-LAST:event_panelTamanhosAncestorAdded
 
     
     
@@ -459,6 +434,7 @@ public class DashboardCliente extends javax.swing.JFrame {
                 nome.setFont(fonteCabecalho);
                 nome.setHorizontalAlignment(nome.LEFT);
                 ingredientes.setFont(fonteCorpo);
+                ingredientes.setEditable(false);
                 
                 int aux = 0;
                 for(Ingrediente ingre : pizza.getListaIngredientes()) {
@@ -492,6 +468,7 @@ public class DashboardCliente extends javax.swing.JFrame {
                 nome.setFont(fonteCabecalho);
                 nome.setHorizontalAlignment(nome.LEFT);
                 ingredientes.setFont(fonteCorpo);
+                ingredientes.setEditable(false);
                 
                 int aux = 0;
                 for(Ingrediente ingre : pizza.getListaIngredientes()) {
@@ -539,6 +516,31 @@ public class DashboardCliente extends javax.swing.JFrame {
         login.setVisible(true);
         Cliente.setClienteLogado(null);
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void panelTamanhosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_panelTamanhosAncestorAdded
+        // TODO add your handling code here:
+        try {
+            BancoDeDados banco = new BancoDeDados();
+            BancoDeDados.leBDTamanho(BancoDeDados.getBancoTamanho());
+            for(Tamanho tam : Tamanho.getListaTamanhos()) {
+                int optionNumber = buttonGroup1.getButtonCount() + 1;
+                JRadioButton radioButton = new JRadioButton(tam.getNome()+" - "+tam.getQuantidadePecas()+" pedaços - R$"+tam.getValor());
+                buttonGroup1.add(radioButton);
+                panelTamanhos.add(radioButton);
+                radioButton.setVisible(true);
+                panelTamanhos.revalidate();
+                panelTamanhos.repaint();
+                radioButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        System.out.println("Selecionado: ");
+                    }
+                });
+            }
+
+        } catch (IOException e) {
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_panelTamanhosAncestorAdded
 
     
     private void addRadioButton(String label) {
@@ -594,6 +596,7 @@ public class DashboardCliente extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel panelPizzaDoce;

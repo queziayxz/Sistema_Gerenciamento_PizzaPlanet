@@ -158,6 +158,8 @@ public class FazerPedido extends javax.swing.JFrame {
 
         jLabel5.setText("Nome:");
 
+        txtNomePizzaDocePedido.setEditable(false);
+
         btnEditPizzaDoce.setText("Desmarcar Pizza");
         btnEditPizzaDoce.setEnabled(false);
         btnEditPizzaDoce.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +193,7 @@ public class FazerPedido extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableIngredientePizzasDocesPedido.setEnabled(false);
         jScrollPane5.setViewportView(tableIngredientePizzasDocesPedido);
 
         listaPizzaDocePedido.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
@@ -266,6 +269,8 @@ public class FazerPedido extends javax.swing.JFrame {
 
         jLabel10.setText("Nome:");
 
+        txtNomePizzaSalgadaPedido.setEditable(false);
+
         btnEditPizzaSalgada.setText("Desmarcar Pizza");
         btnEditPizzaSalgada.setEnabled(false);
         btnEditPizzaSalgada.addActionListener(new java.awt.event.ActionListener() {
@@ -309,6 +314,7 @@ public class FazerPedido extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableIngredientePizzaSalgadaPedido.setEnabled(false);
         jScrollPane6.setViewportView(tableIngredientePizzaSalgadaPedido);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -391,7 +397,7 @@ public class FazerPedido extends javax.swing.JFrame {
 
         jLabel9.setText("Nome:");
 
-        txtNomeProdPedido.setEnabled(false);
+        txtNomeProdPedido.setEditable(false);
         txtNomeProdPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeProdPedidoActionPerformed(evt);
@@ -405,7 +411,7 @@ public class FazerPedido extends javax.swing.JFrame {
             }
         });
 
-        txtValorProdPedido.setEnabled(false);
+        txtValorProdPedido.setEditable(false);
 
         jLabel13.setText("Valor:");
 
