@@ -30,16 +30,6 @@ public class Pedido implements Serializable {
         this.tamanho = tamanho;
         this.produto = new Produto();
     }
-    
-    public Pedido(String formaPagamento, List<Pizza> pizza, Tamanho tamanho, Produto produto, double valorTotal, String status) {
-        this.cliente = cliente;
-        this.formaPagamento = formaPagamento;
-        this.pizza = pizza;
-        this.tamanho = tamanho;
-        this.produto = produto;
-        this.valorTotal = valorTotal;
-        this.status = status;
-    }
 
     public Pedido(String formaPagamento) {
         this.formaPagamento = formaPagamento;
